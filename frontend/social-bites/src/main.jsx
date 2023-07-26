@@ -2,6 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import ErrorPage from "./ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -9,6 +10,8 @@ const router = createBrowserRouter([
     element: (
       <div className="bg-red-500 text-center text-2xl">Social Bites</div>
     ),
+    errorElement: <ErrorPage />,
+
   },
 ]);
 
