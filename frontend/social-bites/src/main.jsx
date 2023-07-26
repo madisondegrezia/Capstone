@@ -3,13 +3,23 @@ import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import ErrorPage from "./ErrorPage";
+import NavBar from "./NavBar";
+import Home from "./Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <div className="bg-red-500 text-center text-2xl">Social Bites</div>
+      <NavBar />
     ),
+    children: [
+      {
+        path: "/",
+        element: (
+          <Home />
+        )
+      }
+    ],
     errorElement: <ErrorPage />,
 
   },
