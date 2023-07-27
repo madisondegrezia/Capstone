@@ -1,0 +1,35 @@
+.sub-page {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+}
+
+.settings-bar {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    min-height: 100vh;
+    background-color: rgb(254, 234, 232);
+}
+
+
+
+.settings-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-list > * {
+    border: solid;
+    border-width: 2px 0px 0px 0px;
+    padding: 20px 10px 20px 10px;
+}
+
+.settings-bar > * {
+    padding: 20px;
+    font-size: x-large;
+}
+.settings-title {
+    font-size: xx-large;
+    padding-bottom: 0;
+}
