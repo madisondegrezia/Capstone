@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Login() {
   return (
     <Form method="post" className="selection:bg-red-200 flex flex-col gap-2 flex items-center">
-      <div className="border-solid border-2 border-red-500 rounded-xl p-10 mt-8 shadow-2xl">
+      <div className="border-solid border-2 border-red-500 rounded-xl p-10 mt-8 shadow-2xl bg-red-400">
       <h1 className="text-3xl mt-5 text-center flex flex-row items-center justify-center">Login <FaUser /></h1>
 
       <fieldset className="flex flex-col">
@@ -14,7 +14,7 @@ function Login() {
           type="email"
           name="email"
           id="email"
-          className="border-4 focus:outline-none p-2"
+          className="border-2 rounded-md bg-red-100 focus:outline-none p-2"
         />
       </fieldset>
       <fieldset className="flex flex-col">
@@ -23,12 +23,12 @@ function Login() {
           type="password"
           name="password"
           id="password"
-          className="border-4 focus:outline-none p-2"
+          className="border-2 rounded-md bg-red-100 focus:outline-none p-2"
         />
       </fieldset>
       <div className="text-center">
       <input
-        className="bg-red-500 hover:bg-red-600 text-white transition mt-4 py-2 cursor-pointer w-32"
+        className="bg-red-700 hover:bg-red-800 text-white transition mt-4 py-2 cursor-pointer w-32"
         type="submit" value="Login"
       ></input>
       </div>
