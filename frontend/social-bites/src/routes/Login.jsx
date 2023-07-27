@@ -5,7 +5,7 @@ import "./Login.css";
 
 function Login() {
   return (
-    <div className="img h-screen flex items-center justify-center">
+    <div className="img-login h-screen flex items-center justify-center">
       <Form
         method="post"
         className="selection:bg-red-200 flex flex-col gap-2 flex items-center"

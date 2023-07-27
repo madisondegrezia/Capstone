@@ -1,17 +1,17 @@
 import { Form } from "react-router-dom";
 import { FaUsers } from "react-icons/fa";
-import "./Login.css";
+import "./Signup.css";
 
 function Signup() {
   return (
-    <div className="img h-screen flex items-center justify-center">
+    <div className="img-signup h-screen flex items-center justify-center">
       <Form
         method="post"
         className="selection:bg-red-200 flex flex-col gap-2 flex items-center"
       >
         <div className="border-solid rounded-xl p-10 mt-8 shadow-2xl background-color">
           <h1 className="text-3xl mt-5 text-center flex flex-row items-center justify-center">
-            Signup <FaUsers />
+            Sign Up <FaUsers />
           </h1>
 
           <fieldset className="flex flex-col">
@@ -41,11 +41,22 @@ function Signup() {
               className="border-2 rounded-md bg-red-100 focus:outline-none p-2"
             />
           </fieldset>
+          <fieldset className="flex flex-col mt-3 text-white">
+            <label>
+            <input
+              type="checkbox"
+              name="checkbox"
+              id="checkbox"
+              className="border-2 rounded-md bg-red-100 focus:outline-none p-2 mr-1"
+            />
+            Are you a restaurant owner?
+            </label>
+          </fieldset>
           <div className="text-center">
             <input
               className="bg-red-700 hover:bg-red-800 text-white rounded-md transition mt-4 py-2 cursor-pointer w-32"
               type="submit"
-              value="Signup"
+              value="Sign Up"
             ></input>
           </div>
         </div>
