@@ -15,11 +15,11 @@
   
   .logo {
     justify-self: flex-start;
-    padding: 20px;
+    padding: 10px;
   }
   
   .user-picture {
-    padding: 20px;
+    padding: 10px;
     border-radius: 50%;
   }
   
