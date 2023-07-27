@@ -14,7 +14,6 @@ function Login() {
           <h1 className="text-3xl mt-5 text-center flex flex-row items-center justify-center">
             Login <FaUser />
           </h1>
-
           <fieldset className="flex flex-col">
             <label htmlFor="title">Email</label>
             <input
@@ -40,7 +39,7 @@ function Login() {
               value="Login"
             ></input>
           </div>
-          <Link to="/signup" className="flex mr-3 mt-3 underline text-white">
+          <Link to="/signup" className="flex mr-3 mt-3 underline text-white ">
             Do not have an account?
           </Link>
         </div>
