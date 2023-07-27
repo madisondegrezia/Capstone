@@ -12,9 +12,7 @@ import Signup from "./routes/Signup";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <NavBar />
-    ),
+    element: <NavBar />,
     children: [
       {
         path: "/",
@@ -34,10 +32,8 @@ const router = createBrowserRouter([
           <Signup />
         )
       }
-
     ],
     errorElement: <ErrorPage />,
-
   },
 ]);
 
