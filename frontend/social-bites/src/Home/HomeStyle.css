@@ -54,3 +54,13 @@
     flex-basis: 350px;
     flex-shrink: 1;
 }
+
+.cardRate {
+    display: inline-block;
+    /* background: #c9c2c2; */
+    background: #ff8c8c;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    margin-right: 0.25rem;
+    font-style: italic;
+  }
