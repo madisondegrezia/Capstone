@@ -28,7 +28,7 @@ function Login() {
       </fieldset>
       <div className="text-center">
       <input
-        className="bg-red-700 hover:bg-red-800 text-white transition mt-4 py-2 cursor-pointer w-32"
+        className="bg-red-700 hover:bg-red-800 text-white rounded-md transition mt-4 py-2 cursor-pointer w-32"
         type="submit" value="Login"
       ></input>
       </div>
