@@ -3,8 +3,8 @@ import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import ErrorPage from "./ErrorPage";
-import NavBar from "./NavBar";
-import Home from "./Home";
+import NavBar from "./NavBar/NavBar";
+import Home from "./Home/Home";
 
 const router = createBrowserRouter([
   {
