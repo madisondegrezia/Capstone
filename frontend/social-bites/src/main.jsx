@@ -5,6 +5,9 @@ import "./index.css";
 import ErrorPage from "./ErrorPage";
 import NavBar from "./NavBar/NavBar";
 import Home from "./Home/Home";
+import Login from "./routes/Login";
+import Signup from "./routes/Signup";
+
 
 const router = createBrowserRouter([
   {
@@ -18,7 +21,20 @@ const router = createBrowserRouter([
         element: (
           <Home />
         )
+      },
+      {
+        path: "/login",
+        element: (
+          <Login />
+        )
+      },
+      {
+        path: "/signup",
+        element: (
+          <Signup />
+        )
       }
+
     ],
     errorElement: <ErrorPage />,
 
