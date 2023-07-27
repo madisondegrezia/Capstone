@@ -1,0 +1,40 @@
+{
+    "restaurants": [
+    {
+        "image": {
+            "src": "https://s3-media0.fl.yelpcdn.com/bphoto/KK2knoZnscbI835diTWDdQ/348s.jpg",
+            "alt": "Some place"
+        },
+        "restaurantName": "I like Japanese food",
+        "foodType": "Japanese",
+        "rating": "4.5/5"
+    },
+    {
+        "image": {
+            "src": "https://s3-media0.fl.yelpcdn.com/bphoto/KK2knoZnscbI835diTWDdQ/348s.jpg",
+            "alt": "Some place"
+        },
+        "restaurantName": "I like Japanese food",
+        "foodType": "Japanese",
+        "rating": "4.5/5"
+    },
+    {
+        "image": {
+            "src": "https://s3-media0.fl.yelpcdn.com/bphoto/KK2knoZnscbI835diTWDdQ/348s.jpg",
+            "alt": "Some place"
+        },
+        "restaurantName": "I like Japanese food",
+        "foodType": "Japanese",
+        "rating": "4.5/5"
+    },
+    {
+        "image": {
+            "src": "https://s3-media0.fl.yelpcdn.com/bphoto/KK2knoZnscbI835diTWDdQ/348s.jpg",
+            "alt": "Some place"
+        },
+        "restaurantName": "I like Japanese food",
+        "foodType": "Japanese",
+        "rating": "4.5/5"
+    }
+    ]       
+}
