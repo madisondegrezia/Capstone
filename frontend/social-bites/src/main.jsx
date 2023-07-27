@@ -8,6 +8,7 @@ import Home from "./Home/Home";
 import load from "./Loader/loadRestaurants";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
+import About from "./About/About";
 
 const router = createBrowserRouter([
   {
@@ -18,24 +19,22 @@ const router = createBrowserRouter([
       {
         path: "/",
         loader: load,
-        element: (
-          <Home />
-        )
+        element: <Home />,
       },
       {
         path: "/login",
-        element: (
-          <Login />
-        )
+        element: <Login />,
       },
       {
         path: "/signup",
-        element: (
-          <Signup />
-        )
-      }
+        element: <Signup />,
+      },
     ],
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/about",
+    element: <About />,
   },
 ]);
 
