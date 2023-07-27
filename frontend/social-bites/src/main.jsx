@@ -9,19 +9,14 @@ import Home from "./Home/Home";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <NavBar />
-    ),
+    element: <NavBar />,
     children: [
       {
         path: "/",
-        element: (
-          <Home />
-        )
-      }
+        element: <Home />,
+      },
     ],
     errorElement: <ErrorPage />,
-
   },
 ]);
 
