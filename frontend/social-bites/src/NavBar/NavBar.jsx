@@ -16,19 +16,6 @@ export default function NavBar() {
             alt="logo"
           />
         </Link>
-        {/* <div className="nav-menu">
-          <ul className="nav-menu-list">
-            <li className="nav-menu-item">
-              <Link to="/about">About</Link>
-            </li>
-            <li className="nav-menu-item">
-              <Link to="/faq">FAQ</Link>
-            </li>
-            <li className="nav-menu-item">
-              <Link to="/contact">Contact Us</Link>
-            </li>
-          </ul>
-        </div> */}
         <div className="right">
           <div className="nav-menu">
             <ul className="nav-menu-list">

@@ -8,6 +8,7 @@ import Home from "./Home/Home";
 import load from "./Loader/loadRestaurants";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
+import About from "./About/About";
 import Settings from "./Settings/Settings";
 import EditAccount from "./Settings/SettingsCategories/EditAccount";
 
@@ -20,21 +21,15 @@ const router = createBrowserRouter([
       {
         path: "/",
         loader: load,
-        element: (
-          <Home />
-        )
+        element: <Home />,
       },
       {
         path: "/login",
-        element: (
-          <Login />
-        )
+        element: <Login />,
       },
       {
         path: "/signup",
-        element: (
-          <Signup />
-        )
+        element: <Signup />,
       },
       {
         path: "/settings",
@@ -52,6 +47,10 @@ const router = createBrowserRouter([
       }
     ],
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/about",
+    element: <About />,
   },
 ]);
 
