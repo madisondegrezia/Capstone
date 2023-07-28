@@ -15,9 +15,7 @@ export default function Settings() {
                 </div>
             </div>
 
-            <div className="settings-content">
                 <Outlet />
-            </div>
         </div>
     )
 }
