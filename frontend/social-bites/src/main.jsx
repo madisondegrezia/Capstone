@@ -9,6 +9,8 @@ import load from "./Loader/loadRestaurants";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import About from "./About/About";
+import Settings from "./Settings/Settings";
+import EditAccount from "./Settings/SettingsCategories/EditAccount";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,20 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <Signup />,
       },
+      {
+        path: "/settings",
+        element: (
+          <Settings />
+        ),
+        children: [
+          {
+            path: "/settings/edit",
+            element: (
+              <EditAccount />
+            )
+          }
+        ]
+      }
     ],
     errorElement: <ErrorPage />,
   },
