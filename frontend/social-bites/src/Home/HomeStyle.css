@@ -1,0 +1,66 @@
+#search-res {
+    font-size: xx-large;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: .6em;
+    padding-bottom: .6em;
+    margin-top: 1em;
+    border-radius: 1em;
+}
+
+.home-page {
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 50vh;
+}
+
+.restaurant-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(24em, 1fr));
+    gap: 20px;
+    flex-basis: 100%;
+    width: 100%;
+}
+
+.head-img {
+    height: 35vh;
+    object-fit: cover;
+    width: 100vw;
+}
+
+.cardImage {
+    width: 70%;
+    height: 70%;
+    border-radius: 15%;
+    object-fit: scale-down;
+    flex-shrink: 1;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+    background-color: white;
+    padding: 20px;
+    padding-bottom: 20px;
+    margin: 30px;
+    border-radius: 10%;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 8px;
+    flex-basis: 350px;
+    flex-shrink: 1;
+}
+
+.cardRate {
+    display: inline-block;
+    /* background: #c9c2c2; */
+    background: #ff8c8c;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    margin-right: 0.25rem;
+    font-style: italic;
+  }

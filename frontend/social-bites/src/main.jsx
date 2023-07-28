@@ -2,13 +2,40 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import ErrorPage from "./ErrorPage";
+import NavBar from "./NavBar/NavBar";
+import Home from "./Home/Home";
+import load from "./Loader/loadRestaurants";
+import Login from "./routes/Login";
+import Signup from "./routes/Signup";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div className="bg-red-500 text-center text-2xl">Social Bites</div>
-    ),
+    loader: load,
+    element: <NavBar />,
+    children: [
+      {
+        path: "/",
+        loader: load,
+        element: (
+          <Home />
+        )
+      },
+      {
+        path: "/login",
+        element: (
+          <Login />
+        )
+      },
+      {
+        path: "/signup",
+        element: (
+          <Signup />
+        )
+      }
+    ],
+    errorElement: <ErrorPage />,
   },
 ]);
 
