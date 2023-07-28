@@ -7,7 +7,7 @@ export default function About() {
       <NavBar />
       <div className="about-container">
         <div className="about">
-          <h1 className="about-title">Welcome to our platform!</h1>
+          <h1 className="about-title">Welcome to SocialBites!</h1>
           <p className="about-text">
             <br />
             We are thrilled to present a unique dining experience that connects
