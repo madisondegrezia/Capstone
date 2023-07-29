@@ -24,3 +24,39 @@ DB_PASSWORD=<your password for the user>
 DB_PORT=5432
 
 ```
+
+4. Run the following command in the terminal:
+```
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
+
+```
+
+note: if you need to undo the migration and seeder, use the following command
+```
+npx sequelize-cli db:migrate:undo:all
+npx sequelize-cli db:seed:undo:all
+```
+
+
+### update to set up session!
+1. enter the following into your terminal:
+```
+npm install express-session
+npm install cors
+```
+
+2. Get your session secret, enter `node` and hit `enter` and type in:
+```
+require("crypto").randomBytes(64).toString("hex")
+```
+Copy the given string
+
+3. Inside your `.env` add:
+```
+SESSION_SECRET=<generated_session_secret_given>
+```
+
+4. API Endpoint postman api:
+https://gold-equinox-29662.postman.co/workspace/Social-Bite~b22e44a7-7d14-4492-80ae-7bfb3a663638/collection/25222511-e86e4265-f483-47f8-bb47-eab065163c7a?action=share&creator=25222511
+Here, you can get an example of each api request
