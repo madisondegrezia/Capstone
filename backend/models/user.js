@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(50),
       allowNull: false,
         validate: {
-          is: /(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&.:;])[A-Za-z\d@$!%*?&]{8,}$/i, // Minimum 8 characters, at least 1 letter and 1 number and 1 special character in @$!%*?&.:;
+          is: /(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&.:;])[A-Za-z\d@$!%*?&.:;]{8,}$/i, // Minimum 8 characters, at least 1 letter and 1 number and 1 special character in @$!%*?&.:;
         },
     },
     hasRestaurant: {
