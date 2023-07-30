@@ -4,9 +4,11 @@ import {
   Link,
 } from "react-router-dom/dist/umd/react-router-dom.development";
 import "./NavBarStyle.css";
+import Footer from "../Footer/Footer";
 
 export default function NavBar() {
   return (
+    <>
     <div className="entire-page">
       <div className="headerBar">
         <Link to="/" className="flex h-full">
@@ -54,6 +56,9 @@ export default function NavBar() {
         </div>
       </div>
       <Outlet />
+      
     </div>
+    <Footer />
+    </>
   );
 }
