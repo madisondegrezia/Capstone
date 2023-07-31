@@ -6,7 +6,6 @@ import about from "./about.png";
 export default function AboutApp() {
   return (
     <>
-      <NavBar />
       <div className="aboutap">
         <section className="about-app">
           <div className="main-about">

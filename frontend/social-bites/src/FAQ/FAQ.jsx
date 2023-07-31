@@ -4,7 +4,6 @@ import "./FAQ.css";
 export default function About() {
   return (
     <>
-      <NavBar />
       <div className="faq-body">
         <div className="faq-container">
           <h1 className="faq-title">Frequently Asked Questions?</h1>
