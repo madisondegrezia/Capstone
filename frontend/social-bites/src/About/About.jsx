@@ -7,7 +7,13 @@ export default function About() {
       <NavBar />
       <div className="about-container">
         <div className="about">
-          <h1 className="about-title">Welcome to SocialBites!</h1>
+          <div className="about-shell">
+            <h1 className="about-title">Welcome to</h1>
+            <img
+              src="/src/assets/socialbites-logo.png"
+              className="about-logo"
+            />
+          </div>
           <p className="about-text">
             <br />
             We are thrilled to present a unique dining experience that connects
@@ -17,9 +23,9 @@ export default function About() {
             and exciting events directly with all users.
             <br />
             <br /> Our recommendation system is designed to cater to your
-            preferences in different ways. Whether you're looking for nearby
+            preferences in different ways. Whether you are looking for nearby
             restaurants or seeking events that align with your interests, such
-            as game nights, live music, or trivia evenings, we've got you
+            as game nights, live music, or trivia evenings, we have got you
             covered. Discovering new and delightful dining experiences has never
             been easier! <br />
             <br />
@@ -35,8 +41,8 @@ export default function About() {
             Looking for the perfect place to satisfy your cravings? With our
             search options, you can easily locate restaurants by location, name,
             relevant tags, or even specific interests. We aim to make your
-            dining adventures as delightful as the dishes you'll discover. Join
-            us on this gastronomic journey, where food enthusiasts and
+            dining adventures as delightful as the dishes you will discover.
+            Join us on this gastronomic journey, where food enthusiasts and
             restaurants come together to celebrate the joy of great food and
             memorable experiences.
             <br />
