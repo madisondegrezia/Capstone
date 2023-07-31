@@ -9,9 +9,13 @@ import load from "./Loader/loadRestaurants";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import About from "./About/About";
+import FAQ from "./FAQ/FAQ";
 import Settings from "./Settings/Settings";
 import EditAccount from "./Settings/SettingsCategories/EditAccount";
 import AuthProvider from "./contexts/AuthContext";
+import Contact from "./Contact/Contact";
+import AboutApp from "./AboutApp/AboutApp";
+
 
 const router = createBrowserRouter([
   {
@@ -33,6 +37,22 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       {
+        path: "/aboutapp",
+        element: <AboutApp />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/faq",
+        element: <FAQ />
+      },
+      {
         path: "/settings",
         element: <Settings />,
         children: [
@@ -45,10 +65,7 @@ const router = createBrowserRouter([
     ],
     errorElement: <ErrorPage />,
   },
-  {
-    path: "/about",
-    element: <About />,
-  },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
