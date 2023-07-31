@@ -1,3 +1,7 @@
+.entire-page {
+  min-height: 100vh;
+}
+
 .headerBar {
   display: flex;
   flex-direction: row;
@@ -55,3 +59,4 @@
 .nav-menu-item:hover {
   text-decoration: underline;
 }
+
