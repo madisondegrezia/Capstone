@@ -10,7 +10,6 @@ import samr from "./samr.jpg";
 export default function Contact() {
   return (
     <>
-      <NavBar />
       <div className="contact-body">
         <div className="main">
           <div className="profile-card">

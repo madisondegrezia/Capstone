@@ -4,7 +4,6 @@ import "./About.css";
 export default function About() {
   return (
     <>
-      <NavBar />
       <div className="about-container">
         <div className="about">
           <div className="about-shell">
