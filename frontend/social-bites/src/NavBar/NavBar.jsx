@@ -20,7 +20,7 @@ export default function NavBar() {
           <div className="nav-menu">
             <ul className="nav-menu-list">
               <li className="nav-menu-item">
-                <Link to="/about">About</Link>
+                <Link to="/aboutapp">About</Link>
               </li>
               <li className="nav-menu-item">
                 <Link to="/faq">FAQ</Link>

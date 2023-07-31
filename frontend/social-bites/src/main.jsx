@@ -9,8 +9,11 @@ import load from "./Loader/loadRestaurants";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import About from "./About/About";
+import FAQ from "./FAQ/FAQ";
 import Settings from "./Settings/Settings";
 import EditAccount from "./Settings/SettingsCategories/EditAccount";
+import Contact from "./Contact/Contact";
+import AboutApp from "./AboutApp/AboutApp";
 
 const router = createBrowserRouter([
   {
@@ -33,24 +36,32 @@ const router = createBrowserRouter([
       },
       {
         path: "/settings",
-        element: (
-          <Settings />
-        ),
+        element: <Settings />,
         children: [
           {
             path: "/settings/edit",
-            element: (
-              <EditAccount />
-            )
-          }
-        ]
-      }
+            element: <EditAccount />,
+          },
+        ],
+      },
     ],
     errorElement: <ErrorPage />,
   },
   {
     path: "/about",
     element: <About />,
+  },
+  {
+    path: "/aboutapp",
+    element: <AboutApp />,
+  },
+  {
+    path: "/faq",
+    element: <FAQ />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
   },
 ]);
 
