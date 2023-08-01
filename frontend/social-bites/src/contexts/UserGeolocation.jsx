@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 // get user location from the backend, latitude and longitude
 export const getUserLocation = async () => {
