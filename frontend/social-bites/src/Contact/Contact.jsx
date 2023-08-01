@@ -1,4 +1,3 @@
-import NavBar from "../NavBar/NavBar";
 import "./Contact.css";
 
 import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
