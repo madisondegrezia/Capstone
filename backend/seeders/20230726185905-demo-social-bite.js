@@ -64,7 +64,7 @@ const tagId = tags[0][0].id;
       rate: 4.5, // the rating will be decided based on another table named "user_rate"
       popularity: 102, // the popularity will be based on another table named "user_favorite"
       address: "1430 Richmond Ave, Staten Island, NY 10314",
-      longtitude: -74.15901282328339,
+      longitude: -74.15901282328339,
       latitude: 40.61389640713802
     },
     {
@@ -73,7 +73,7 @@ const tagId = tags[0][0].id;
       rate: 3.9, // the rating will be decided based on another table named "user_rate"
       popularity: 102, // the popularity will be based on another table named "user_favorite"
       address: "1447 Richmond Ave, Staten Island, NY 10314",
-      longtitude: -74.15826389821179,
+      longitude: -74.15826389821179,
       latitude: 40.61250571654796
     },
   ]);
