@@ -40,7 +40,7 @@ function App() {
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
-
+  //s
   return (
     <div>
       <div className="max-w-[1400px] h-[250px] w-full m-auto py-2 px-2 relative group">
