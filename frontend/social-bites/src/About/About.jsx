@@ -1,4 +1,3 @@
-import NavBar from "../NavBar/NavBar";
 import "./About.css";
 
 export default function About() {
