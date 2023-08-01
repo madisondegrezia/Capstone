@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import {
   Outlet,
   Link,
 } from "react-router-dom/dist/umd/react-router-dom.development";
 import "./NavBarStyle.css";
 import Footer from "../Footer/Footer";
+import { AuthContext } from "../contexts/AuthContext";
+
 
 export default function NavBar() {
+
+  // location is the variable, getLocation will change the location variable based on user's current location (latitude and longtitude)
+  const { location } = useContext(AuthContext);
+
+
+  console.log(location);
+
   return (
     <>
     <div className="entire-page">
