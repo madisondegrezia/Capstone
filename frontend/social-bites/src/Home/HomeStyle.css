@@ -35,7 +35,7 @@
   width: 70%;
   height: 70%;
   border-radius: 15%;
-  object-fit: scale-down;
+  object-fit: cover;
   flex-shrink: 1;
 }
 
