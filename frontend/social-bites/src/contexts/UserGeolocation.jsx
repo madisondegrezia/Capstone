@@ -3,22 +3,22 @@ import React, { useState } from "react";
 
 // get user location from the backend, latitude and longitude
 export const getUserLocation = async () => {
-    try {
-      const response = await fetch("/api/user/location");
-  
-      if (!response.ok) {
-        throw new Error("Network response was not ok.");
-      }
-  
-      const data = await response.json();
+  try {
+    const response = await fetch("/api/user/location");
 
-      console.log(data.userLocation);
-      return data;
-    } catch (error) {
-      console.error("Error fetching user location:", error);
-      return null;
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
     }
-  };
+
+    const data = await response.json();
+
+    console.log(data.userLocation);
+    return data;
+  } catch (error) {
+    console.error("Error fetching user location:", error);
+    return null;
+  }
+};
 
 export const useLocation = () => {
   const [location, setLocation] = useState(null);
@@ -26,9 +26,9 @@ export const useLocation = () => {
   const postLocation = async (latitude, longitude) => {
     const data = {
       latitude: latitude,
-      longitude: longitude
+      longitude: longitude,
     };
-  
+
     const response = await fetch("/api/user/location", {
       method: "POST",
       headers: {
@@ -36,7 +36,7 @@ export const useLocation = () => {
       },
       body: JSON.stringify(data), // Convert the data to a JSON string
     });
-  
+
     if (!response.ok) {
       return false;
     } else {
@@ -49,11 +49,9 @@ export const useLocation = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          if (postLocation(latitude, longitude)){
-              setLocation({ latitude, longitude });
-          }
-          else
-          {
+          if (postLocation(latitude, longitude)) {
+            setLocation({ latitude, longitude });
+          } else {
             console.error("Error getting user's location");
           }
         },
@@ -68,10 +66,3 @@ export const useLocation = () => {
 
   return { location, getLocation };
 };
-
-
-
-
-
-
-
