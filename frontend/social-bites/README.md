@@ -1,11 +1,15 @@
 # React + Vite
 
 One terminal window for running backend to fetch data:
-npm i json-server
+First terminal on frontend
 cd social-bites
 json-server resMockData.json
 
-And another terminal window for front end:
+Second terminal window
+cd backend
+npm start
+
+Third terminal window for front end:
 cd social-bites
 npm run dev
 
@@ -17,7 +21,9 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ### update
+
 inside the terminal:
+
 ```
 npm install axios
 ```
