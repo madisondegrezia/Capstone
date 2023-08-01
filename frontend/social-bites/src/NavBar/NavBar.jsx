@@ -79,8 +79,7 @@ export default function NavBar() {
         </div>
         <Outlet />
       </div>
-      
-      <Footer />
+<Footer />
     </>
   );
 }

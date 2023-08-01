@@ -15,7 +15,7 @@ import EditAccount from "./Settings/SettingsCategories/EditAccount";
 import AuthProvider from "./contexts/AuthContext";
 import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
-
+import Slider from "./Slider/Slider";
 
 const router = createBrowserRouter([
   {
@@ -25,9 +25,16 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: load,
-        element: <Home />,
+        element: <Slider />,
+        children: [
+          {
+            path: "/",
+            loader: load,
+            element: <Home />,
+          },
+        ],
       },
+
       {
         path: "/login",
         element: <Login />,
@@ -50,7 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/faq",
-        element: <FAQ />
+        element: <FAQ />,
       },
       {
         path: "/settings",
@@ -65,7 +72,6 @@ const router = createBrowserRouter([
     ],
     errorElement: <ErrorPage />,
   },
-  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

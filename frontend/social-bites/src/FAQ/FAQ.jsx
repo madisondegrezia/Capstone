@@ -1,4 +1,3 @@
-import NavBar from "../NavBar/NavBar";
 import "./FAQ.css";
 
 export default function About() {
