@@ -43,7 +43,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      longtitude: {
+      longitude: {
         type: Sequelize.DOUBLE,
         allowNull: false
       },

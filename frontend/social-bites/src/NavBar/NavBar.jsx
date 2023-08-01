@@ -14,11 +14,6 @@ import Footer from "../Footer/Footer";
 
 export default function NavBar() {
 
-  // location is the variable, getLocation will change the location variable based on user's current location (latitude and longtitude)
-  const { location } = useContext(AuthContext);
-
-
-  console.log(location);
   const { currentUser, logout } = useContext(AuthContext);
   const navigation = useNavigation();
 
