@@ -39,9 +39,11 @@ app.use(express.json());
 
 // import all routers from the router folder
 const authRouter = require("./routes/auth");
+const userRouter = require("./routes/user");
 
 // include the router inside the app of server.js
 app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
 
 app.get('/', (req, res)=>{
     res.send('Testing for the node!!!');

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import {
   Outlet,
@@ -11,7 +11,9 @@ import classNames from "classnames";
 import "./NavBarStyle.css";
 import Footer from "../Footer/Footer";
 
+
 export default function NavBar() {
+
   const { currentUser, logout } = useContext(AuthContext);
   const navigation = useNavigation();
 

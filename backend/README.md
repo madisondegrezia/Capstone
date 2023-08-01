@@ -60,3 +60,19 @@ SESSION_SECRET=<generated_session_secret_given>
 4. API Endpoint postman api:
 https://gold-equinox-29662.postman.co/workspace/Social-Bite~b22e44a7-7d14-4492-80ae-7bfb3a663638/collection/25222511-e86e4265-f483-47f8-bb47-eab065163c7a?action=share&creator=25222511
 Here, you can get an example of each api request
+
+
+#### update for fetching nearby restaurant
+1. login into your postgres super user, in the terminal: 
+```
+psql -U postgres -d <database_name>
+```
+then enter your password
+
+2. enter:
+```
+CREATE EXTENSION IF NOT EXISTS cube;
+CREATE EXTENSION IF NOT EXISTS earthdistance;
+```
+
+3. try fetching for nearby restaurants by running, `<localhost_PORT_LINK>/api/user/nearby_restaurant/5` in the postman api shareed linked with this README.md
