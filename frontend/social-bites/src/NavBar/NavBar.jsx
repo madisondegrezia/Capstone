@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import {
   Outlet,
@@ -11,9 +11,7 @@ import classNames from "classnames";
 import "./NavBarStyle.css";
 import Footer from "../Footer/Footer";
 
-
 export default function NavBar() {
-
   const { currentUser, logout } = useContext(AuthContext);
   const navigation = useNavigation();
 
@@ -29,8 +27,8 @@ export default function NavBar() {
     e.preventDefault();
     logout();
     redirect("/login");
-    console.log(currentUser)
-    console.log("logging out!!")
+    console.log(currentUser);
+    console.log("logging out!!");
   };
 
   return (
@@ -77,9 +75,12 @@ export default function NavBar() {
             ></img>
           </div>
         </div>
+        {/* <div className={outletClasses}>
+          <Outlet />
+        </div> */}
         <Outlet />
       </div>
-<Footer />
+      <Footer />
     </>
   );
 }

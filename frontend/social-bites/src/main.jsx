@@ -16,6 +16,7 @@ import AuthProvider from "./contexts/AuthContext";
 import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
 import Slider from "./Slider/Slider";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -57,7 +58,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/faq",
-        element: <FAQ />,
+        element: (
+          <ProtectedRoute>
+            <FAQ />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/settings",
