@@ -1,6 +1,7 @@
 import { Form } from "react-router-dom";
 import "./HomeStyle.css";
 import RestaurantCards from "../RestaurantCards/RestaurantCards";
+import HomeSlider from "../Slider/Slider";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         className="head-img"
         src="https://media.bizj.us/view/img/12359290/df104-5-of-13*1200xx2500-1406-0-255.jpg"
       ></img> */}
+      <HomeSlider />
       <Form method="get" className="search-bar">
         <input
           id="search-res"

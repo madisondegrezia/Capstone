@@ -4,7 +4,7 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { Outlet } from "react-router-dom/dist/umd/react-router-dom.development";
 import "./SliderStyle.css";
 
-function App() {
+function HomeSlider() {
   const slides = [
     {
       url: "https://media.bizj.us/view/img/12359290/df104-5-of-13*1200xx2500-1406-0-255.jpg",
@@ -73,9 +73,8 @@ function App() {
           ))}
         </div> */}
       </div>
-      <Outlet />
     </>
   );
 }
 
-export default App;
+export default HomeSlider;

@@ -27,15 +27,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Slider />,
-        children: [
-          {
-            path: "/",
-            loader: load,
-            element: <Home />,
+        loader: load,
+        element: <Home />,
           },
-        ],
-      },
+        
+      
 
       {
         path: "/login",
@@ -81,7 +77,7 @@ const router = createBrowserRouter([
       },
     ],
     errorElement: <ErrorPage />,
-  },
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
