@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 // import { RxDotFilled } from "react-icons/rx";
 import { Outlet } from "react-router-dom/dist/umd/react-router-dom.development";
+import "./SliderStyle.css";
 
 function App() {
   const slides = [
@@ -45,8 +46,8 @@ function App() {
   };
 
   return (
-    <div>
-      <div className="max-w-[1400px] h-[250px] w-full m-auto py-2 px-2 relative group">
+    <>
+      <div className="head-slide m-auto py-2 px-2 relative group">
         <div
           style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
           className="w-full h-full rounded-2xl bg-center bg-cover duration-500"
@@ -73,7 +74,7 @@ function App() {
         </div> */}
       </div>
       <Outlet />
-    </div>
+    </>
   );
 }
 

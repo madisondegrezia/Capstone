@@ -17,6 +17,7 @@ import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
 import Slider from "./Slider/Slider";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import RestaurantPage from "./RestaurantPage/RestaurantPage";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
             element: <EditAccount />,
           },
         ],
+      },
+      {
+        path: "/restaurant",
+        element: <RestaurantPage />,
       },
     ],
     errorElement: <ErrorPage />,
