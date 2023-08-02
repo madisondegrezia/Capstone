@@ -18,6 +18,7 @@ import AboutApp from "./AboutApp/AboutApp";
 import Slider from "./Slider/Slider";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import RestaurantPage from "./RestaurantPage/RestaurantPage";
+import Search from "./Search/Search";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +32,14 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/",
-            loader: load,
-            element: <Home />,
+            element: <Search />,
+            children: [
+              {
+                path: "/",
+                loader: load,
+                element: <Home />,
+              },
+            ],
           },
         ],
       },
