@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from "react";
-import {useLocation} from "./UserGeolocation";
+import { useLocation } from "./UserGeolocation";
 
 
 export const AuthContext = createContext();
@@ -10,13 +10,12 @@ const AuthProvider = ({ children }) => {
   const [authError, setAuthError] = useState(null);
 
   // import location and get Location from UserGeolocation file that will get user's location
-  const { location, getLocation } = useLocation(); 
+  const { location, getLocation } = useLocation();
 
   // fetch for location, changes location variable based on user's current location
   useEffect(() => {
     getLocation();
   }, []);
-
 
   useEffect(() => {
     // async function to check if the user is logged in
@@ -101,7 +100,7 @@ const AuthProvider = ({ children }) => {
     setIsAuthChecked(true);
   };
 
-  const logout = async () => {
+  const logout = async (cb) => {
     setIsAuthChecked(false);
 
     try {
@@ -110,7 +109,7 @@ const AuthProvider = ({ children }) => {
       });
 
       if (response.ok) {
-        setCurrentUser(null);
+        setCurrentUser(null, cb);
         setAuthError(null);
       } else {
         const errorData = await response.json();
@@ -133,7 +132,7 @@ const AuthProvider = ({ children }) => {
         signup,
         login,
         logout,
-        location
+        location,
       }}
     >
       {children}

@@ -1,40 +1,40 @@
 {
-    "restaurants": [
+  "restaurants": [
     {
-        "image": {
-            "src": "https://s3-media0.fl.yelpcdn.com/bphoto/KK2knoZnscbI835diTWDdQ/348s.jpg",
-            "alt": "Some place"
-        },
-        "restaurantName": "I like Japanese food",
-        "foodType": "Japanese",
-        "rating": "4.5/5"
+      "image": {
+        "src": "https://s3-media0.fl.yelpcdn.com/bphoto/KK2knoZnscbI835diTWDdQ/348s.jpg",
+        "alt": "Some place"
+      },
+      "restaurantName": "Japan's Finest",
+      "foodType": "Japanese",
+      "rating": "4.5/5"
     },
     {
-        "image": {
-            "src": "https://s3-media0.fl.yelpcdn.com/bphoto/KK2knoZnscbI835diTWDdQ/348s.jpg",
-            "alt": "Some place"
-        },
-        "restaurantName": "I like Japanese food",
-        "foodType": "Japanese",
-        "rating": "4.5/5"
+      "image": {
+        "src": "https://insanelygoodrecipes.com/wp-content/uploads/2023/01/Burgers.jpg",
+        "alt": "Some place"
+      },
+      "restaurantName": "McDaniels",
+      "foodType": "American",
+      "rating": "4.5/5"
     },
     {
-        "image": {
-            "src": "https://s3-media0.fl.yelpcdn.com/bphoto/KK2knoZnscbI835diTWDdQ/348s.jpg",
-            "alt": "Some place"
-        },
-        "restaurantName": "I like Japanese food",
-        "foodType": "Japanese",
-        "rating": "4.5/5"
+      "image": {
+        "src": "https://www.cktravels.com/wp-content/uploads/2020/12/what-to-eat-in-japan.jpg",
+        "alt": "Some place"
+      },
+      "restaurantName": "NoodleNods",
+      "foodType": "Japanese",
+      "rating": "4/5"
     },
     {
-        "image": {
-            "src": "https://s3-media0.fl.yelpcdn.com/bphoto/KK2knoZnscbI835diTWDdQ/348s.jpg",
-            "alt": "Some place"
-        },
-        "restaurantName": "I like Japanese food",
-        "foodType": "Japanese",
-        "rating": "4.5/5"
+      "image": {
+        "src": "https://www.eatthis.com/wp-content/uploads/sites/4/2021/07/spaghetti-and-meatballs.jpg?quality=82&strip=1",
+        "alt": "Some place"
+      },
+      "restaurantName": "We only serve Spaghetti",
+      "foodType": "Italian",
+      "rating": "4.5/5"
     }
-    ]       
+  ]
 }

@@ -22,6 +22,11 @@ export default function EditAccount () {
                     <input name="password" id="password" type="password"
                     />
                 </div>
+                <div>
+                    <label htmlFor="password">Current Password</label>
+                    <input name="confirm current password" id="password" type="password"
+                    />
+                </div>
                 <button type="submit" className="submit-button">Submit</button>
             </Form>
         </div>

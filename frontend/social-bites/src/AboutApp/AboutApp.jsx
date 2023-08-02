@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom/dist/umd/react-router-dom.development";
-import NavBar from "../NavBar/NavBar";
 import "./AboutApp.css";
 import about from "./about.png";
 

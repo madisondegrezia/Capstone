@@ -9,13 +9,13 @@ export default function Home() {
         className="head-img"
         src="https://media.bizj.us/view/img/12359290/df104-5-of-13*1200xx2500-1406-0-255.jpg"
       ></img> */}
-      {/* <Form method="get" className="search-bar">
+      <Form method="get" className="search-bar">
         <input
           id="search-res"
           className="border-2"
           placeholder="Search For Restaurants..."
         />
-      </Form> */}
+      </Form>
 
       <div className="restaurant-cards">
         <RestaurantCards />
