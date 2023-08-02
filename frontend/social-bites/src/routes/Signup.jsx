@@ -58,17 +58,6 @@ function Signup() {
               className="border-2 rounded-md bg-red-100 focus:outline-none p-2"
             />
           </fieldset>
-          <fieldset className="flex flex-col mt-3 text-white">
-            <label>
-              <input
-                type="checkbox"
-                name="checkbox"
-                id="checkbox"
-                className="border-2 rounded-md bg-red-100 focus:outline-none p-2 mr-1"
-              />
-              Are you a restaurant owner?
-            </label>
-          </fieldset>
           <div className="text-center">
             <input
               className="bg-red-700 hover:bg-red-800 text-white rounded-md transition mt-4 py-2 cursor-pointer w-32"

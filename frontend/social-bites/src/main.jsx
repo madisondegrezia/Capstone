@@ -17,6 +17,8 @@ import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
 import Slider from "./Slider/Slider";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import RestaurantPage from "./RestaurantPage/RestaurantPage";
+import Search from "./Search/Search";
 
 const router = createBrowserRouter([
   {
@@ -30,8 +32,14 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/",
-            loader: load,
-            element: <Home />,
+            element: <Search />,
+            children: [
+              {
+                path: "/",
+                loader: load,
+                element: <Home />,
+              },
+            ],
           },
         ],
       },
@@ -73,6 +81,10 @@ const router = createBrowserRouter([
             element: <EditAccount />,
           },
         ],
+      },
+      {
+        path: "/restaurant",
+        element: <RestaurantPage />,
       },
     ],
     errorElement: <ErrorPage />,

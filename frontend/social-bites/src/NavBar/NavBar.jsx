@@ -6,6 +6,7 @@ import {
   useNavigation,
   Form,
   redirect,
+  useNavigate,
 } from "react-router-dom/dist/umd/react-router-dom.development";
 import classNames from "classnames";
 import "./NavBarStyle.css";
@@ -14,6 +15,7 @@ import Footer from "../Footer/Footer";
 export default function NavBar() {
   const { currentUser, logout } = useContext(AuthContext);
   const navigation = useNavigation();
+  const navigate = useNavigate();
 
   const outletClasses = classNames(
     "mx-auto max-w-4xl sm:px-12 px-4 transition-opacity",
@@ -26,7 +28,11 @@ export default function NavBar() {
   const handleLogout = (e) => {
     e.preventDefault();
     logout();
-    redirect("/login");
+    navigate("/login");
+    setTimeout(() => {
+      navigate("/login");
+      console.log("triggering redirect");
+    }, 0);
     console.log(currentUser);
     console.log("logging out!!");
   };
@@ -75,9 +81,6 @@ export default function NavBar() {
             ></img>
           </div>
         </div>
-        {/* <div className={outletClasses}>
-          <Outlet />
-        </div> */}
         <Outlet />
       </div>
       <Footer />

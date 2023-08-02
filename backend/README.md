@@ -151,3 +151,29 @@ in postman search for Social Bite API Endpoint
 from {{base_url}} to http://localhost:4000/
 {{base_url}}/api/user/location    http://localhost:4000/api/user/location
  -->
+
+#### UPDATE for google map api
+1. terminal: `npm install axios`
+
+2. get Google Map API key
+    a. Go to the link: `https://console.cloud.google.com/`
+    b. Login into your account, then create a new project on the navbar
+    c. Open "API&Service" and create credential, they might ask you to enter your information like credit card, but they won't charge you until you open auto bill
+    d. then copy the API KEY 
+
+3. Inside your `.env` file add a new row
+```
+GOOGLE_API_KEY=<YOUR GOOGLE MAP API KEY>
+```
+this will be used as API Key to have access to google map api, there is an example on `backend/routes/restaurant.js`
+
+4. (Optional) To test out if everything is working fine, go to Postman API and run `post restaurant` request located inside the `restaurant` folder.
+should update the restaurant table inside the database and return
+```
+{
+    "message": "The restaurant is created successfully",
+    "restaurant": {
+        "restaurant": "Mangia 57th - Midtown Italian Food & Corporate Catering NYC"
+    }
+}
+```

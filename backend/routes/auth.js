@@ -33,9 +33,10 @@ router.post("/signup", async (req, res) => {
         .status(422)
         .json({ errors: "this username is being used by another user" });
     }
+    const errMessage = err.message
     res.status(500).json({
       message: "Error occured while creating user",
-      error: err,
+      error: errMessage,
     });
   }
 });
@@ -70,9 +71,9 @@ router.post("/login", async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res
-      .status(500)
-      .json({ message: "An error occured during the login process" });
+    res.status(500).json({ 
+        message: "An error occured during the login process" 
+    });
   }
 });
 
