@@ -41,11 +41,13 @@ app.use(express.json());
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
 const restaurantRouter = require("./routes/restaurant");
+const tagRouter = require("./routes/tag");
 
 // include the router inside the app of server.js
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/restaurant", restaurantRouter);
+app.use("/api/tag", tagRouter);
 
 
 app.get('/', (req, res)=>{
