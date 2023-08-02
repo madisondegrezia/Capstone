@@ -81,9 +81,6 @@ export default function NavBar() {
             ></img>
           </div>
         </div>
-        {/* <div className={outletClasses}>
-          <Outlet />
-        </div> */}
         <Outlet />
       </div>
       <Footer />
