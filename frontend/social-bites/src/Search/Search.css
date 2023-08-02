@@ -1,0 +1,38 @@
+.outer {
+  margin: 0;
+  padding: 0;
+}
+
+.outer-body {
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  display: flex;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 30px;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.box:hover input {
+  width: 400px;
+}
+
+.box input {
+  width: 0px;
+  outline: none;
+  border: none;
+  font-weight: 500;
+  transition: 0.8s;
+  background: transparent;
+}
+
+.box .link .icon {
+  color: lightcoral;
+  font-size: 24px;
+}
