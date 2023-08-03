@@ -9,6 +9,15 @@ cd backend
 npm run start
 
 And third terminal window for front end:
+First terminal on frontend
+cd social-bites
+json-server resMockData.json
+
+Second terminal window
+cd backend
+npm start
+
+Third terminal window for front end:
 cd social-bites
 npm run dev
 

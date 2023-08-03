@@ -44,7 +44,7 @@ function App() {
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
-
+  //s
   return (
     <>
       <div className="head-slide m-auto py-2 px-2 relative group">
