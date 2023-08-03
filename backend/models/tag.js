@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsToMany(models.User, { through: models.UserTag, foreignKey: "TagId" });
-      this.belongsToMany(models.Post, { through: 'post_tag', foreignKey: 'TagId' });
+      this.belongsToMany(models.Post, { through: models.PostTag, foreignKey: 'PostId' });
 
     }
   }
@@ -19,9 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     tag: {
       type: DataTypes.STRING(255),
       allowNull: false,
-      validate: {
-        is: / .{2,} $/i // The tag must have more than 2 characters
-      },
       unique: true,
     }
   }, {

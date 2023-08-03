@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { User, Tag, UserTag } = require("../models");
+const { User, Tag, UserTag, PostTag } = require("../models");
 const { autheticateUser } = require("../middleware/authUser");
 
 // use sequelize to fetch for data in the db
@@ -103,6 +103,72 @@ router.delete("/user/:tagId", autheticateUser, async (req,res)=>{
     }
 });
 
+// delete a tag on a post
+router.delete("/:postId/:tagId", autheticateUser, async(req,res)=>{
+    const postId = parseInt(req.params.postId, 10);
+    const tagId = parseInt(req.params.tagId, 10);
+    const userId = parseInt(req.session.userId, 10); 
+    try{
+        // delete the tag from the post_tag table if:
+            // current userId === post's creator
+            // given TagId === post_tag's TagId
+            // given PostId === post_tag's PostId
+        const deletedTag = await sequelize.query(
+            `
+            DELETE FROM post_tag
+            USING tag, post, "user"
+            WHERE post_tag."TagId" = tag.id
+            AND post_tag."PostId" = post.id
+            AND post."UserId" = "user".id
+            AND post_tag."TagId" = :tagId
+            AND "user".id = :userId
+            AND post_tag."PostId" = :postId;
+            `,
+            {
+                replacements: {tagId: tagId, postId: postId, userId: userId},
+                type: QueryTypes.DELETE
+            }
+        )
+
+        // will return tag deleted regardless of wrong input like TagId and UserId and PostId
+        return res.status(200).json({message: "Tag deleted successfully"});
+
+    }catch(error){
+        const errorMessage = error.message;
+        return res.status(500).json({error: errorMessage});
+    }
+})
+
+
+// fetch all tags on a post
+router.get("/:postId", async(req, res)=>{
+    const postId = parseInt(req.params.postId, 10);
+    try{
+        const tags = await sequelize.query(`
+        SELECT post_tag."TagId", tag.tag
+        FROM post_tag
+        JOIN tag ON post_tag."TagId" = tag.id
+        WHERE post_tag."PostId" = :postId;
+        `,
+        {
+            replacements: {postId: postId},
+            type: QueryTypes.SELECT
+        }
+        );
+
+        if (tags.length === 0){
+            return res.status(404).json({message: "No tags found"});
+        }
+        else{
+            return res.status(200).json(tags);
+        }
+
+    } catch(error){
+        return res.status(500).json({message: "An error occured when fetching for tags"})
+    }
+})
+
+
 // get all tags in the database, so we can let users to know what tags we have
 router.get("/", async(req, res)=>{
     try{
@@ -112,6 +178,6 @@ router.get("/", async(req, res)=>{
     } catch(error){
         return res.status(500).json({message: "An error occured when fetching for tags"})
     }
-})
+});
 
 module.exports = router;

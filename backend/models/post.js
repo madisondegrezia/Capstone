@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
       // belongs to restaurant
       this.belongsTo(models.Restaurant, {foreignKey: "RestaurantId"});
       // many to many relationship with tag, (Post to Tag)
-      this.belongsToMany(models.Tag, { through: 'post_tag', foreignKey: 'PostId' });
+      this.belongsToMany(models.Tag, { through: models.PostTag, foreignKey: 'TagId' });
+
     }
   }
   Post.init({

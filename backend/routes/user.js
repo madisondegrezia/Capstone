@@ -3,6 +3,8 @@ const router = express.Router();
 const { QueryTypes } = require("sequelize");
 const {sequelize} = require("../models/index"); // get sequelize from the index.js to gain access to the database
 const { userAllowPostion } = require("../middleware/userAllowPostion");
+const { autheticateUser } = require("../middleware/authUser");
+const {User, Restaurant} = require("../models");
 
 // post user's location on the session
 router.post("/location", async (req,res)=>{
@@ -39,6 +41,28 @@ router.get("/location", async (req,res)=>{
     }
 });
 
+// get all restaurant of an user
+router.get("/my_restaurant", autheticateUser, async (req, res)=>{
+    try{
+        const my_restaurants = await Restaurant.findAll({
+            where: {
+                UserId: parseInt(req.session.userId)
+            }
+        });
+
+        if (my_restaurants.length === 0){
+            return res.status(404).json({message: "No restaurant found"});
+        }
+        else{
+            return res.status(201).json(my_restaurants);
+        }
+
+    }catch(error){
+        const errorMessage = error.message;
+        return res.status(500).json({message: "An error occured when fetching for restaurants", error: errorMessage})
+    }
+})
+
 
 // get nearby restaurant based on the radius kilometers, require users to share their location
 router.get("/nearby_restaurant/:radiusKm", userAllowPostion, async (req, res) => {
@@ -66,7 +90,7 @@ router.get("/nearby_restaurant/:radiusKm", userAllowPostion, async (req, res) =>
         }
     } catch(error){
         const errorMessage = error.message;
-        return res.status(500).json({message: "An error occured when fetching for restaurants", error: errorMessage})
+        return res.status(500).json({message: "An error occured when fetching for restaurants", error: errorMessage});
     }
 });
 

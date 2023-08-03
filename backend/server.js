@@ -42,12 +42,14 @@ const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
 const restaurantRouter = require("./routes/restaurant");
 const tagRouter = require("./routes/tag");
+const restauarantPostRouter = require("./routes/restaurantPost");
 
 // include the router inside the app of server.js
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/restaurant", restaurantRouter);
 app.use("/api/tag", tagRouter);
+app.use("/api/restaurant_post", restauarantPostRouter);
 
 
 app.get('/', (req, res)=>{
