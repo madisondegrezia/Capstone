@@ -47,5 +47,41 @@ module.exports = (sequelize, DataTypes) => {
     tableName: "user_rate",
     underscored: true
   });
+
+  UserRate.addHook("afterCreate", async(userRate, options)=>{
+    const restaurantId = userRate.RestaurantId;
+    const averageRate = await UserRate.findAll({
+      attributes: [[sequelize.fn('AVG', sequelize.col('rate')), 'averageRate']],
+      where: {
+        RestaurantId: restaurantId
+      }
+    });
+
+      // Update the rate column in the restaurant table
+      const newRate = averageRate[0].dataValues.averageRate;
+      await sequelize.models.Restaurant.update(
+        { rate: newRate },
+        { where: { id: restaurantId } }
+      );
+    });
+
+    UserRate.addHook('afterDestroy', async (userRate, options) => {
+      // Get the average rate for the restaurant
+      const restaurantId = userRate.RestaurantId;
+      const averageRate = await UserRate.findAll({
+        attributes: [[sequelize.fn('AVG', sequelize.col('rate')), 'averageRate']],
+        where: {
+          RestaurantId: restaurantId
+        }
+      });
+  
+      // Update the rate column in the restaurant table
+      const newRate = averageRate[0].dataValues.averageRate || 0; // If there are no reviews, set rate to 0
+      await sequelize.models.Restaurant.update(
+        { rate: newRate },
+        { where: { id: restaurantId } }
+      );
+    });
+    
   return UserRate;
 };
