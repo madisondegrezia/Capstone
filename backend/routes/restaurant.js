@@ -9,7 +9,7 @@ require("dotenv").config();
 const axios = require("axios");
 const googleApiKey = process.env.GOOGLE_API_KEY;
 
-// get restaurant by their by
+// get restaurant by their by id
 router.get("/:restaurantId", async (req, res)=>{
     const restaurantId = parseInt(req.params.restaurantId,10);
 
