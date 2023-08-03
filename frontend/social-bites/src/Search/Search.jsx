@@ -12,6 +12,7 @@ export default function Search() {
             type="text"
             name="search"
             placeholder="Search For Restaurants..."
+            className="search-input"
           />
           <Link to="#" className="link">
             <FaSearch className="icon" />
