@@ -1,6 +1,14 @@
 # React + Vite
 
 One terminal window for running backend to fetch data:
+cd social-bites
+json-server resMockData.json
+
+Second terminal window:
+cd backend
+npm run start
+
+And third terminal window for front end:
 First terminal on frontend
 cd social-bites
 json-server resMockData.json
