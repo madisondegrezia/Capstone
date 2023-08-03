@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Restaurant, Post, Comment, sequelize, Tag} = require("../models");
+const { Restaurant, Post, Comment, sequelize, Tag, UserTag, PostTag} = require("../models");
 const { autheticateUser } = require("../middleware/authUser");
 const { userAllowPostion } = require("../middleware/userAllowPostion");
 const { Op,QueryTypes } = require("sequelize");
@@ -215,7 +215,66 @@ router.get("/user/nearby_post/:radiusKm", userAllowPostion, async(req,res)=>{
 });
 
 // get all post that are associated with user's interest
-    // TODO: need to association post tag table
+router.get("/user/interested_post", autheticateUser, async(req,res)=>{    
+    try{
+        // get all user's interested tags
+        const userInterestedTags = await UserTag.findAll({where: {UserId: parseInt(req.session.userId,10)}});
+        const userInterestedTagId = userInterestedTags.map((element) => {return element.TagId});
+
+        // if not interested in any tag, return 404
+        if (userInterestedTagId.length === 0){
+            return res.status(404).json({message: "No Tags Inerested"});
+        }
+
+        console.log("userTAG!!!!!!" + userInterestedTagId);
+
+        const userInterestedPosts = await sequelize.query(
+            `
+            SELECT *
+            FROM post_tag
+            WHERE "TagId" = ANY(:userInterestedTagId)::integer[];
+            `,
+            {
+                replacements: { userInterestedTagId: userInterestedTagId },
+                type: QueryTypes.SELECT
+            }
+        );
+        
+        return res.status(200).json(userInterestedPosts);
+
+        // Look for Post that user is interested in based on the userInterestedTags
+        // const userInterestedPosts = await PostTag.findAll({
+        //     where: {
+        //         TagId: {
+        //             [Op.in]: userInterestedTagId
+        //         }
+        //     }
+        // });
+    //     const userInterestedPostsId = userInterestedPosts.map((element) => {return element.PostId});
+
+
+    //     // Use the PostId to find the post inside "post" table
+    //     const posts = await Post.findAll({
+    //         where: {
+    //             id: {
+    //                 [Op.in]: userInterestedPostsId
+    //             }
+    //         }
+    //     });
+
+    //     if (posts.length === 0){
+    //         return res.status(404).json({message: "No Post Inerested"});
+    //     }
+    //     else{
+    //         return res.status(200).json(posts);
+    //     }
+    } catch(error){
+        const errorMessage = error.message;
+        return res.status(500).json({message: "An error occured when fetching for restaurants", error: error.stack, errorMessage: error.message});
+    }
+
+});
+
 
 // get all restaurants' post in the db, notes: user_post won't be in here!!
 router.get("/", async (req, res)=>{
