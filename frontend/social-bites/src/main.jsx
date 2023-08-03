@@ -19,6 +19,12 @@ import Slider from "./Slider/Slider";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import RestaurantPage from "./RestaurantPage/RestaurantPage";
 import Search from "./Search/Search";
+import User from "./User/User";
+import Account from "./User/Account/Account";
+import Reviews from "./User/Reviews/Reviews";
+import Events from "./User/Events/Events";
+import Favorite from "./User/Favorite/Favorite";
+import Delete from "./User/Delete/delete";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +85,32 @@ const router = createBrowserRouter([
           {
             path: "/settings/edit",
             element: <EditAccount />,
+          },
+        ],
+      },
+      {
+        path: "/user",
+        element: <User />,
+        children: [
+          {
+            path: "/user/account",
+            element: <Account />,
+          },
+          {
+            path: "/user/reviews",
+            element: <Reviews />,
+          },
+          {
+            path: "/user/events",
+            element: <Events />,
+          },
+          {
+            path: "/user/favorite",
+            element: <Favorite />,
+          },
+          {
+            path: "/user/delete",
+            element: <Delete />,
           },
         ],
       },
