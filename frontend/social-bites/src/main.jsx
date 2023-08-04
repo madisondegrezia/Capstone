@@ -13,10 +13,8 @@ import FAQ from "./FAQ/FAQ";
 import AuthProvider from "./contexts/AuthContext";
 import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
-import Slider from "./Slider/Slider";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import RestaurantPage from "./RestaurantPage/RestaurantPage";
-import Search from "./Search/Search";
 import User from "./UserSettings/User";
 import Account from "./UserSettings/Account/Account";
 import Reviews from "./UserSettings/Reviews/Reviews";
@@ -35,22 +33,9 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Slider />,
-        children: [
-          {
-            path: "/",
-            element: <Search />,
-            children: [
-              {
-                path: "/",
-                loader: load,
-                element: <Home />,
-              },
-            ],
-          },
-        ],
+        loader: load,
+        element: <Home />,
       },
-
       {
         path: "/login",
         element: <Login />,

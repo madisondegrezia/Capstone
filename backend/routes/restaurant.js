@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Restaurant } = require("../models");
+const { Restaurant, User } = require("../models");
 const { autheticateUser } = require("../middleware/authUser");
 require("dotenv").config();
 
@@ -132,7 +132,13 @@ router.post("/", autheticateUser,async (req, res)=>{
             message: "Invalid address. Please enter a valid address.",
           });
         }
-    
+
+        // update the hasRestaurant section in the user table to true, to state they have a restaurant
+        await User.update({
+            id: parseInt(req.session.userId,10),
+            hasRestaurant: true
+        });
+
         // Create the restaurant
         const restaurant = await Restaurant.create({
           UserId: req.session.userId,
