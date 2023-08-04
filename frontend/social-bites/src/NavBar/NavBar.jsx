@@ -16,13 +16,14 @@ import user from "../icons/user.png";
 import edit from "../icons/edit.png";
 import settings from "../icons/settings.png";
 // import { HiLogout, HiViewGrid } from "react-icons/hi";
-import { Dropdown } from "flowbite-react";
+import { Avatar, Dropdown } from "flowbite-react";
 import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from "react-icons/hi";
 
 export default function NavBar() {
   const { currentUser, logout } = useContext(AuthContext);
   const navigation = useNavigation();
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   const outletClasses = classNames(
     "mx-auto max-w-4xl sm:px-12 px-4 transition-opacity",
@@ -76,7 +77,7 @@ export default function NavBar() {
                 </button>
               </Form>
             ) : (
-              <Link to="/login" className="login">
+              <Link to="/login" className="login mr-2">
                 Log in
               </Link>
             )}
@@ -84,9 +85,10 @@ export default function NavBar() {
             {/* Dropdown */}
 
             {/* <button
+              onClick={() => setIsOpen((prev) => !prev)}
               id="dropdownUserAvatarButton"
               data-dropdown-toggle="dropdownAvatar"
-              className="flex m-2 bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              className="m-2 bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
               type="button"
             >
               <img
@@ -95,72 +97,83 @@ export default function NavBar() {
                 alt="user photo"
               />
             </button>
-
-            <div
-              id="dropdownAvatar"
-              className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-            >
-              <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                <div className="block flex flex-row gap-1">
-                  <img src={user} className="w-5" />
-                  Username
+            {isOpen && (
+              <div
+                id="dropdownAvatar"
+                className="z-10 bg-red-500 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 h-48"
+              >
+                <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                  <div className="block flex flex-row gap-1">Username</div>
+                </div>
+                <ul
+                  className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                  aria-labelledby="dropdownUserAvatarButton"
+                >
+                  <li>
+                    <Link
+                      to="/restaurant"
+                      className="block flex flex-row gap-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      <img src={edit} className="w-5" />
+                      Restaurant Page
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/settings"
+                      className="block flex flex-row gap-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      <img src={settings} className="w-5" />
+                      Settings
+                    </Link>
+                  </li>
+                </ul>
+                <div className="py-2">
+                  <Form
+                    method="post"
+                    onSubmit={handleLogout}
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    <button type="submit" className="flex flex-row gap-1">
+                      {" "}
+                      <HiLogout className="mt-1" />
+                      Logout
+                    </button>
+                  </Form>
                 </div>
               </div>
-              <ul
-                className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                aria-labelledby="dropdownUserAvatarButton"
-              >
-                <li>
-                  <Link
-                    to="/restaurant"
-                    className="block flex flex-row gap-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    <img src={edit} className="w-5" />
-                    Restaurant Page
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/settings"
-                    className="block flex flex-row gap-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    <img src={settings} className="w-5" />
-                    Settings
-                  </Link>
-                </li>
-              </ul>
-              <div className="py-2">
-                <Form
-                  method="post"
-                  onSubmit={handleLogout}
-                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  <button type="submit" className="flex flex-row gap-1">
-                    {" "}
-                    <HiLogout className="mt-1" />
-                    Logout
-                  </button>
-                </Form>
-              </div>
-            </div> */}
+            )} */}
 
-            <Dropdown>
+            <Dropdown
+              inline
+              label={
+                <Avatar
+                  alt="User settings"
+                  img="/src/assets/default-avatar.webp"
+                  rounded
+            
+                />
+              }
+            >
               <Dropdown.Header>
                 <span className="block text-sm">Username</span>
+                <span className="block truncate text-sm font-medium">
+                  Username@user.com
+                </span>
               </Dropdown.Header>
-              <Link
-                to="/settings"
-                className="block flex flex-row gap-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                <img src={settings} className="w-5" />
-                Settings
-              </Link>
               <Link
                 to="/restaurant"
                 className="block flex flex-row gap-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >
                 <img src={edit} className="w-5" />
                 Restaurant Page
+              </Link>
+              <Link
+                to="/settings"
+                className="block flex flex-row gap-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >
+                <img src={settings} className="w-5" />
+                Settings
               </Link>
               <Dropdown.Divider />
               <Form
