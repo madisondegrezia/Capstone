@@ -4,7 +4,7 @@ export default function RestaurantPage() {
   return (
     <>
       <div className="main-wrap">
-        <div class="wrapper1">
+        <div className="wrapper1">
           <div className="restaurant-page">
             <img
               className="res-hero"
@@ -24,13 +24,13 @@ export default function RestaurantPage() {
                 <h3>Restaurant Name</h3>
     </div>*/}
 
-            <ul class="list-unstyled components">
+            <ul className="list-unstyled components">
               <p className="res-name">Bob's Burgers</p>
               <li>
                 <a href="#">Rating</a>
               </li>
               <li>
-                <a href="#">Reviews</a>
+                <a href="restaurant/reviews">Reviews</a>
               </li>
               <li>
                 <a href="#">Menu</a>
@@ -40,7 +40,7 @@ export default function RestaurantPage() {
               </li>
             </ul>
 
-            <ul class="list-unstyled CTAs">
+            <ul className="list-unstyled CTAs">
               <li>
                 <a href="/" className="article">
                   Back to home
@@ -71,7 +71,7 @@ export default function RestaurantPage() {
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
 
-            <div class="line"></div>
+            <div className="line"></div>
 
             <h2>Lorem Ipsum Dolor</h2>
             <p>
@@ -84,7 +84,7 @@ export default function RestaurantPage() {
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
 
-            <div class="line"></div>
+            <div className="line"></div>
 
             <h2>Lorem Ipsum Dolor</h2>
             <p>
@@ -97,7 +97,7 @@ export default function RestaurantPage() {
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
 
-            <div class="line"></div>
+            <div className="line"></div>
 
             <h3>Lorem Ipsum Dolor</h3>
             <p>
