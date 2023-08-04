@@ -10,7 +10,6 @@ import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import About from "./About/About";
 import FAQ from "./FAQ/FAQ";
-
 import AuthProvider from "./contexts/AuthContext";
 import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
@@ -74,13 +73,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/faq",
-        element: (
-          <ProtectedRoute>
-            <FAQ />
-          </ProtectedRoute>
-        ),
+        element: <FAQ />,
       },
-
       {
         path: "/user/settings",
         element: <User />,
@@ -109,6 +103,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/restaurant",
+        loader: load,
         element: <RestaurantPage />,
       },
       {
