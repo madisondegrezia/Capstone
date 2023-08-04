@@ -4,7 +4,7 @@ const { QueryTypes } = require("sequelize");
 const {sequelize} = require("../models/index"); // get sequelize from the index.js to gain access to the database
 const { userAllowPostion } = require("../middleware/userAllowPostion");
 const { autheticateUser } = require("../middleware/authUser");
-const {User, Restaurant} = require("../models");
+const {User, Restaurant, UserRate} = require("../models");
 
 // post user's location on the session
 router.post("/location", async (req,res)=>{
@@ -61,7 +61,43 @@ router.get("/my_restaurant", autheticateUser, async (req, res)=>{
         const errorMessage = error.message;
         return res.status(500).json({message: "An error occured when fetching for restaurants", error: errorMessage})
     }
-})
+});
+
+
+// get all current_user's review
+router.get("/my_reviews", autheticateUser, async (req, res)=>{
+    try{
+        const reviews = await UserRate.findAll({
+            where: {
+                UserId: parseInt(req.session.userId)
+            }
+        });
+
+        if (reviews.length === 0){
+            return res.status(404).json({message: "No reviews found"});
+        }
+        else{
+            return res.status(201).json(reviews);
+        }
+
+    }catch(error){
+        const errorMessage = error.message;
+        return res.status(500).json({message: "An error occured when fetching for reviews", error: errorMessage})
+    }
+});
+
+// delete current user's account
+router.delete("/delete_user_account", autheticateUser, async (req, res)=>{
+    try{
+        const deletedAccount = await User.destroy({
+            where: { id: parseInt(req.session.userId, 10) }
+        });
+        return res.status(200).json({message: "Account deleted successfully"});
+    } catch(error){
+        return res.status(500).json({message: "An error occured while deleting the account", error: error.message});
+    }
+});
+
 
 
 // get nearby restaurant based on the radius kilometers, require users to share their location
