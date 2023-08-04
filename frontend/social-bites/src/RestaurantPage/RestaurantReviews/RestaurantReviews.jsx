@@ -57,7 +57,10 @@ export default function RestaurantReviews() {
             <h2>Bob`s Burgers </h2>
             <div className="reviews">
               {reviews.allReviews.map((review) => (
-                <p>{review.review}</p>
+                <>
+                  <p key={review.id}>{review.review}</p>
+                  <p>{review.username}</p>
+                </>
               ))}
             </div>
           </div>

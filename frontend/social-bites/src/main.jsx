@@ -10,8 +10,7 @@ import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import About from "./About/About";
 import FAQ from "./FAQ/FAQ";
-import Settings from "./Settings/Settings";
-import EditAccount from "./Settings/SettingsCategories/EditAccount";
+
 import AuthProvider from "./contexts/AuthContext";
 import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
@@ -81,16 +80,7 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      {
-        path: "/settings",
-        element: <Settings />,
-        children: [
-          {
-            path: "/settings/edit",
-            element: <EditAccount />,
-          },
-        ],
-      },
+
       {
         path: "/user/settings",
         element: <User />,
