@@ -68,6 +68,6 @@ export default function RestaurantReviews() {
 }
 
 export const reviewsLoader = async () => {
-  const res = await fetch("/api/review/2");
+  const res = await fetch("/api/review/1");
   return res.json();
 };
