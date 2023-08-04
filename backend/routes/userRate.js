@@ -55,7 +55,11 @@ router.get("/:restaurantId", async (req, res)=>{
         const allReviews = await UserRate.findAll({
             where:{
                 RestaurantId: restauarantId
-            }
+            },
+            include: {
+              model: User,
+              attributes: ["username", "email", "hasRestaurant"],
+            },
         });
 
         return res.status(200).json({allReviews});
