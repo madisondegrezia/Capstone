@@ -13,7 +13,11 @@ import FAQ from "./FAQ/FAQ";
 import AuthProvider from "./contexts/AuthContext";
 import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
+<<<<<<< HEAD
+import Slider from "./Slider/Slider";
+=======
 import ProtectedRoute from "./routes/ProtectedRoute";
+>>>>>>> bf651c7825916517f693164fd7396fd059c9066a
 import RestaurantPage from "./RestaurantPage/RestaurantPage";
 import User from "./UserSettings/User";
 import Account from "./UserSettings/Account/Account";
@@ -58,11 +62,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/faq",
-        element: (
-          <ProtectedRoute>
-            <FAQ />
-          </ProtectedRoute>
-        ),
+        element: <FAQ />,
       },
       {
         path: "/user/settings",

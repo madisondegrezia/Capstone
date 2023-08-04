@@ -57,7 +57,10 @@ export default function RestaurantReviews() {
             <h2>Bob`s Burgers </h2>
             <div className="reviews">
               {reviews.allReviews.map((review) => (
-                <p>{review.review}</p>
+                <>
+                  <p key={review.id}>{review.review}</p>
+                  <p>{review.User.username}</p>
+                </>
               ))}
             </div>
           </div>
@@ -71,3 +74,19 @@ export const reviewsLoader = async () => {
   const res = await fetch("/api/review/1");
   return res.json();
 };
+//   const res = await await fetch("/api/review/1"); // Assuming that something() returns a promise
+//   const user = await fetch("/api/user/get_user/1"); // Assuming that somethingElse() returns a promise
+
+//   const resJson = await res.json();
+//   const userJson = await user.json();
+
+//   const result = resJson.allReviews.map((item, index) => {
+//     return {
+//       ...item,
+//       username: userJson[index].username,
+//     };
+//   });
+//   console.log(result);
+//   return result;
+// };
+//

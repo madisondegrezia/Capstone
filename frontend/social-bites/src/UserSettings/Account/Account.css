@@ -31,6 +31,10 @@
   outline: none;
 }
 
+.input::placeholder {
+  color: #ccc;
+}
+
 .btn {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
