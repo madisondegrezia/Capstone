@@ -104,6 +104,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/restaurant",
+        loader: load,
         element: <RestaurantPage />,
       },
     ],

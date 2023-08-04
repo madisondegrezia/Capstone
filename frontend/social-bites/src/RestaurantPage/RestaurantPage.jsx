@@ -1,10 +1,15 @@
 import "./RestaurantPageStyle.css";
+import { GrContact } from 'react-icons/gr'
+import { MdOutlineRateReview, MdOutlineRestaurantMenu, MdStarRate } from 'react-icons/md'
+import RestaurantCards from "../RestaurantCards/RestaurantCards";
 
 export default function RestaurantPage() {
+
+
   return (
     <>
       <div className="main-wrap">
-        <div class="wrapper1">
+        <div className="wrapper1">
           <div className="restaurant-page">
             <img
               className="res-hero"
@@ -24,23 +29,35 @@ export default function RestaurantPage() {
                 <h3>Restaurant Name</h3>
     </div>*/}
 
-            <ul class="list-unstyled components">
+            <ul className="list-unstyled components">
               <p className="res-name">Bob's Burgers</p>
-              <li>
+              <li className="flex flex-row items-center justify-start px-5 py-5">
+                <div className="icons">
+                <MdStarRate size={ 25 } />
+                </div>
                 <a href="#">Rating</a>
               </li>
-              <li>
+              <li className="flex flex-row items-center justify-start px-5 py-5">
+                <div className="icons">
+                <MdOutlineRateReview size={ 25 } />
+                </div>
                 <a href="#">Reviews</a>
               </li>
-              <li>
+              <li className="flex flex-row items-center justify-start px-5 py-5">
+                <div className="icons">
+                <MdOutlineRestaurantMenu size={ 25 } />
+                </div>
                 <a href="#">Menu</a>
               </li>
-              <li>
+              <li className="flex flex-row items-center justify-start px-5 py-5">
+                <div className="icons">
+                <GrContact size={ 25 } />
+                </div>
                 <a href="#">Contact</a>
               </li>
             </ul>
 
-            <ul class="list-unstyled CTAs">
+            <ul className="list-unstyled CTAs">
               <li>
                 <a href="/" className="article">
                   Back to home
@@ -50,29 +67,7 @@ export default function RestaurantPage() {
           </nav>
 
           <div id="content">
-            <h1 className="text-5xl">Activity</h1>
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <div class="line"></div>
-
+            <h1 className="text-4xl p-5 activity">Activity</h1>
             <h2>Lorem Ipsum Dolor</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -84,7 +79,7 @@ export default function RestaurantPage() {
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
 
-            <div class="line"></div>
+            <div className="line"></div>
 
             <h2>Lorem Ipsum Dolor</h2>
             <p>
@@ -97,7 +92,20 @@ export default function RestaurantPage() {
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
 
-            <div class="line"></div>
+            <div className="line"></div>
+
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+
+            <div className="line"></div>
 
             <h3>Lorem Ipsum Dolor</h3>
             <p>
@@ -112,7 +120,8 @@ export default function RestaurantPage() {
           </div>
 
           <div id="suggestion-content">
-            <h2 className="text-3xl">More Restaurants like Bob's Burgers</h2>
+            <h2 className="text-3xl suggestions">More Restaurants like Bob's Burgers</h2>
+             <RestaurantCards />
           </div>
         </div>
       </div>
