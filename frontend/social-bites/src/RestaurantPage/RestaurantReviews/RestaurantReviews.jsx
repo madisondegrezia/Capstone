@@ -72,10 +72,6 @@ export default function RestaurantReviews() {
 
 export const reviewsLoader = async () => {
   const res = await fetch("/api/review/1");
-<<<<<<< HEAD
-
-=======
->>>>>>> 444799bab468338de41daeeed0cd6599a886bdcc
   return res.json();
 };
 //   const res = await await fetch("/api/review/1"); // Assuming that something() returns a promise
