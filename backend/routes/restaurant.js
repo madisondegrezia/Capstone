@@ -74,7 +74,8 @@ router.patch("/editRestaurant/:restaurantId", autheticateUser, async(req, res)=>
     const restaurantId = parseInt(req.params.restaurantId, 10);
     let latLng = null;
 
-    // fetch for restaurant in the db
+    try{
+        // fetch for restaurant in the db
     const restaurantExist = await Restaurant.findOne({
         UserId: parseInt(req.session.userId, 10),
         RestaurantId: restaurantId
@@ -98,37 +99,61 @@ router.patch("/editRestaurant/:restaurantId", autheticateUser, async(req, res)=>
         longitude: (latLng)? latLng.longitude : restaurantExist.longitude
     });
 
-    return res.status(200).json({message: "It was updated successfully"});
+    return res.status(201).json({message: "It was updated successfully"});
+    } catch(error){
+        // Handle Sequelize validation errors
+        if (error.name === "SequelizeValidationError") {
+            return res.status(500).json({
+            message: "An error occurred during creating restaurant",
+            errorMessage: "Validation error",
+            errorStack: error.stack
+            });
+        }
 
-});
+        // Handle any other unexpected errors
+        return res.status(500).json({
+            message: "An error occurred during creating restaurant",
+            errorMessage: error.message,
+            errorStack: error.stack
+        });
+
+}});
 
 // post a restauarant, require user login
 router.post("/", autheticateUser,async (req, res)=>{
 
-    // find the latitude and longitude of the restaurant based on the address given
-    const latLng = await fetchRestaurantLatLng(req.body.address);
-
-    try{
+    try {
+        // Find the latitude and longitude of the restaurant based on the address given
+        const latLng = await fetchRestaurantLatLng(req.body.address);
+    
+        // Check if latLng is fetched successfully
+        if (!latLng) {
+          return res.status(400).json({
+            message: "Invalid address. Please enter a valid address.",
+          });
+        }
+    
+        // Create the restaurant
         const restaurant = await Restaurant.create({
-            UserId: req.session.userId,
-            restaurantName: req.body.restaurantName,
-            address: req.body.address,
-            latitude: latLng.latitude,
-            longitude: latLng.longitude
+          UserId: req.session.userId,
+          restaurantName: req.body.restaurantName,
+          address: req.body.address,
+          latitude: latLng.latitude,
+          longitude: latLng.longitude,
         });
-
+    
         return res.status(201).json({
-            message: "The restaurant is created successfully",
-            restaurant: {
-                restaurant: restaurant.restaurantName
-            }
+          message: "The restaurant is created successfully",
+          restaurant: {
+            restaurant: restaurant.restaurantName,
+          },
         });
-
-
-    } catch(error){
+      } catch(error){
         console.error(error);
     return res.status(500).json({ 
-        message: "An error occured during creating restaurant" // the error include wrong address that can't be fetched by google map api
+        message: "An error occured during creating restaurant", // the error include wrong address that can't be fetched by google map api
+        errorMessage: error.message,
+        errorStack: error.stack
     });
     }
 });
