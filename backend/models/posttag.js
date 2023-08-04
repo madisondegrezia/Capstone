@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         model: "Post",
         key: "id",
       },
-      field: "Post"      
+      field: "PostId"      
     },
     TagId: {
       type:DataTypes.INTEGER,

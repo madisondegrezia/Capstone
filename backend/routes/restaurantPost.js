@@ -215,66 +215,139 @@ router.get("/user/nearby_post/:radiusKm", userAllowPostion, async(req,res)=>{
 });
 
 // get all post that are associated with user's interest
-router.get("/user/interested_post", autheticateUser, async(req,res)=>{    
-    try{
-        // get all user's interested tags
-        const userInterestedTags = await UserTag.findAll({where: {UserId: parseInt(req.session.userId,10)}});
-        const userInterestedTagId = userInterestedTags.map((element) => {return element.TagId});
+router.get("/user/interested_post", autheticateUser,async (req, res) => {
+    try {
+        // Get all user's interested tags
+        const userInterestedTags = await UserTag.findAll({ where: { UserId: parseInt(req.session.userId,10) } });
+        const userInterestedTagId = userInterestedTags.map((element) => { return element.TagId });
 
-        // if not interested in any tag, return 404
-        if (userInterestedTagId.length === 0){
-            return res.status(404).json({message: "No Tags Inerested"});
+        // If not interested in any tag, return 404
+        if (userInterestedTagId.length === 0) {
+            return res.status(404).json({ message: "No Tags Interested" });
         }
 
-        console.log("userTAG!!!!!!" + userInterestedTagId);
-
-        const userInterestedPosts = await sequelize.query(
-            `
-            SELECT *
-            FROM post_tag
-            WHERE "TagId" = ANY(:userInterestedTagId)::integer[];
-            `,
-            {
-                replacements: { userInterestedTagId: userInterestedTagId },
-                type: QueryTypes.SELECT
-            }
-        );
-        
-        return res.status(200).json(userInterestedPosts);
-
         // Look for Post that user is interested in based on the userInterestedTags
-        // const userInterestedPosts = await PostTag.findAll({
-        //     where: {
-        //         TagId: {
-        //             [Op.in]: userInterestedTagId
-        //         }
-        //     }
-        // });
-    //     const userInterestedPostsId = userInterestedPosts.map((element) => {return element.PostId});
+        const userInterestedPosts = await PostTag.findAll({
+            where: {
+                TagId: {
+                    [Op.in]: userInterestedTagId
+                }
+            }
+        });
+        const userInterestedPostsId = userInterestedPosts.map((element) => { return element.PostId });
 
+        // Use the PostId to find the posts inside the "post" table along with their associated tags
+        const posts = await Post.findAll({
+            where: {
+                id: {
+                    [Op.in]: userInterestedPostsId
+                }
+            },
+        });
 
-    //     // Use the PostId to find the post inside "post" table
-    //     const posts = await Post.findAll({
-    //         where: {
-    //             id: {
-    //                 [Op.in]: userInterestedPostsId
-    //             }
-    //         }
-    //     });
-
-    //     if (posts.length === 0){
-    //         return res.status(404).json({message: "No Post Inerested"});
-    //     }
-    //     else{
-    //         return res.status(200).json(posts);
-    //     }
-    } catch(error){
-        const errorMessage = error.message;
-        return res.status(500).json({message: "An error occured when fetching for restaurants", error: error.stack, errorMessage: error.message});
+        if (posts.length === 0) {
+            return res.status(404).json({ message: "No Posts Interested" });
+        } else {
+            return res.status(200).json(posts);
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "An error occurred when fetching for restaurants", error: error.stack, errorMessage: error.message });
     }
-
 });
 
+// post a new tag onto a post
+router.post("/editTag/:postId/:tagId", autheticateUser, async(req,res)=>{
+    try {
+        const postId = parseInt(req.params.postId, 10);
+        const tagId = parseInt(req.params.tagId, 10);
+        const userId = parseInt(req.session.userId, 10);
+    
+        // Check if the post with the given postId exists and if the authenticated user has the right to edit the post
+        const post = await Post.findOne({
+          where: {
+            id: postId,
+            UserId: userId,
+          },
+        });
+    
+        if (!post) {
+          return res.status(404).json({ message: "Post not found or you are not authorized to edit this post." });
+        }
+    
+        // Check if the tag with the given tagId exists
+        const tag = await Tag.findOne({
+          where: {
+            id: tagId,
+          },
+        });
+    
+        if (!tag) {
+          return res.status(404).json({ message: "Tag not found." });
+        }
+    
+        // Check if the tag is already associated with the post
+        const existingPostTag = await PostTag.findOne({
+          where: {
+            PostId: postId,
+            TagId: tagId,
+          },
+        });
+    
+        if (existingPostTag) {
+          return res.status(400).json({ message: "Tag is already associated with the post." });
+        }
+    
+        // Add the association between the post and the tag in the post_tag table
+        await PostTag.create({
+          PostId: postId,
+          TagId: tagId,
+        });
+    
+        return res.status(200).json({ message: "Tag added to the post successfully." });
+      } catch (error) {
+        return res.status(500).json({ message: "An error occurred while adding the tag to the post.", error: error.message });
+      }
+});
+
+// delete a tag on a post
+router.delete("/editTag/:postId/:tagId", autheticateUser, async (req, res) => {
+    try {
+      const postId = parseInt(req.params.postId, 10);
+      const tagId = parseInt(req.params.tagId, 10);
+      const userId = parseInt(req.session.userId, 10);
+  
+      // Check if the post with the given postId exists and if the authenticated user has the right to edit the post
+      const post = await Post.findOne({
+        where: {
+          id: postId,
+          UserId: userId,
+        },
+      });
+  
+      if (!post) {
+        return res.status(404).json({ message: "Post not found or you are not authorized to edit this post." });
+      }
+  
+      // Check if the tag is associated with the post
+      const existingPostTag = await PostTag.findOne({
+        where: {
+          PostId: postId,
+          TagId: tagId,
+        },
+      });
+  
+      if (!existingPostTag) {
+        return res.status(400).json({ message: "Tag is not associated with the post." });
+      }
+  
+      // Delete the association between the post and the tag in the post_tag table
+      await existingPostTag.destroy();
+  
+      return res.status(200).json({ message: "Tag deleted from the post successfully." });
+    } catch (error) {
+      return res.status(500).json({ message: "An error occurred while deleting the tag from the post.", error: error.message });
+    }
+  });
 
 // get all restaurants' post in the db, notes: user_post won't be in here!!
 router.get("/", async (req, res)=>{
