@@ -23,7 +23,6 @@ module.exports = {
       restaurant_name: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique:true,
       },
       rate: {
         type: Sequelize.FLOAT,
