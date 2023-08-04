@@ -25,6 +25,7 @@
 .user-picture {
   padding: 10px;
   border-radius: 50%;
+  width: 50px;
 }
 
 .login {
@@ -74,3 +75,5 @@
 .nav-menu-item:hover {
   text-decoration: underline;
 }
+
+/* Drop down menu code */

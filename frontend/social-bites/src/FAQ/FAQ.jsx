@@ -10,7 +10,7 @@ export default function About() {
             <input type="radio" name="acc" id="acc1" />
             <label htmlFor="acc1">
               <h2>01</h2>
-              <h3>How do i list my restaurant?</h3>
+              <h3>How can I list my restaurant?</h3>
             </label>
             <div className="content">
               <p>
@@ -24,7 +24,7 @@ export default function About() {
             <input type="radio" name="acc" id="acc2" />
             <label htmlFor="acc2">
               <h2>02</h2>
-              <h3>How do i update my user account?</h3>
+              <h3>How can I update my user account?</h3>
             </label>
             <div className="content">
               <p>
@@ -40,7 +40,7 @@ export default function About() {
             <input type="radio" name="acc" id="acc3" />
             <label htmlFor="acc3">
               <h2>03</h2>
-              <h3>Can i list more than 1 restaurant?</h3>
+              <h3>Can I list more than one restaurant?</h3>
             </label>
             <div className="content">
               <p>
@@ -53,7 +53,7 @@ export default function About() {
             <input type="radio" name="acc" id="acc4" />
             <label htmlFor="acc4">
               <h2>04</h2>
-              <h3>Can i review the restaurant?</h3>
+              <h3>Can I review the restaurant?</h3>
             </label>
             <div className="content">
               <p>Lorem ipsum</p>

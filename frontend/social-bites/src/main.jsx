@@ -19,6 +19,15 @@ import Slider from "./Slider/Slider";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import RestaurantPage from "./RestaurantPage/RestaurantPage";
 import Search from "./Search/Search";
+import User from "./UserSettings/User";
+import Account from "./UserSettings/Account/Account";
+import Reviews from "./UserSettings/Reviews/Reviews";
+import Events from "./UserSettings/Events/Events";
+import Favorite from "./UserSettings/Favorite/Favorite";
+import Delete from "./UserSettings/Delete/delete";
+import RestaurantReviews, {
+  reviewsLoader,
+} from "./RestaurantPage/RestaurantReviews/RestaurantReviews";
 
 const router = createBrowserRouter([
   {
@@ -83,8 +92,39 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: "/user/settings",
+        element: <User />,
+        children: [
+          {
+            path: "/user/settings/account",
+            element: <Account />,
+          },
+          {
+            path: "/user/settings/reviews",
+            element: <Reviews />,
+          },
+          {
+            path: "/user/settings/events",
+            element: <Events />,
+          },
+          {
+            path: "/user/settings/favorite",
+            element: <Favorite />,
+          },
+          {
+            path: "/user/settings/delete",
+            element: <Delete />,
+          },
+        ],
+      },
+      {
         path: "/restaurant",
         element: <RestaurantPage />,
+      },
+      {
+        path: "/restaurant/reviews",
+        loader: reviewsLoader,
+        element: <RestaurantReviews />,
       },
     ],
     errorElement: <ErrorPage />,
