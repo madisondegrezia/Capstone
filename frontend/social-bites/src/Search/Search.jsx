@@ -1,6 +1,5 @@
 import { Form, Link } from "react-router-dom";
 import "./Search.css";
-import { Outlet } from "react-router-dom/dist/umd/react-router-dom.development";
 import { FaSearch } from "react-icons/fa";
 
 export default function Search() {
@@ -19,7 +18,6 @@ export default function Search() {
           </Link>
         </Form>
       </div>
-      <Outlet />
     </div>
   );
 }
