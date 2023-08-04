@@ -1,6 +1,11 @@
 import "./RestaurantPageStyle.css";
+import { GrContact } from 'react-icons/gr'
+import { MdOutlineRateReview, MdOutlineRestaurantMenu, MdStarRate } from 'react-icons/md'
+import RestaurantCards from "../RestaurantCards/RestaurantCards";
 
 export default function RestaurantPage() {
+
+
   return (
     <>
       <div className="main-wrap">
@@ -26,16 +31,28 @@ export default function RestaurantPage() {
 
             <ul className="list-unstyled components">
               <p className="res-name">Bob's Burgers</p>
-              <li>
+              <li className="flex flex-row items-center justify-start px-5 py-5">
+                <div className="icons">
+                <MdStarRate size={ 25 } />
+                </div>
                 <a href="#">Rating</a>
               </li>
-              <li>
+              <li className="flex flex-row items-center justify-start px-5 py-5">
+                <div className="icons">
+                <MdOutlineRateReview size={ 25 } />
+                </div>
                 <a href="restaurant/reviews">Reviews</a>
               </li>
-              <li>
+              <li className="flex flex-row items-center justify-start px-5 py-5">
+                <div className="icons">
+                <MdOutlineRestaurantMenu size={ 25 } />
+                </div>
                 <a href="#">Menu</a>
               </li>
-              <li>
+              <li className="flex flex-row items-center justify-start px-5 py-5">
+                <div className="icons">
+                <GrContact size={ 25 } />
+                </div>
                 <a href="#">Contact</a>
               </li>
             </ul>
@@ -50,17 +67,8 @@ export default function RestaurantPage() {
           </nav>
 
           <div id="content">
-            <h1 className="text-5xl">Activity</h1>
+            <h1 className="text-4xl p-5 activity">Activity</h1>
             <h2>Lorem Ipsum Dolor</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -112,7 +120,8 @@ export default function RestaurantPage() {
           </div>
 
           <div id="suggestion-content">
-            <h2 className="text-3xl">More Restaurants like Bob's Burgers</h2>
+            <h2 className="text-3xl suggestions">More Restaurants like Bob's Burgers</h2>
+             <RestaurantCards />
           </div>
         </div>
       </div>
