@@ -14,7 +14,6 @@ import AuthProvider from "./contexts/AuthContext";
 import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
 import Slider from "./Slider/Slider";
-import ProtectedRoute from "./routes/ProtectedRoute";
 import RestaurantPage from "./RestaurantPage/RestaurantPage";
 import Search from "./Search/Search";
 import User from "./UserSettings/User";
