@@ -63,6 +63,26 @@ router.get("/my_restaurant", autheticateUser, async (req, res)=>{
     }
 });
 
+router.get("/get_user/:userId", async(req, res)=>{
+    const userId = parseInt(req.params.userId,10);
+    try{
+        const user = await User.findOne({where: {id: userId}});
+        return res.status(200).json({
+            username: user.username,
+            email: user.email,
+            UserId: user.id,
+            hasRestaurant: user.hasRestaurant
+        });
+
+    }catch(error){
+        return res.status(500).json({
+            message: "An error occurred when fetching for user",
+            errorMessage: error.message,
+            errorStack: error.stack
+        })
+    }
+})
+
 
 // get all current_user's review
 router.get("/my_reviews", autheticateUser, async (req, res)=>{
@@ -97,7 +117,6 @@ router.delete("/delete_user_account", autheticateUser, async (req, res)=>{
         return res.status(500).json({message: "An error occured while deleting the account", error: error.message});
     }
 });
-
 
 
 // get nearby restaurant based on the radius kilometers, require users to share their location
