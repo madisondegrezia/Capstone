@@ -1,6 +1,7 @@
 import { Form } from "react-router-dom";
 import "./HomeStyle.css";
 import RestaurantCards from "../RestaurantCards/RestaurantCards";
+import Slider from "../Slider/Slider";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
           placeholder="Search For Restaurants..."
         />
       </Form> */}
+      <Slider/>
 
       <div className="restaurant-cards">
         <RestaurantCards />
