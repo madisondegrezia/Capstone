@@ -54,19 +54,35 @@ export default function RestaurantReviews() {
             </ul>
           </nav>
 
-          <div id="content">
-            <h1 className="text-5xl">Reviews</h1>
-            <div className="quote-container" id="quote-container">
-              <div className="quote-text">
-                <FaQuoteLeft />
-              </div>
-              {reviews.allReviews.map((review) => (
-                <>
-                  <p key={review.id}>{review.review}</p>
-                  <p>{review.User.username}</p>
-                </>
-              ))}
+          <div>
+            <div className="ranking">
+              <div></div>
+              <h1 className="review-ranking">
+                Bob`s Burgers{" "}
+                <span>
+                  {reviews.allReviews.map((review) => (
+                    <>
+                      <span key={review.id}>{`${review.rate}`}</span>
+                    </>
+                  ))}
+                  /5
+                </span>
+              </h1>
             </div>
+            <h1 className="review-title">Reviews</h1>
+            {reviews.allReviews.map((review) => (
+              <>
+                <div className="quote-container">
+                  <div className="quote-text">
+                    <FaQuoteLeft className="fas" />
+                    <span id="quote" key={review.id}>
+                      {review.review}
+                    </span>
+                    <p id="author">{review.User.username}</p>
+                  </div>
+                </div>
+              </>
+            ))}
           </div>
         </div>
       </div>

@@ -13,7 +13,6 @@ import FAQ from "./FAQ/FAQ";
 import AuthProvider from "./contexts/AuthContext";
 import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
-import ProtectedRoute from "./routes/ProtectedRoute";
 import RestaurantPage from "./RestaurantPage/RestaurantPage";
 import User from "./UserSettings/User";
 import Account from "./UserSettings/Account/Account";
@@ -24,6 +23,13 @@ import Delete from "./UserSettings/Delete/delete";
 import RestaurantReviews, {
   reviewsLoader,
 } from "./RestaurantPage/RestaurantReviews/RestaurantReviews";
+import RestaurantSettings from "./RestaurantSettings/RestaurantSettings";
+import AddRestaurant from "./RestaurantSettings/AddRestaurant/AddRestaurant";
+import EditRestaurant from "./RestaurantSettings/EditRestaurant/EditRestaurant";
+import addRestaurantAction from "./RestaurantSettings/AddRestaurant/AddRestaurant";
+import AddEvent from "./RestaurantSettings/AddEvent/AddEvent";
+import PastEvents from "./RestaurantSettings/PastEvents/PastEvents";
+import DeleteRestaurant from "./RestaurantSettings/DeleteRestaurant/DeleteRestaurant";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +89,33 @@ const router = createBrowserRouter([
           {
             path: "/user/settings/delete",
             element: <Delete />,
+          },
+        ],
+      },
+      {
+        path: "/restaurant/settings",
+        element: <RestaurantSettings />,
+        children: [
+          {
+            path: "/restaurant/settings/add",
+            element: <AddRestaurant />,
+            action: <addRestaurantAction />,
+          },
+          {
+            path: "/restaurant/settings/edit",
+            element: <EditRestaurant />,
+          },
+          {
+            path: "/restaurant/settings/addevent",
+            element: <AddEvent />,
+          },
+          {
+            path: "/restaurant/settings/pastevents",
+            element: <PastEvents />,
+          },
+          {
+            path: "/restaurant/settings/delete",
+            element: <DeleteRestaurant />,
           },
         ],
       },
