@@ -19,6 +19,7 @@ import Reviews from "./UserSettings/Reviews/Reviews";
 import Events from "./UserSettings/Events/Events";
 import Favorite from "./UserSettings/Favorite/Favorite";
 import Delete from "./UserSettings/Delete/delete";
+import UserPage from "./UserPage/UserPage";
 import RestaurantReviews, {
   reviewsLoader,
 } from "./RestaurantPage/RestaurantReviews/RestaurantReviews";
@@ -121,6 +122,10 @@ const router = createBrowserRouter([
       {
         path: "/faq",
         element: <FAQ />,
+      },
+      {
+        path: "/user",
+        element: <UserPage />
       },
       {
         path: "/user/settings",
