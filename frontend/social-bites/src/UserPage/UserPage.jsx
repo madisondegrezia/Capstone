@@ -43,7 +43,7 @@ export default function UserPage() {
                     <div className="break-right" />
                 </div>
                 <div className="profile-reviews flex flex-col items-start p-7 pt-1">
-                    <h1 className="review-title">Reviews</h1>
+                    <h1 className="review-title-name">Reviews</h1>
                     <p>Sort by: Options here</p>
                     <div className="review-boxes">
                         <div className="review-box">
@@ -80,7 +80,7 @@ export default function UserPage() {
                     <div className="break-right" />
                 </div>
                 <div className="profile-right">
-                    <h1 className="review-title p-7 pt-0 pb-0">About</h1>
+                    <h1 className="review-title-name p-7 pt-0 pb-0">About</h1>
                     <ul className="p-8">
                         <li>
                             <h2>Location</h2>
