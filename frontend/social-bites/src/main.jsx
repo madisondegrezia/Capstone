@@ -31,8 +31,13 @@ import ShareLocationRequired from "./routes/ShareLocationRequired";
 
 // ----- home page components ----- ///
 import RestaurantDisplay from "./Home/HomePageSubSection/RestaurantDisplay";
-import { nearbyRestaurantLoader, mainSectionRestaurantLoader, allEventsLoader, nearbyEventLoader, interestedEventLoader } from "./Loader/loadRestaurants";
 import RestaurantEventDisplay from "./Home/HomePageSubSection/RestaurantEventDisplay";
+import { nearbyRestaurantLoader, mainSectionRestaurantLoader  } from "./Loader/loadRestaurants";
+import {allEventsLoader, nearbyEventLoader, interestedEventLoader} from "./Loader/loadRestaurantPosts"
+
+// ------ Search Page components ------ // 
+import SearchPage from "./Search/SearchPage";
+import { searchRestaurantLoader } from "./Loader/loadRestaurants";
 
 import RestaurantSettings from "./RestaurantSettings/RestaurantSettings";
 import AddRestaurant from "./RestaurantSettings/AddRestaurant/AddRestaurant";
@@ -88,6 +93,11 @@ const router = createBrowserRouter([
             loader: interestedEventLoader
           }
         ]
+      },
+      {
+        path: "/search/:keywordTerm",
+        element: <SearchPage/>,
+        loader: searchRestaurantLoader
       },
       {
         path: "/login",
