@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: row;
     min-height: 100vh;
+    height: auto;
     margin-left: 10vw;
     margin-right: 10vw;
 }
@@ -21,15 +22,15 @@
 .profile-left {
     display: flex;
     flex-direction: column;
-    padding: 2em;
-    width: 20%;
+    padding: 1em;
+    width: 20em;
     background-color: #f2f2f2;
     align-items: center;
     min-height: 100%;
 }
 
 .user-image {
-    width: 8em;
+    width: 6em;
     margin-top: -4em;
     margin-bottom: -2em;
     height: auto;
@@ -67,6 +68,7 @@
 
 .profile-reviews {
     width: 70%;
+    background-color: #f2f2f2;
 }
 
 .review-boxes {
@@ -77,13 +79,27 @@
 }
 
 .break {
-    background-color: gray;
-    height: 1px;
+    background-color: rgb(176, 176, 176);
+    height: 2px;
     width: 100%;
+    border-radius: 1em;
+}
+
+.break-right {
+    background-color: rgb(176, 176, 176);
+    width: 2px;
+    z-index: 100;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .review-box {
     background-color: wheat;
     width: 80%;
     padding: 20px;
+}
+
+.profile-right {
+    background-color: #f2f2f2;
+    width: 15%;
 }

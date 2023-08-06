@@ -39,6 +39,7 @@ export default function UserPage() {
                     <div className="break"/>
                     <p className="report-button">Report this Profile?</p>
                 </div>
+                <div className="break-right" />
                 <div className="profile-reviews flex flex-col items-center">
                     <p>Sort by: Options here</p>
                     <div className="review-boxes">
@@ -47,7 +48,7 @@ export default function UserPage() {
                         </div>
                     </div>
                 </div>
-
+                <div className="break-right" />
                 <div className="profile-right">
 
                 </div>
