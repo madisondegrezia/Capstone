@@ -33,6 +33,13 @@ import RestaurantDisplay from "./Home/HomePageSubSection/RestaurantDisplay";
 import { nearbyRestaurantLoader, mainSectionRestaurantLoader, allEventsLoader, nearbyEventLoader, interestedEventLoader } from "./Loader/loadRestaurants";
 import RestaurantEventDisplay from "./Home/HomePageSubSection/RestaurantEventDisplay";
 
+import RestaurantSettings from "./RestaurantSettings/RestaurantSettings";
+import AddRestaurant from "./RestaurantSettings/AddRestaurant/AddRestaurant";
+import EditRestaurant from "./RestaurantSettings/EditRestaurant/EditRestaurant";
+import addRestaurantAction from "./RestaurantSettings/AddRestaurant/AddRestaurant";
+import AddEvent from "./RestaurantSettings/AddEvent/AddEvent";
+import PastEvents from "./RestaurantSettings/PastEvents/PastEvents";
+import DeleteRestaurant from "./RestaurantSettings/DeleteRestaurant/DeleteRestaurant";
 
 const router = createBrowserRouter([
   {
@@ -103,11 +110,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/faq",
-        element: (
-          <ProtectedRoute>
-            <FAQ />
-          </ProtectedRoute>
-        ),
+        element: <FAQ />,
       },
       {
         path: "/user/settings",
@@ -132,6 +135,33 @@ const router = createBrowserRouter([
           {
             path: "/user/settings/delete",
             element: <Delete />,
+          },
+        ],
+      },
+      {
+        path: "/restaurant/settings",
+        element: <RestaurantSettings />,
+        children: [
+          {
+            path: "/restaurant/settings/add",
+            element: <AddRestaurant />,
+            action: <addRestaurantAction />,
+          },
+          {
+            path: "/restaurant/settings/edit",
+            element: <EditRestaurant />,
+          },
+          {
+            path: "/restaurant/settings/addevent",
+            element: <AddEvent />,
+          },
+          {
+            path: "/restaurant/settings/pastevents",
+            element: <PastEvents />,
+          },
+          {
+            path: "/restaurant/settings/delete",
+            element: <DeleteRestaurant />,
           },
         ],
       },
