@@ -58,7 +58,7 @@ export default function RestaurantReviews() {
             <div className="ranking">
               <div></div>
               <h1 className="review-ranking">
-                Bob`s Burgers{" "}
+                Bob`s Burgers {reviews.allReviews.rate}
                 <span>
                   {reviews.allReviews.map((review) => (
                     <>
