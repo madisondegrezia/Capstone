@@ -23,6 +23,7 @@ import Reviews from "./UserSettings/Reviews/Reviews";
 import Events from "./UserSettings/Events/Events";
 import Favorite from "./UserSettings/Favorite/Favorite";
 import Delete from "./UserSettings/Delete/delete";
+import UserPage from "./UserPage/UserPage";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
             <FAQ />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "/user",
+        element: <UserPage />
       },
       {
         path: "/user/settings",
