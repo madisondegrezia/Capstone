@@ -41,7 +41,7 @@ export default function RestaurantPage() {
                 <div className="icons">
                 <MdOutlineRateReview size={ 25 } />
                 </div>
-                <a href="#">Reviews</a>
+                <a href="restaurant/reviews">Reviews</a>
               </li>
               <li className="flex flex-row items-center justify-start px-5 py-5">
                 <div className="icons">

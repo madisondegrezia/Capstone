@@ -24,6 +24,9 @@ import Events from "./UserSettings/Events/Events";
 import Favorite from "./UserSettings/Favorite/Favorite";
 import Delete from "./UserSettings/Delete/delete";
 import UserPage from "./UserPage/UserPage";
+import RestaurantReviews, {
+  reviewsLoader,
+} from "./RestaurantPage/RestaurantReviews/RestaurantReviews";
 
 const router = createBrowserRouter([
   {
@@ -111,6 +114,11 @@ const router = createBrowserRouter([
         path: "/restaurant",
         loader: load,
         element: <RestaurantPage />,
+      },
+      {
+        path: "/restaurant/reviews",
+        loader: reviewsLoader,
+        element: <RestaurantReviews />,
       },
     ],
     errorElement: <ErrorPage />,
