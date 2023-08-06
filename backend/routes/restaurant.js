@@ -134,11 +134,12 @@ router.post("/", autheticateUser,async (req, res)=>{
         }
 
         // update the hasRestaurant section in the user table to true, to state they have a restaurant
-        await User.update({
-            id: parseInt(req.session.userId,10),
-            hasRestaurant: true
-        });
+        await User.update(
+            { hasRestaurant: true }, // Data to update
+            { where: { id: req.session.userId } } // Condition for the update
+          );
 
+          
         // Create the restaurant
         const restaurant = await Restaurant.create({
           UserId: req.session.userId,

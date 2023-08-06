@@ -5,7 +5,6 @@ import "./index.css";
 import ErrorPage from "./ErrorPage";
 import NavBar from "./NavBar/NavBar";
 import Home from "./Home/Home";
-import load from "./Loader/loadRestaurants";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import About from "./About/About";
@@ -13,7 +12,6 @@ import FAQ from "./FAQ/FAQ";
 import AuthProvider from "./contexts/AuthContext";
 import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
-import ProtectedRoute from "./routes/ProtectedRoute";
 import RestaurantPage from "./RestaurantPage/RestaurantPage";
 import User from "./UserSettings/User";
 import Account from "./UserSettings/Account/Account";
@@ -24,6 +22,17 @@ import Delete from "./UserSettings/Delete/delete";
 import RestaurantReviews, {
   reviewsLoader,
 } from "./RestaurantPage/RestaurantReviews/RestaurantReviews";
+import { load } from "./Loader/loadRestaurants";
+
+// ----- Middleware components ----- ///
+import ProtectedRoute from "./routes/ProtectedRoute";
+import ShareLocationRequired from "./routes/ShareLocationRequired";
+
+// ----- home page components ----- ///
+import RestaurantDisplay from "./Home/HomePageSubSection/RestaurantDisplay";
+import { nearbyRestaurantLoader, mainSectionRestaurantLoader, allEventsLoader, nearbyEventLoader, interestedEventLoader } from "./Loader/loadRestaurants";
+import RestaurantEventDisplay from "./Home/HomePageSubSection/RestaurantEventDisplay";
+
 
 const router = createBrowserRouter([
   {
@@ -35,6 +44,42 @@ const router = createBrowserRouter([
         path: "/",
         loader: load,
         element: <Home />,
+        children:
+        [
+          {
+            path:"/",
+            element: <RestaurantDisplay/>,
+            loader: mainSectionRestaurantLoader
+          },
+          {
+            path:"/nearby_restaurants",
+            element:(
+              <ShareLocationRequired>
+                <RestaurantDisplay/>
+              </ShareLocationRequired>
+                ),
+            loader: nearbyRestaurantLoader
+          },
+          {
+            path:"/all_events",
+            element: <RestaurantEventDisplay/>,
+            loader: allEventsLoader
+          },
+          {
+            path:"/nearby_restaurant_post",
+            element: <RestaurantEventDisplay/>,
+            loader: nearbyEventLoader
+          },
+          {
+            path:"/interested_restaurant_post",
+            element:(
+              <ProtectedRoute>
+                <RestaurantEventDisplay/>
+              </ProtectedRoute>
+            ),
+            loader: interestedEventLoader
+          }
+        ]
       },
       {
         path: "/login",
