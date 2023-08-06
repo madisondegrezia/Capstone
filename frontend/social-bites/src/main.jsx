@@ -27,6 +27,8 @@ import UserPage from "./UserPage/UserPage";
 import RestaurantReviews, {
   reviewsLoader,
 } from "./RestaurantPage/RestaurantReviews/RestaurantReviews";
+// import UserReviews, { userReviewsLoader } from "./UserPage/UserReviews";
+import UserReviews from "./UserPage/UserReviews";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +84,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/user",
+        element: <UserPage />
+      },
+      {
+        path: "/user/:id",
+        // loader: userReviewsLoader,
         element: <UserPage />
       },
       {
