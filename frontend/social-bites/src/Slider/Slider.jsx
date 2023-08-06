@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 // import { RxDotFilled } from "react-icons/rx";
-import { Outlet } from "react-router-dom/dist/umd/react-router-dom.development";
 import "./SliderStyle.css";
 
 function App() {
@@ -73,7 +72,6 @@ function App() {
           ))}
         </div> */}
       </div>
-      <Outlet />
     </>
   );
 }

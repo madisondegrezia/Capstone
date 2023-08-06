@@ -139,11 +139,46 @@ router.post("/", autheticateUser, async (req, res) => {
     // Find the latitude and longitude of the restaurant based on the address given
     const latLng = await fetchRestaurantLatLng(req.body.address);
 
-    // Check if latLng is fetched successfully
-    if (!latLng) {
-      return res.status(400).json({
-        message: "Invalid address. Please enter a valid address.",
-      });
+    try {
+        // Find the latitude and longitude of the restaurant based on the address given
+        const latLng = await fetchRestaurantLatLng(req.body.address);
+    
+        // Check if latLng is fetched successfully
+        if (!latLng) {
+          return res.status(400).json({
+            message: "Invalid address. Please enter a valid address.",
+          });
+        }
+
+        // update the hasRestaurant section in the user table to true, to state they have a restaurant
+        await User.update(
+            { hasRestaurant: true }, // Data to update
+            { where: { id: req.session.userId } } // Condition for the update
+          );
+
+          
+        // Create the restaurant
+        const restaurant = await Restaurant.create({
+          UserId: req.session.userId,
+          restaurantName: req.body.restaurantName,
+          address: req.body.address,
+          latitude: latLng.latitude,
+          longitude: latLng.longitude,
+        });
+    
+        return res.status(201).json({
+          message: "The restaurant is created successfully",
+          restaurant: {
+            restaurant: restaurant.restaurantName,
+          },
+        });
+      } catch(error){
+        console.error(error);
+    return res.status(500).json({ 
+        message: "An error occured during creating restaurant", // the error include wrong address that can't be fetched by google map api
+        errorMessage: error.message,
+        errorStack: error.stack
+    });
     }
 
     // update the hasRestaurant section in the user table to true, to state they have a restaurant
