@@ -1,5 +1,7 @@
 import { useLoaderData } from "react-router-dom/dist/umd/react-router-dom.development";
 import "./RestaurantReviews.css";
+import { Link } from "react-router-dom";
+import { FaQuoteLeft } from "react-icons/fa";
 
 export default function RestaurantReviews() {
   const reviews = useLoaderData();
@@ -30,36 +32,57 @@ export default function RestaurantReviews() {
             <ul className="list-unstyled components">
               <p className="res-name">Bob`s Burgers</p>
               <li>
-                <a href="#">Rating</a>
+                <Link href="#">Rating</Link>
               </li>
               <li>
-                <a href="restaurant/reviews">Reviews</a>
+                <Link href="restaurant/reviews">Reviews</Link>
               </li>
               <li>
-                <a href="#">Menu</a>
+                <Link href="#">Menu</Link>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <Link href="#">Contact</Link>
               </li>
             </ul>
 
             <ul className="list-unstyled CTAs">
               <li>
-                <a href="/" className="article">
+                <Link href="/" className="article">
                   Back to home
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
 
-          <div id="content">
-            <h1 className="text-5xl">Reviews</h1>
-            <h2>Bob`s Burgers </h2>
-            <div className="reviews">
-              {reviews.allReviews.map((review) => (
-                <p>{review.review}</p>
-              ))}
+          <div>
+            <div className="ranking">
+              <div></div>
+              <h1 className="review-ranking">
+                Bob`s Burgers{" "}
+                <span>
+                  {reviews.allReviews.map((review) => (
+                    <>
+                      <span key={review.id}>{`${review.rate}`}</span>
+                    </>
+                  ))}
+                  /5
+                </span>
+              </h1>
             </div>
+            <h1 className="review-title">Reviews</h1>
+            {reviews.allReviews.map((review) => (
+              <>
+                <div className="quote-container">
+                  <div className="quote-text">
+                    <FaQuoteLeft className="fas" />
+                    <span id="quote" key={review.id}>
+                      {review.review}
+                    </span>
+                    <p id="author">{review.User.username}</p>
+                  </div>
+                </div>
+              </>
+            ))}
           </div>
         </div>
       </div>
@@ -68,6 +91,22 @@ export default function RestaurantReviews() {
 }
 
 export const reviewsLoader = async () => {
-  const res = await fetch("/api/review/2");
+  const res = await fetch("/api/review/1");
   return res.json();
 };
+//   const res = await await fetch("/api/review/1"); // Assuming that something() returns Link promise
+//   const user = await fetch("/api/user/get_user/1"); // Assuming that somethingElse() returns a promise
+
+//   const resJson = await res.json();
+//   const userJson = await user.json();
+
+//   const result = resJson.allReviews.map((item, index) => {
+//     return {
+//       ...item,
+//       username: userJson[index].username,
+//     };
+//   });
+//   console.log(result);
+//   return result;
+// };
+//

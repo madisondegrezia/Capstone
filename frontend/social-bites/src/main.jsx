@@ -5,7 +5,6 @@ import "./index.css";
 import ErrorPage from "./ErrorPage";
 import NavBar from "./NavBar/NavBar";
 import Home from "./Home/Home";
-import load from "./Loader/loadRestaurants";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import About from "./About/About";
@@ -13,10 +12,7 @@ import FAQ from "./FAQ/FAQ";
 import AuthProvider from "./contexts/AuthContext";
 import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
-import Slider from "./Slider/Slider";
-import ProtectedRoute from "./routes/ProtectedRoute";
 import RestaurantPage from "./RestaurantPage/RestaurantPage";
-import Search from "./Search/Search";
 import User from "./UserSettings/User";
 import Account from "./UserSettings/Account/Account";
 import Reviews from "./UserSettings/Reviews/Reviews";
@@ -29,6 +25,29 @@ import RestaurantReviews, {
 } from "./RestaurantPage/RestaurantReviews/RestaurantReviews";
 // import UserReviews, { userReviewsLoader } from "./UserPage/UserReviews";
 import UserReviews from "./UserPage/UserReviews";
+import { load } from "./Loader/loadRestaurants";
+
+// ----- Middleware components ----- ///
+import ProtectedRoute from "./routes/ProtectedRoute";
+import ShareLocationRequired from "./routes/ShareLocationRequired";
+
+// ----- home page components ----- ///
+import RestaurantDisplay from "./Home/HomePageSubSection/RestaurantDisplay";
+import RestaurantEventDisplay from "./Home/HomePageSubSection/RestaurantEventDisplay";
+import { nearbyRestaurantLoader, mainSectionRestaurantLoader  } from "./Loader/loadRestaurants";
+import {allEventsLoader, nearbyEventLoader, interestedEventLoader} from "./Loader/loadRestaurantPosts"
+
+// ------ Search Page components ------ // 
+import SearchPage from "./Search/SearchPage";
+import { searchRestaurantLoader } from "./Loader/loadRestaurants";
+
+import RestaurantSettings from "./RestaurantSettings/RestaurantSettings";
+import AddRestaurant from "./RestaurantSettings/AddRestaurant/AddRestaurant";
+import EditRestaurant from "./RestaurantSettings/EditRestaurant/EditRestaurant";
+import addRestaurantAction from "./RestaurantSettings/AddRestaurant/AddRestaurant";
+import AddEvent from "./RestaurantSettings/AddEvent/AddEvent";
+import PastEvents from "./RestaurantSettings/PastEvents/PastEvents";
+import DeleteRestaurant from "./RestaurantSettings/DeleteRestaurant/DeleteRestaurant";
 
 const router = createBrowserRouter([
   {
@@ -38,22 +57,50 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Slider />,
-        children: [
+        loader: load,
+        element: <Home />,
+        children:
+        [
           {
-            path: "/",
-            element: <Search />,
-            children: [
-              {
-                path: "/",
-                loader: load,
-                element: <Home />,
-              },
-            ],
+            path:"/",
+            element: <RestaurantDisplay/>,
+            loader: mainSectionRestaurantLoader
           },
-        ],
+          {
+            path:"/nearby_restaurants",
+            element:(
+              <ShareLocationRequired>
+                <RestaurantDisplay/>
+              </ShareLocationRequired>
+                ),
+            loader: nearbyRestaurantLoader
+          },
+          {
+            path:"/all_events",
+            element: <RestaurantEventDisplay/>,
+            loader: allEventsLoader
+          },
+          {
+            path:"/nearby_restaurant_post",
+            element: <RestaurantEventDisplay/>,
+            loader: nearbyEventLoader
+          },
+          {
+            path:"/interested_restaurant_post",
+            element:(
+              <ProtectedRoute>
+                <RestaurantEventDisplay/>
+              </ProtectedRoute>
+            ),
+            loader: interestedEventLoader
+          }
+        ]
       },
-
+      {
+        path: "/search/:keywordTerm",
+        element: <SearchPage/>,
+        loader: searchRestaurantLoader
+      },
       {
         path: "/login",
         element: <Login />,
@@ -76,11 +123,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/faq",
-        element: (
-          <ProtectedRoute>
-            <FAQ />
-          </ProtectedRoute>
-        ),
+        element: <FAQ />,
       },
       {
         path: "/user",
@@ -114,6 +157,33 @@ const router = createBrowserRouter([
           {
             path: "/user/settings/delete",
             element: <Delete />,
+          },
+        ],
+      },
+      {
+        path: "/restaurant/settings",
+        element: <RestaurantSettings />,
+        children: [
+          {
+            path: "/restaurant/settings/add",
+            element: <AddRestaurant />,
+            action: <addRestaurantAction />,
+          },
+          {
+            path: "/restaurant/settings/edit",
+            element: <EditRestaurant />,
+          },
+          {
+            path: "/restaurant/settings/addevent",
+            element: <AddEvent />,
+          },
+          {
+            path: "/restaurant/settings/pastevents",
+            element: <PastEvents />,
+          },
+          {
+            path: "/restaurant/settings/delete",
+            element: <DeleteRestaurant />,
           },
         ],
       },
