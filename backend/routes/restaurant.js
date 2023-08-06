@@ -3,10 +3,37 @@ const router = express.Router();
 const { Restaurant, User } = require("../models");
 const { autheticateUser } = require("../middleware/authUser");
 require("dotenv").config();
+const { Op } = require("sequelize");
 
 // import axios from the axios to fetch for google map api
 const axios = require("axios");
 const googleApiKey = process.env.GOOGLE_API_KEY;
+
+
+// search like term in the restaurant name
+router.get("/search/:keyword", async (req, res) => {
+  try {
+    const keyword = req.params.keyword;
+
+    // Search for restaurants where the name is similar to the keyword
+    const restaurants = await Restaurant.findAll({
+      where: {
+        restaurantName: {
+          [Op.iLike]: `%${keyword}%`,
+        },
+      },
+    });
+
+    res.json(restaurants);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "An error occurred while searching for restaurants.",
+      errorMessage: error.message,
+      errorStack: error.stack,
+    });
+  }
+});
 
 // get restaurant by their by id
 router.get("/:restaurantId", async (req, res) => {
@@ -55,6 +82,8 @@ router.delete("/:restaurantId", async (req, res) => {
     });
   }
 });
+
+
 
 // fetch to google map api for the address's lat and lng by axios
 async function fetchRestaurantLatLng(address) {
@@ -180,35 +209,6 @@ router.post("/", autheticateUser, async (req, res) => {
         errorStack: error.stack
     });
     }
-
-    // update the hasRestaurant section in the user table to true, to state they have a restaurant
-    const user = await User.findOne({
-      where: { id: parseInt(req.session.userId, 10) },
-    });
-
-    if (!user) {
-      return res.status(404).json({ message: "user not found" });
-    }
-
-    await user.update({
-      hasRestaurant: true,
-    });
-
-    // Create the restaurant
-    const restaurant = await Restaurant.create({
-      UserId: req.session.userId,
-      restaurantName: req.body.restaurantName,
-      address: req.body.address,
-      latitude: latLng.latitude,
-      longitude: latLng.longitude,
-    });
-
-    return res.status(201).json({
-      message: "The restaurant is created successfully",
-      restaurant: {
-        restaurant: restaurant.restaurantName,
-      },
-    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({
