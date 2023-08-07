@@ -26,6 +26,13 @@ import Delete from "./UserSettings/Delete/delete";
 import RestaurantReviews, {
   reviewsLoader,
 } from "./RestaurantPage/RestaurantReviews/RestaurantReviews";
+import RestaurantPost, {
+  postLoader,
+} from "./RestaurantPage/RestaurantPosts/RestaurantPost";
+import AddPost, {
+  action as addPostAction,
+  loader as addPostLoader,
+} from "./RestaurantPage/RestaurantPosts/AddPost";
 
 const router = createBrowserRouter([
   {
@@ -107,8 +114,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/restaurant",
-        loader: load,
+        loader: postLoader,
         element: <RestaurantPage />,
+      },
+      {
+        path: "/post/new",
+        element: <AddPost />,
+        action: addPostAction,
+        loader: addPostLoader,
       },
       {
         path: "/restaurant/reviews",
