@@ -9,7 +9,6 @@ import RestaurantCards from "../RestaurantCards/RestaurantCards";
 import RestaurantPost from "./RestaurantPosts/RestaurantPost";
 
 export default function RestaurantPage() {
-
   return (
     <>
       <div className="main-wrap">
@@ -70,7 +69,7 @@ export default function RestaurantPage() {
             </ul>
           </nav>
 
-          <div id="content">
+          <div id='content'>
             <h1 className="text-4xl p-5 activity">Activity</h1>
             <RestaurantPost />
           </div>
@@ -79,11 +78,9 @@ export default function RestaurantPage() {
             <h2 className="text-3xl suggestions">
               More Restaurants like Bob's Burgers
             </h2>
-            {/* <RestaurantCards /> */}
           </div>
         </div>
       </div>
     </>
   );
 }
-

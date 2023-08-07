@@ -1,29 +1,8 @@
 #content {
   width: 100%;
   padding: 10px;
-  /* min-height: 100vh; */
   transition: all 0.3s;
   background-color: #f2f2f2;
-}
-
-#content h2 {
-  background-color: #fff;
-  padding: 1.5em 1em 1.5em 1em;
-  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
-    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-}
-#content p {
-  background-color: #fff;
-  padding: 1.5em 1em 1.5em 1em;
-  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
-    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-}
-
-#content button {
-  background-color: #fff;
-  padding: 1.5em 40em 1.5em 1em;
-  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
-    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 
 .line {
@@ -34,9 +13,100 @@
 }
 
 .post-img {
-  background-color: #e4e6eb;
+  background-color: #cfcbcb;
   border-radius: 50%;
   padding: 0.7em;
+  margin: 0.5em;
   width: 3em;
 }
+/* post styling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
+*, *:after, *:before {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Inter", sans-serif;
+	line-height: 1.5;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #fefefe;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+.stack {
+	width: 85%;
+	max-width: 400px;
+	transition: .25s ease;
+	&:hover {			
+		transform: rotate(5deg);
+		.card:before {
+			transform: translatey(-2%) rotate(-4deg);
+		}	
+		.card:after {
+			transform: translatey(2%) rotate(4deg);
+		}
+	}
+}
+
+.card {
+	aspect-ratio: 3 / 2;
+	border: 4px solid;
+	/* background-color: #FFF; */
+  background-color: #e12828;
+	position: relative;
+	transition: .15s ease;
+	cursor: pointer;
+	padding: 5% 5% 15% 5%;
+	&:before, &:after {
+		content: "";
+		display: block;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		border: 4px solid;
+		/* background-color: #FFF; */
+    background-color: #b53737;
+		transform-origin: center center;
+		z-index: -1;
+		transition: .15s ease;
+		top: 0;
+		left: 0;
+	}
+	
+	&:before {
+		transform: translatey(-2%) rotate(-6deg);
+	}
+	
+	&:after {
+		transform: translatey(2%) rotate(6deg);
+	}
+	
+
+}
+	.image {
+		width: 100%;
+		border: 4px solid;
+		background-color: #EEE;
+    /* background-color: #e12828; */
+		aspect-ratio: 1 / 1;
+		position: relative;
+	}
+
+.browser-warning {
+	margin-bottom: 4rem;
+}
+
+@supports (aspect-ratio: 1 / 1) {
+	.browser-warning {
+		display: none;
+	}
+}
