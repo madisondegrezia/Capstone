@@ -35,8 +35,6 @@ export default function NavBar() {
     console.log("logging out!!");
   };
 
-  console.log(currentUser)
-
   return (
     <>
       <div className="entire-page">
