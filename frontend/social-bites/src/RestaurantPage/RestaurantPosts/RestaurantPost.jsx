@@ -20,18 +20,25 @@ export default function RestaurantPost() {
           </Link>
         </div>
       </div>
-      <div>
+      <div> 
         {posts.map((post) => (
           <div key={`${post.id}`}>
-            {/* <div className='post-img'>
-              <MdOutlineRestaurantMenu size={25} />
-            </div> */}
-            <div id="content">
-              <h2>{post.postTitle}</h2>
-              <p>{post.postContent}</p>
-              <button className="flex-end">
-                <FaTrash style={{ color: "#ef0b0b" }} />
-              </button>
+            <div className="stack">
+              <div className="card">
+                <div className="image">
+                  <div className="post-img">
+                    <MdOutlineRestaurantMenu size={25} />
+                  </div>
+                  <div className='p-3'>
+                    <h2 className="text-2xl">{post.postTitle}</h2>
+                    <br />
+                    <p>{post.postContent}</p>
+                    <button className="flex-end">
+                      <FaTrash style={{ color: "#ef0b0b" }} />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="line"></div>
