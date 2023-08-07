@@ -4,9 +4,7 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 export default function UserReviews () {
-    // -------------------------Section for mapping reviews --------------------
-    const location = useLocation();
-    const list = [];
+// -------------------------Section for mapping reviews --------------------
     const [listReview, setListReview] = useState([]);
     let { id } = useParams();
     async function getReviews(id) {
@@ -28,10 +26,13 @@ export default function UserReviews () {
         return stars;
     }
 
+// -------------------------Section for getting associated user ---------------
+
+    
     async function mapReviews() {
 
     const data = await getReviews(id);
-
+    
 
     const list = data.map((item, index) =>(
             <div className="review-box">

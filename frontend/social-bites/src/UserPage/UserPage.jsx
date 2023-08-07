@@ -3,13 +3,41 @@ import "./UserPageStyle.css";
 import { FaCameraRetro, FaStar } from "react-icons/fa"
 import { PiForkKnifeBold } from "react-icons/pi"
 import UserReviews from "./UserReviews";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function UserPage() {
 
+    const [userInfo, setUserInfo] = useState(null);
+    let { id } = useParams();
+    let person;
+    async function getUser(userId) {
+        try {
+            const response = await fetch(`/api/user/get_user/${userId}`);
+            const user = await response.json();
+            return user;
+        } catch (error) {
+            console.error("Error fetching user:", error);
+            return null;
+        }
+    }
+
+    useEffect(() => {
+        async function fetchData() {
+            const user = await getUser(id);
+                setUserInfo(user);
+                console.log(userInfo);
+            
+        }
+        fetchData();
+        
+    }, []);
+    
+        
 
     return (
         <>
-        <div className="user-page flex flex-col">
+        {userInfo ? (<div className="user-page flex flex-col">
             <div className="user-heading flex flex-row">
 
             </div>
@@ -18,7 +46,7 @@ export default function UserPage() {
                 <div className="profile-left">
                     <img className="user-image" src="/src/assets/default-avatar.webp" />
                     <div className="bio-box">
-                        <h2 className="user-name">Margaret M.</h2>
+                        <h2 className="user-name">{userInfo.username}</h2>
                         <p className="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -52,7 +80,7 @@ export default function UserPage() {
                                 <div className="res-detail-box flex flex-row gap-4">
                                 <img className="user-image-small w-14 h-14" src="/src/assets/default-avatar.webp"></img>
                                     <div className="res-details">
-                                    <p>McDoolans</p>
+                                    <p>Mcdool</p>
                                     <p>1234 Street Street</p>
                                     </div>
                                 </div>
@@ -112,7 +140,7 @@ export default function UserPage() {
                     </ul>
                 </div>
             </div>
-        </div>
-        </>
+        </div>) : ( <p>Loading...</p>
+        )}</>
     )
 }
