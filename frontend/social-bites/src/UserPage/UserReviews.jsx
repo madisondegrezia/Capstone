@@ -54,29 +54,30 @@ export default function UserReviews () {
 
     const data = await getReviews(id);
     
-    const list = data.map((item, index) =>(
+    const list = await Promise.all(data.map(async (item, index) => {
+        const restaurant = await getRestaurant(item.RestaurantId);  // Assuming each review has a restaurantId
+        return (
             <div className="review-box">
-                            <div className="review-header flex flex-row justify-between">
-                                <div className="res-detail-box flex flex-row gap-4">
-                                <img className="user-image-small w-14 h-14" src="/src/assets/default-avatar.webp"></img>
-                                    <div className="res-details">
-                                    <p>{restaurantInfo.restaurantName}</p>
-                                    <p>1234 Street Street</p>
-                                    </div>
-                                </div>
-                                <div className="rate flex flex-row">
-                                {...getStars(item.rate)}
-                                </div>
-                            </div>
-                            <p className="review-body">
-                             {item.review}
-                            </p>
+                <div className="review-header flex flex-row justify-between">
+                    <div className="res-detail-box flex flex-row gap-4">
+                        <img className="user-image-small w-14 h-14" src="/src/assets/default-avatar.webp"></img>
+                        <div className="res-details">
+                            <p>{restaurant.restaurantName}</p>
+                            <p>{restaurant.address}</p>
                         </div>
-        
-    ))
+                    </div>
+                    <div className="rate flex flex-row">
+                        {...getStars(item.rate)}
+                    </div>
+                </div>
+                <p className="review-body">
+                    {item.review}
+                </p>
+            </div>
+        );
+    }));
     setListReview(list);
-    }
-
+}
     return <>{ restaurantInfo ? listReview : (<p>Loading...</p>)}</>;
           
 }
