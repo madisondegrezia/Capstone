@@ -196,7 +196,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/restaurant/:restaurantId",
-        loader: load,
+        loader: postLoader,
         element: <RestaurantPage />,
       },
       {

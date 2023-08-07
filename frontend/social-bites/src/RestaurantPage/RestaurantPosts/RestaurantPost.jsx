@@ -3,9 +3,14 @@ import "./RestaurantPost.css";
 import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
+import { useParams } from "react-router-dom";
+
 
 export default function RestaurantPost() {
-  const posts = useLoaderData();
+  const { restaurantId } = useParams();
+  // take restaurantId as a param for loader
+  const posts = useLoaderData(restaurantId);
+
 
   return (
     <>
@@ -42,8 +47,8 @@ export default function RestaurantPost() {
   );
 }
 
-export const postLoader = async () => {
-  const res = await fetch("/api/restaurant_post/1");
-  //console.log(res);
+export const postLoader = async (restaurantId) => {
+  console.log(restaurantId.params.restaurantId)
+  const res = await fetch(`/api/restaurant_post/${restaurantId.params.restaurantId}`);
   return res.json();
 };
