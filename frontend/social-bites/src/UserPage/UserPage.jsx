@@ -10,6 +10,7 @@ export default function UserPage() {
 
     const [userInfo, setUserInfo] = useState(null);
     let { id } = useParams();
+    let person;
     async function getUser(userId) {
         try {
             const response = await fetch(`/api/user/get_user/${userId}`);
@@ -25,18 +26,18 @@ export default function UserPage() {
         async function fetchData() {
             const user = await getUser(id);
                 setUserInfo(user);
+                console.log(userInfo);
+            
         }
         fetchData();
-        console.log(userInfo);
+        
     }, []);
     
-    const array = JSON.stringify(userInfo);
-    console.log(array);
-    var person = JSON.parse(array);
+        
 
     return (
         <>
-        <div className="user-page flex flex-col">
+        {userInfo ? (<div className="user-page flex flex-col">
             <div className="user-heading flex flex-row">
 
             </div>
@@ -45,7 +46,7 @@ export default function UserPage() {
                 <div className="profile-left">
                     <img className="user-image" src="/src/assets/default-avatar.webp" />
                     <div className="bio-box">
-                        <h2 className="user-name">{person.username}</h2>
+                        <h2 className="user-name">{userInfo.username}</h2>
                         <p className="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -139,7 +140,7 @@ export default function UserPage() {
                     </ul>
                 </div>
             </div>
-        </div>
-        </>
+        </div>) : ( <p>Loading...</p>
+        )}</>
     )
 }
