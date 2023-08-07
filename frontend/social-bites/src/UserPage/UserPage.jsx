@@ -44,7 +44,7 @@ export default function UserPage() {
 
             <div className="user-body">
                 <div className="profile-left">
-                    <img className="user-image" src="/src/assets/default-avatar.webp" />
+                    <img className="user-image" src={userInfo.profileImage} />
                     <div className="bio-box">
                         <h2 className="user-name">{userInfo.username}</h2>
                         <p className="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -78,9 +78,9 @@ export default function UserPage() {
                         <div className="review-box">
                             <div className="review-header flex flex-row justify-between">
                                 <div className="res-detail-box flex flex-row gap-4">
-                                <img className="user-image-small w-14 h-14" src="/src/assets/default-avatar.webp"></img>
+                                <img className="user-image-small w-14 h-14" src={"/src/assets/default-avatar.webp"}></img>
                                     <div className="res-details">
-                                    <p>Mcdool</p>
+                                    <p>Example</p>
                                     <p>1234 Street Street</p>
                                     </div>
                                 </div>

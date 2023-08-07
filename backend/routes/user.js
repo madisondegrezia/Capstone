@@ -76,7 +76,8 @@ router.get("/get_user/:userId", async(req, res)=>{
             username: user.username,
             email: user.email,
             UserId: user.id,
-            hasRestaurant: user.hasRestaurant
+            hasRestaurant: user.hasRestaurant,
+            profileImage: user.profileImage
         });
 
     }catch(error){
