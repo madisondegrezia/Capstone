@@ -6,6 +6,8 @@ const { userAllowPostion } = require("../middleware/userAllowPostion");
 const { autheticateUser } = require("../middleware/authUser");
 const {User, Restaurant, UserRate} = require("../models");
 
+
+
 // post user's location on the session
 router.post("/location", async (req,res)=>{
     try{
@@ -64,7 +66,10 @@ router.get("/my_restaurant", autheticateUser, async (req, res)=>{
 });
 
 router.get("/get_user/:userId", async(req, res)=>{
+    console.log("Attempting to fetch user:", req.params.userId);
     const userId = parseInt(req.params.userId,10);
+    
+
     try{
         const user = await User.findOne({where: {id: userId}});
         return res.status(200).json({
