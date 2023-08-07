@@ -319,6 +319,34 @@ router.post("/editTag/:postId/:tagId", autheticateUser, async(req,res)=>{
       }
 });
 
+// delete a post, will check if user is the owner of the post
+router.delete("/delete/:postId", autheticateUser, async (req, res) => {
+    const postId = parseInt(req.params.postId,10);
+
+    try{
+        const post = await Post.findOne({
+            where: {
+                id: postId,
+                UserId: parseInt(req.session.userId, 10)
+            }
+        });
+
+        if (!post){
+            return res.status(404).json({message: "Post not found or don't have the access to the action"});
+        }
+
+        await post.destroy();
+
+        return res.status(200).json({ message: "Post deleted successfully" });
+    } catch(error){
+        return res.status(500).json({
+            message: "An error occured",
+            errorMessage: error.message,
+            errorStack: error.stack
+        })
+    }
+})
+
 // delete a tag on a post
 router.delete("/editTag/:postId/:tagId", autheticateUser, async (req, res) => {
     try {
