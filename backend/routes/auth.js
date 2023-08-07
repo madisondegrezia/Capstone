@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const { User } = require("../models");
+const { User, Restaurant } = require("../models");
 
 // ----- set up the signup router ------ //
 router.post("/signup", async (req, res) => {
@@ -92,12 +92,22 @@ router.delete("/logout", (req, res) => {
 // router get current_user to see if any user is logged in or not
 router.get("/current_user", async (req, res) => {
   if (req.session.userId) {
-    const user = await User.findByPk(req.session.userId);
+    const user = await User.findOne({
+      where: {id: req.session.userId},
+      include: {
+        model: Restaurant,
+        attributes: ["id", "restaurantName"]
+      },
+    })
+
+
     return res.status(200).json({
       user: {
         id: user.id,
         username: user.username,
         email: user.email,
+        hasRestaurant: user.hasRestaurant,
+        restaurants: user.Restaurants,
       },
     });
   } else {

@@ -188,7 +188,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/restaurant",
+        path: "/restaurant/:restaurantId",
         loader: postLoader,
         element: <RestaurantPage />,
       },
