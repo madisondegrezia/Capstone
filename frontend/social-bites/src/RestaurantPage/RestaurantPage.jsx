@@ -34,7 +34,7 @@ export default function RestaurantPage() {
     </div>*/}
 
             <ul className="list-unstyled components">
-              <p className="res-name">Bob's Burgers</p>
+              <p className="res-name">Restaurant Name</p>
               <li className="flex flex-row items-center justify-start px-5 py-5">
                 <div className="icons">
                   <MdStarRate size={25} />
@@ -77,7 +77,7 @@ export default function RestaurantPage() {
 
           <div id="suggestion-content">
             <h2 className="text-3xl suggestions">
-              More Restaurants like Bob's Burgers
+              Similar Restaurants
             </h2>
             {/* <RestaurantCards /> */}
           </div>
