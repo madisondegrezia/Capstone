@@ -23,6 +23,8 @@ import UserPage from "./UserPage/UserPage";
 import RestaurantReviews, {
   reviewsLoader,
 } from "./RestaurantPage/RestaurantReviews/RestaurantReviews";
+// import UserReviews, { userReviewsLoader } from "./UserPage/UserReviews";
+import UserReviews from "./UserPage/UserReviews";
 import { load } from "./Loader/loadRestaurants";
 
 // ----- Middleware components ----- ///
@@ -132,6 +134,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/user",
+        element: <UserPage />
+      },
+      {
+        path: "/user/:id",
+        // loader: userReviewsLoader,
         element: <UserPage />
       },
       {

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./UserPageStyle.css";
 import { FaCameraRetro, FaStar } from "react-icons/fa"
 import { PiForkKnifeBold } from "react-icons/pi"
+import UserReviews from "./UserReviews";
 
 export default function UserPage() {
 
@@ -15,7 +16,7 @@ export default function UserPage() {
 
             <div className="user-body">
                 <div className="profile-left">
-                    <img className="user-image" src="./src/assets/default-avatar.webp" />
+                    <img className="user-image" src="/src/assets/default-avatar.webp" />
                     <div className="bio-box">
                         <h2 className="user-name">Margaret M.</h2>
                         <p className="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -45,11 +46,11 @@ export default function UserPage() {
                 <div className="profile-reviews flex flex-col items-start p-7 pt-1">
                     <h1 className="review-title-name">Reviews</h1>
                     <p>Sort by: Options here</p>
-                    <div className="review-boxes">
+                    <div className="review-boxes gap-6">
                         <div className="review-box">
                             <div className="review-header flex flex-row justify-between">
                                 <div className="res-detail-box flex flex-row gap-4">
-                                <img className="user-image-small w-14 h-14" src="./src/assets/default-avatar.webp"></img>
+                                <img className="user-image-small w-14 h-14" src="/src/assets/default-avatar.webp"></img>
                                     <div className="res-details">
                                     <p>McDoolans</p>
                                     <p>1234 Street Street</p>
@@ -73,8 +74,12 @@ export default function UserPage() {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
                             </p>
+                            
+                        
                         </div>
+                        <UserReviews />
                     </div>
+                    
                 </div>
                 <div className="containing">
                     <div className="break-right" />

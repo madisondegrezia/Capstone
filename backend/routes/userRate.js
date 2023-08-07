@@ -138,5 +138,43 @@ router.patch("/:reviewId", autheticateUser, async (req, res) => {
     }
   });
   
+//   router.get("/user/:userId", async (req, res)=>{
+//     const userId = parseInt(req.params.restaurantId, 10);
+//     try{
+//         const allReviews = await UserRate.findAll({
+//             where:{
+//                 UserId: userId
+//             }
+//         });
 
+//         return res.status(200).json(allReviews);
+//     }catch(error){
+//         return res.status(500).json({
+//             message: "An error occured while fetching reviews for this user",
+//             errorMessage: error.message
+//         });
+//     }
+// });
+
+router.get("/user/:userId", async (req, res)=>{
+  const userId = parseInt(req.params.userId, 10);
+  try{
+      const reviews = await UserRate.findAll({
+          where: {
+              UserId: userId
+          }
+      });
+
+      if (reviews.length === 0){
+          return res.status(404).json({message: "No reviews found"});
+      }
+      else{
+          return res.status(201).json(reviews);
+      }
+
+  }catch(error){
+      const errorMessage = error.message;
+      return res.status(500).json({message: "An error occured when fetching for reviews", error: errorMessage})
+  }
+});
 module.exports = router;
