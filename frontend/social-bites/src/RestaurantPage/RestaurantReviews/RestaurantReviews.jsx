@@ -5,7 +5,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 
 export default function RestaurantReviews() {
   const reviews = useLoaderData();
-
+  //forEach
   return (
     <>
       <div className="main-wrap">
@@ -91,7 +91,7 @@ export default function RestaurantReviews() {
 }
 
 export const reviewsLoader = async () => {
-  const res = await fetch("/api/review/1");
+  const res = await fetch("api/restaurant/3");
   return res.json();
 };
 //   const res = await await fetch("/api/review/1"); // Assuming that something() returns Link promise

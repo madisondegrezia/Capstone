@@ -4,7 +4,8 @@ import { Form, redirect } from "react-router-dom";
 export default function AddRestaurant() {
   return (
     <div className="add-restaurant">
-      <Form className="profile" method="POST" action="/restaurant/settings/add">
+      <Form className="profile" method="post">
+        {/* action="/restaurant/settings/add" */}
         <h1 className="title">Add Restaurant</h1>
         <h2 className="sub-title">Restaurant Name</h2>
         <input
