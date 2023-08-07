@@ -147,7 +147,7 @@ const router = createBrowserRouter([
       {
         path: "/user/:id",
         // loader: userReviewsLoader,
-        element: <UserPage />
+        element: <UserPage />,
       },
       {
         path: "/user/settings",
@@ -204,13 +204,17 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/restaurant",
+        path: "/restaurant/:restaurantId",
         loader: postLoader,
         element: <RestaurantPage />,
       },
       {
         path: "/post/new",
-        element: <AddPost />,
+        element: (
+          <ProtectedRoute>
+            <AddPost />
+          </ProtectedRoute>
+        ),
         action: addPostAction,
         loader: addPostLoader,
       },

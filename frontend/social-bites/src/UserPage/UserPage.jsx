@@ -121,11 +121,11 @@ export default function UserPage() {
                         </li>
                         <li>
                             <h2>Favorite Food</h2>
-                            <p>Sushi</p>
+                            <p>Insert Here...</p>
                         </li>
                         <li>
                             <h2>Favorite Restaurant</h2>
-                            <p>McDoolans</p>
+                            <p>Insert Here...</p>
                         </li>
                         <li>
                             <h2>Statistics</h2>
@@ -134,8 +134,8 @@ export default function UserPage() {
                         </li>
                         <li>
                             <h2>Socials</h2>
-                            <p>LinkedIn</p>
-                            <p>FaceBook</p>
+                            <p>Insert Here...</p>
+                            <p>Insert Here...</p>
                         </li>
                     </ul>
                 </div>
