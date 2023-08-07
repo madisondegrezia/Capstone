@@ -18,7 +18,7 @@ export default function RestaurantPost() {
         <div></div>
         <div className="mr-2 mb-4">
           <Link
-            to="/post/new"
+            to={`/restaurant/${restaurantId}/post/new`}
             className="bg-red-500 rounded text-white px-4 py-2 hover:bg-red-600 hover:text-white transition "
           >
             + Add Post
