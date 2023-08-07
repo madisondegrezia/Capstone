@@ -35,7 +35,6 @@ export default function NavBar() {
     console.log("logging out!!");
   };
 
-
   return (
     <>
       <div className="entire-page">
@@ -107,22 +106,13 @@ export default function NavBar() {
                     )}
                   </Dropdown.Header>
 
-                  {currentUser && currentUser.hasRestaurant &&
-                  (
-                  <>
-                  {currentUser.restaurants.map((restaurant) => (
                   <Link
-                  key={restaurant.id}
-                  to={`/restaurant/${restaurant.id}`}
-                  className="block flex flex-row gap-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  <img src={edit} className="w-5" />
-                  {restaurant.restaurantName}
-                </Link>
-                ))}
-                  </>
-                  )
-                  }
+                    to="/restaurant"
+                    className="block flex flex-row gap-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    <img src={edit} className="w-5" />
+                    Restaurant Page
+                  </Link>
                   <Link
                     to="/settings"
                     className="block flex flex-row gap-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
