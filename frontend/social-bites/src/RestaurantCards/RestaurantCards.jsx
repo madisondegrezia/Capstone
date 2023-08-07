@@ -31,6 +31,5 @@ export default function RestaurantCards() {
     );
   });
 
-  console.log(list);
   return list;
 }

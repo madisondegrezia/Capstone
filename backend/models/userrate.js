@@ -1,8 +1,8 @@
 'use strict';
 const {
-  Model
+  Model, Sequelize, DataTypes, literal 
 } = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
   class UserRate extends Model {
     /**
      * Helper method for defining associations.
@@ -48,40 +48,33 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true
   });
 
-  UserRate.addHook("afterCreate", async(userRate, options)=>{
-    const restaurantId = userRate.RestaurantId;
+
+  UserRate.addHook('afterCreate', async (userRate, options) => {
+    await recalculateAverageRate(userRate.RestaurantId);
+  });
+
+  UserRate.addHook('afterUpdate', async (userRate, options) => {
+    await recalculateAverageRate(userRate.RestaurantId);
+  });
+
+  UserRate.addHook('afterDestroy', async (userRate, options) => {
+    await recalculateAverageRate(userRate.RestaurantId);
+  });
+
+  async function recalculateAverageRate(restaurantId) {
     const averageRate = await UserRate.findAll({
       attributes: [[sequelize.fn('AVG', sequelize.col('rate')), 'averageRate']],
       where: {
-        RestaurantId: restaurantId
-      }
+        RestaurantId: restaurantId,
+      },
     });
 
-      // Update the rate column in the restaurant table
-      const newRate = averageRate[0].dataValues.averageRate;
-      await sequelize.models.Restaurant.update(
-        { rate: newRate },
-        { where: { id: restaurantId } }
-      );
-    });
-
-    UserRate.addHook('afterDestroy', async (userRate, options) => {
-      // Get the average rate for the restaurant
-      const restaurantId = userRate.RestaurantId;
-      const averageRate = await UserRate.findAll({
-        attributes: [[sequelize.fn('AVG', sequelize.col('rate')), 'averageRate']],
-        where: {
-          RestaurantId: restaurantId
-        }
-      });
-  
-      // Update the rate column in the restaurant table
-      const newRate = averageRate[0].dataValues.averageRate || 0; // If there are no reviews, set rate to 0
-      await sequelize.models.Restaurant.update(
-        { rate: newRate },
-        { where: { id: restaurantId } }
-      );
-    });
+    const newRate = parseFloat(averageRate[0].dataValues.averageRate || 0).toFixed(1);
+    await sequelize.models.Restaurant.update(
+      { rate: newRate },
+      { where: { id: restaurantId } }
+    );
+  }
     
   return UserRate;
 };
