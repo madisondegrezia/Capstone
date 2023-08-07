@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 export default function UserReviews () {
 // -------------------------Section for mapping reviews --------------------
     const [listReview, setListReview] = useState([]);
+    const [restaurantInfo, setRestaurantInfo] = useState(null);
     let { id } = useParams();
     async function getReviews(id) {
         
@@ -26,21 +27,40 @@ export default function UserReviews () {
         return stars;
     }
 
-// -------------------------Section for getting associated user ---------------
+// -------------------------Section for getting associated restaurant ---------------
 
+    async function getRestaurant(Id) {
+        try {
+            const response = await fetch(`/api/restaurant/${Id}`);
+            const restaurant = await response.json();
+            console.log(restaurant);
+            return restaurant;
+        } catch (error) {
+            console.error("Error fetching user:", error);
+            return null;
+        }
+    }
+
+    useEffect(() => {
+        async function fetchData() {
+            const temp = await getRestaurant(id);
+            setRestaurantInfo(temp);
+            await mapReviews();  // Wait until restaurantInfo is set before mapping reviews
+        }
+        fetchData();
+    }, []);
     
     async function mapReviews() {
 
     const data = await getReviews(id);
     
-
     const list = data.map((item, index) =>(
             <div className="review-box">
                             <div className="review-header flex flex-row justify-between">
                                 <div className="res-detail-box flex flex-row gap-4">
                                 <img className="user-image-small w-14 h-14" src="/src/assets/default-avatar.webp"></img>
                                     <div className="res-details">
-                                    <p>McDoolans</p>
+                                    <p>{restaurantInfo.restaurantName}</p>
                                     <p>1234 Street Street</p>
                                     </div>
                                 </div>
@@ -57,10 +77,6 @@ export default function UserReviews () {
     setListReview(list);
     }
 
-    useEffect(() => {
-        mapReviews(); // Call mapReviews when the component mounts
-    }, []);
-
-    return <>{listReview}</>;
+    return <>{ restaurantInfo ? listReview : (<p>Loading...</p>)}</>;
           
 }
