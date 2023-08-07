@@ -23,6 +23,8 @@ import UserPage from "./UserPage/UserPage";
 import RestaurantReviews, {
   reviewsLoader,
 } from "./RestaurantPage/RestaurantReviews/RestaurantReviews";
+// import UserReviews, { userReviewsLoader } from "./UserPage/UserReviews";
+import UserReviews from "./UserPage/UserReviews";
 import { load } from "./Loader/loadRestaurants";
 
 // ----- Middleware components ----- ///
@@ -46,6 +48,13 @@ import addRestaurantAction from "./RestaurantSettings/AddRestaurant/AddRestauran
 import AddEvent from "./RestaurantSettings/AddEvent/AddEvent";
 import PastEvents from "./RestaurantSettings/PastEvents/PastEvents";
 import DeleteRestaurant from "./RestaurantSettings/DeleteRestaurant/DeleteRestaurant";
+import RestaurantPost, {
+  postLoader,
+} from "./RestaurantPage/RestaurantPosts/RestaurantPost";
+import AddPost, {
+  action as addPostAction,
+  loader as addPostLoader,
+} from "./RestaurantPage/RestaurantPosts/AddPost";
 
 const router = createBrowserRouter([
   {
@@ -128,6 +137,11 @@ const router = createBrowserRouter([
         element: <UserPage />
       },
       {
+        path: "/user/:id",
+        // loader: userReviewsLoader,
+        element: <UserPage />
+      },
+      {
         path: "/user/settings",
         element: <User />,
         children: [
@@ -184,6 +198,12 @@ const router = createBrowserRouter([
         path: "/restaurant/:restaurantId",
         loader: load,
         element: <RestaurantPage />,
+      },
+      {
+        path: "/post/new",
+        element: <AddPost />,
+        action: addPostAction,
+        loader: addPostLoader,
       },
       {
         path: "/restaurant/reviews",
