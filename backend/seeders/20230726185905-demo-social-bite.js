@@ -12,19 +12,23 @@ module.exports = {
       username: "Jane Doe",
       email: "janeDoe@gmail.com",
       password: await bcrypt.hash("password",10),
-      has_restaurant: false,
+      has_restaurant: true,
+      profile_image: "https://hips.hearstapps.com/hmg-prod/images/delish-210419-carne-asada-torta-01-portrait-jg-1620136948.jpg?crop=0.942xw:0.707xh;0.0369xw,0.212xh&resize=1200:*"
     },
   {
       username: "Jane Doe Third Account",
       email: "janeDoe3@gmail.com",
       password: await bcrypt.hash("password",10),
       has_restaurant: false,
+      profile_image: "https://hips.hearstapps.com/hmg-prod/images/delish-210419-carne-asada-torta-01-portrait-jg-1620136948.jpg?crop=0.942xw:0.707xh;0.0369xw,0.212xh&resize=1200:*"
+
   },
   {
     username: "Jane Doe Second Account",
     email: "janeDoe2@gmail.com",
     password: await bcrypt.hash("password",10),
     has_restaurant: false,
+    profile_image: "https://hips.hearstapps.com/hmg-prod/images/delish-210419-carne-asada-torta-01-portrait-jg-1620136948.jpg?crop=0.942xw:0.707xh;0.0369xw,0.212xh&resize=1200:*"
 },
   ]);
 
@@ -65,7 +69,9 @@ const tagId = tags[0][0].id;
       popularity: 102, // the popularity will be based on another table named "user_favorite"
       address: "1430 Richmond Ave, Staten Island, NY 10314",
       longitude: -74.15901282328339,
-      latitude: 40.61389640713802
+      latitude: 40.61389640713802,
+      profile_image: "https://takestwoeggs.com/wp-content/uploads/2022/07/Hawaiian-Poke-Bowl-Takestwoeggs-Final-Photography-sq.jpg",
+      hero_image: "https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/E2A4S6FHDBC33NN4TFJGIMZ7NE.jpeg"
     },
     {
       UserId: userId,
@@ -74,7 +80,9 @@ const tagId = tags[0][0].id;
       popularity: 102, // the popularity will be based on another table named "user_favorite"
       address: "1447 Richmond Ave, Staten Island, NY 10314",
       longitude: -74.15826389821179,
-      latitude: 40.61250571654796
+      latitude: 40.61250571654796,
+      profile_image: "https://gimmedelicious.com/wp-content/uploads/2021/04/Images-8.jpg",
+      hero_image: "https://popmenucloud.com/cdn-cgi/image/width=1920,height=1920,format=auto,fit=scale-down/qrvmatis/2b160bd4-81e0-4e76-a9cb-2e4fc44be6b9.JPG"
     },
   ]);
 

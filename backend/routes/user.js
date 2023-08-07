@@ -111,6 +111,34 @@ router.get("/my_reviews", autheticateUser, async (req, res)=>{
     }
 });
 
+// update an user's info
+router.patch("/editUser", autheticateUser, async (req, res)=> {
+try {
+    // Fetch the current user from the database
+    const user = await User.findByPk(req.session.userId);
+
+    if (!user) {
+        return res.status(404).json({ message: "User not found" });
+    }
+
+    // Update the user's information
+    await user.update({
+        username: req.body.username ? req.body.username : user.username,
+        email: req.body.email ? req.body.email : user.email,
+        profileImage: req.body.profileImage ? req.body.profileImage : user.profileImage
+    });
+
+    return res.status(200).json({ message: "User information updated successfully" });
+    } catch (error) {
+    // Handle any errors
+    return res.status(500).json({
+        message: "An error occurred while updating user information",
+        errorMessage: error.message,
+        errorStack: error.stack,
+    });
+    }
+});
+
 // delete current user's account
 router.delete("/delete_user_account", autheticateUser, async (req, res)=>{
     try{
