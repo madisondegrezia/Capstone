@@ -94,7 +94,10 @@ router.post("/:restaurantId", autheticateUser, async(req, res)=>{
         });
 
         // add all post into the post_tag table
-        //await addPostTagsToTable(post, req.body.tags, res);
+        if (req.body.tags)
+        {
+            await addPostTagsToTable(post, req.body.tags, res);
+        }
 
         return res.status(201).json({
             message: "The post is created successfully",

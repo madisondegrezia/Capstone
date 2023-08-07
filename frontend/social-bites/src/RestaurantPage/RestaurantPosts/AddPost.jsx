@@ -25,7 +25,7 @@ export async function action({ request }) {
       body: JSON.stringify(postData),
     });
     if (response.ok) {
-      console.log(response);
+      alert("Your post is uploaded successfully!");
       return redirect("/restaurant");
     }
     const { errors } = await response.json();
