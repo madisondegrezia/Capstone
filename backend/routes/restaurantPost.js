@@ -200,11 +200,17 @@ router.get("/user/nearby_post/:radiusKm", userAllowPostion, async(req,res)=>{
             const nearbyRestaurantList = nearbyRestaurants.map(restaurant => restaurant.id);
             const postOfNearbyRestaurants = await Post.findAll({
                 where: {
-                RestaurantId: {
+                  RestaurantId: {
                     [Op.in]: nearbyRestaurantList,
+                  },
                 },
+                include: {
+                  model: Restaurant,
+                  attributes: ["restaurantName"],
                 },
-            });
+              });
+        
+        
 
           return res.status(200).json(postOfNearbyRestaurants)
         } else {
@@ -212,7 +218,7 @@ router.get("/user/nearby_post/:radiusKm", userAllowPostion, async(req,res)=>{
         }
     } catch(error){
         const errorMessage = error.message;
-        return res.status(500).json({message: "An error occured when fetching for restaurants", error: errorMessage});
+        return res.status(500).json({message: "An error occured when fetching for restaurants", error: errorMessage, errorStack: error.stack});
     }
 
 });
@@ -246,6 +252,10 @@ router.get("/user/interested_post", autheticateUser,async (req, res) => {
                     [Op.in]: userInterestedPostsId
                 }
             },
+            include: {
+                model: Restaurant,
+                attributes: ["restaurantName"],
+              }
         });
 
         if (posts.length === 0) {
@@ -361,6 +371,10 @@ router.get("/", async (req, res)=>{
                     [Op.ne]: null,
                   },
             },
+            include: {
+                model: Restaurant,
+                attributes: ["restaurantName"],
+              },
         });
         return res.status(200).json(posts);
     }catch(error){

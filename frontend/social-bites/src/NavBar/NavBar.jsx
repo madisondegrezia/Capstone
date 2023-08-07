@@ -16,6 +16,7 @@ import edit from "../icons/edit.png";
 import settings from "../icons/settings.png";
 import { Avatar, Dropdown } from "flowbite-react";
 import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from "react-icons/hi";
+import Search from "../Search/Search";
 
 
 export default function NavBar() {
@@ -45,16 +46,20 @@ export default function NavBar() {
               alt="logo"
             />
           </Link>
+          
           <div className="right">
             <div className="nav-menu">
               <ul className="nav-menu-list">
-                <li className="nav-menu-item">
+              <li className="nav-menu-item z-10">
+                  <Search/>
+                </li>
+                <li className="nav-menu-item pt-1">
                   <Link to="/aboutapp">About</Link>
                 </li>
-                <li className="nav-menu-item">
+                <li className="nav-menu-item pt-1">
                   <Link to="/faq">FAQ</Link>
                 </li>
-                <li className="nav-menu-item">
+                <li className="nav-menu-item pt-1">
                   <Link to="/contact">Contact Us</Link>
                 </li>
               </ul>

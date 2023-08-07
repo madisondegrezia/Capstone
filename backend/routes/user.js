@@ -139,7 +139,7 @@ router.get("/nearby_restaurant/:radiusKm", userAllowPostion, async (req, res) =>
         );
 
         if (nearbyRestaurants.length > 0) {
-          return res.json({ restaurants: nearbyRestaurants });
+          return res.json(nearbyRestaurants);
         } else {
           return res.status(404).json({ message: "No restaurant found" });
         }
