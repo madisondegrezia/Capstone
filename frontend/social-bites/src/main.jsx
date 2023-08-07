@@ -46,6 +46,13 @@ import addRestaurantAction from "./RestaurantSettings/AddRestaurant/AddRestauran
 import AddEvent from "./RestaurantSettings/AddEvent/AddEvent";
 import PastEvents from "./RestaurantSettings/PastEvents/PastEvents";
 import DeleteRestaurant from "./RestaurantSettings/DeleteRestaurant/DeleteRestaurant";
+import RestaurantPost, {
+  postLoader,
+} from "./RestaurantPage/RestaurantPosts/RestaurantPost";
+import AddPost, {
+  action as addPostAction,
+  loader as addPostLoader,
+} from "./RestaurantPage/RestaurantPosts/AddPost";
 
 const router = createBrowserRouter([
   {
@@ -182,8 +189,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/restaurant",
-        loader: load,
+        loader: postLoader,
         element: <RestaurantPage />,
+      },
+      {
+        path: "/post/new",
+        element: <AddPost />,
+        action: addPostAction,
+        loader: addPostLoader,
       },
       {
         path: "/restaurant/reviews",
