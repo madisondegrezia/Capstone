@@ -34,10 +34,17 @@ import ShareLocationRequired from "./routes/ShareLocationRequired";
 // ----- home page components ----- ///
 import RestaurantDisplay from "./Home/HomePageSubSection/RestaurantDisplay";
 import RestaurantEventDisplay from "./Home/HomePageSubSection/RestaurantEventDisplay";
-import { nearbyRestaurantLoader, mainSectionRestaurantLoader  } from "./Loader/loadRestaurants";
-import {allEventsLoader, nearbyEventLoader, interestedEventLoader} from "./Loader/loadRestaurantPosts"
+import {
+  nearbyRestaurantLoader,
+  mainSectionRestaurantLoader,
+} from "./Loader/loadRestaurants";
+import {
+  allEventsLoader,
+  nearbyEventLoader,
+  interestedEventLoader,
+} from "./Loader/loadRestaurantPosts";
 
-// ------ Search Page components ------ // 
+// ------ Search Page components ------ //
 import SearchPage from "./Search/SearchPage";
 import { searchRestaurantLoader } from "./Loader/loadRestaurants";
 
@@ -66,47 +73,46 @@ const router = createBrowserRouter([
         path: "/",
         loader: load,
         element: <Home />,
-        children:
-        [
+        children: [
           {
-            path:"/",
-            element: <RestaurantDisplay/>,
-            loader: mainSectionRestaurantLoader
+            path: "/",
+            element: <RestaurantDisplay />,
+            loader: mainSectionRestaurantLoader,
           },
           {
-            path:"/nearby_restaurants",
-            element:(
+            path: "/nearby_restaurants",
+            element: (
               <ShareLocationRequired>
-                <RestaurantDisplay/>
+                <RestaurantDisplay />
               </ShareLocationRequired>
-                ),
-            loader: nearbyRestaurantLoader
+            ),
+            loader: nearbyRestaurantLoader,
           },
           {
-            path:"/all_events",
-            element: <RestaurantEventDisplay/>,
-            loader: allEventsLoader
+            path: "/all_events",
+            element: <RestaurantEventDisplay />,
+            loader: allEventsLoader,
           },
           {
-            path:"/nearby_restaurant_post",
-            element: <RestaurantEventDisplay/>,
-            loader: nearbyEventLoader
+            path: "/nearby_restaurant_post",
+            element: <RestaurantEventDisplay />,
+            loader: nearbyEventLoader,
           },
           {
-            path:"/interested_restaurant_post",
-            element:(
+            path: "/interested_restaurant_post",
+            element: (
               <ProtectedRoute>
-                <RestaurantEventDisplay/>
+                <RestaurantEventDisplay />
               </ProtectedRoute>
             ),
-            loader: interestedEventLoader
-          }
-        ]
+            loader: interestedEventLoader,
+          },
+        ],
       },
       {
         path: "/search/:keywordTerm",
-        element: <SearchPage/>,
-        loader: searchRestaurantLoader
+        element: <SearchPage />,
+        loader: searchRestaurantLoader,
       },
       {
         path: "/login",
@@ -134,12 +140,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/user",
-        element: <UserPage />
+        element: <UserPage />,
       },
       {
         path: "/user/:id",
         // loader: userReviewsLoader,
-        element: <UserPage />
+        element: <UserPage />,
       },
       {
         path: "/user/settings",
@@ -201,7 +207,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/post/new",
-        element: <AddPost />,
+        element: (
+          <ProtectedRoute>
+            <AddPost />
+          </ProtectedRoute>
+        ),
         action: addPostAction,
         loader: addPostLoader,
       },
