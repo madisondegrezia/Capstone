@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 export async function loader() {
-  const postResponse = await fetch(`/api/restaurant_post`);
+  const postResponse = await fetch(`/api/restaurant_post/1`);
   const post = await postResponse.json();
   return { post };
 }
@@ -15,26 +15,26 @@ export async function loader() {
 export async function action({ request }) {
   let formData = await request.formData();
   let postData = Object.fromEntries(formData);
-  console.log(postData)
-    try {
-      const response = await fetch("/api/restaurant_post/1", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(postData),
-      });
-      if (response.ok) {
-        console.log(response)
-        return redirect("/restaurant");
-      }
-      //const { errors } = await response.json();
-      return null;
-    } catch (error) {
-      console.error(error);
-      console.log("AN ERROR!")
-      return "Whoops! Something went wrong";
+  console.log(postData);
+  try {
+    const response = await fetch("/api/restaurant_post/1", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    });
+    if (response.ok) {
+      console.log(response);
+      return redirect("/restaurant");
     }
+    const { errors } = await response.json();
+    return errors;
+  } catch (error) {
+    console.error(error);
+    console.log("AN ERROR!");
+    return "Whoops! Something went wrong";
+  }
 }
 
 function AddPost() {
@@ -59,7 +59,7 @@ function AddPost() {
           />
         </fieldset>
         <fieldset className="flex flex-col">
-          <label htmlFor="title">Content</label>
+          <label htmlFor="postContent">Content</label>
           <input
             type="text"
             name="postContent"
@@ -67,6 +67,15 @@ function AddPost() {
             className="border-4 focus:outline-none p-2"
           />
         </fieldset>
+        {/* <fieldset className="flex flex-col">
+          <label htmlFor="tags">Tags</label>
+          <input
+            type="text"
+            name="tags"
+            id="tags"
+            className="border-4 focus:outline-none p-2"
+          />
+        </fieldset> */}
         <input
           className="bg-red-500 hover:bg-red-600 text-white transition mt-4 p-3 rounded cursor-pointer "
           type="submit"

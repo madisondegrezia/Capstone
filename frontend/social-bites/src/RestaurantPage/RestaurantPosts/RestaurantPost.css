@@ -19,12 +19,12 @@
     rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 
- #content button {
+#content button {
   background-color: #fff;
   padding: 1.5em 40em 1.5em 1em;
   box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
     rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-} 
+}
 
 .line {
   width: 100%;
@@ -32,3 +32,11 @@
   border-bottom: 1px dashed #ddd;
   margin: 30px 0;
 }
+
+.post-img {
+  background-color: #e4e6eb;
+  border-radius: 50%;
+  padding: 0.7em;
+  width: 3em;
+}
+

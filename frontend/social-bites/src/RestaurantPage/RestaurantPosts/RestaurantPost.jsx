@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom/dist/umd/react-router-dom.develo
 import "./RestaurantPost.css";
 import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { MdOutlineRestaurantMenu } from "react-icons/md";
 
 export default function RestaurantPost() {
   const posts = useLoaderData();
@@ -21,12 +22,18 @@ export default function RestaurantPost() {
       </div>
       <div>
         {posts.map((post) => (
-          <div key={`${post.id}`} id="content">
-            <h2>{post.postTitle}</h2>
-            <p>{post.postContent}</p>
-            <button className="flex-end">
-              <FaTrash style={{ color: "#ef0b0b" }} />
-            </button>
+          <div key={`${post.id}`}>
+            {/* <div className='post-img'>
+              <MdOutlineRestaurantMenu size={25} />
+            </div> */}
+            <div id="content">
+              <h2>{post.postTitle}</h2>
+              <p>{post.postContent}</p>
+              <button className="flex-end">
+                <FaTrash style={{ color: "#ef0b0b" }} />
+              </button>
+            </div>
+
             <div className="line"></div>
           </div>
         ))}
