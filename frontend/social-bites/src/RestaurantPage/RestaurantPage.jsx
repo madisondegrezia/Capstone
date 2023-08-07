@@ -71,7 +71,7 @@ export default function RestaurantPage() {
           </nav>
 
           <div id="content">
-            <h1 className="text-4xl p-5 activity">Activity</h1>
+            <h1 className="text-4xl p-5 activity">Board</h1>
             <RestaurantPost />
           </div>
 
