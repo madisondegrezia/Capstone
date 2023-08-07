@@ -139,6 +139,8 @@ router.patch(
         address: latLng ? req.body.address : restaurantExist.address,
         latitude: latLng ? latLng.latitude : restaurantExist.latitude,
         longitude: latLng ? latLng.longitude : restaurantExist.longitude,
+        profileImage: req.body.profileImage ? req.body.profileImage : restaurantExist.profileImage,
+        heroImage: req.body.heroImage ? req.body.heroImage : restaurantExist.heroImage,
       });
 
       return res.status(201).json({ message: "It was updated successfully" });
