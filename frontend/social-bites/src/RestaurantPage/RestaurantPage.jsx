@@ -1,10 +1,14 @@
 import "./RestaurantPageStyle.css";
-import { GrContact } from 'react-icons/gr'
-import { MdOutlineRateReview, MdOutlineRestaurantMenu, MdStarRate } from 'react-icons/md'
+import { GrContact } from "react-icons/gr";
+import {
+  MdOutlineRateReview,
+  MdOutlineRestaurantMenu,
+  MdStarRate,
+} from "react-icons/md";
 import RestaurantCards from "../RestaurantCards/RestaurantCards";
+import RestaurantPost from "./RestaurantPosts/RestaurantPost";
 
 export default function RestaurantPage() {
-
 
   return (
     <>
@@ -33,25 +37,25 @@ export default function RestaurantPage() {
               <p className="res-name">Bob's Burgers</p>
               <li className="flex flex-row items-center justify-start px-5 py-5">
                 <div className="icons">
-                <MdStarRate size={ 25 } />
+                  <MdStarRate size={25} />
                 </div>
                 <a href="#">Rating</a>
               </li>
               <li className="flex flex-row items-center justify-start px-5 py-5">
                 <div className="icons">
-                <MdOutlineRateReview size={ 25 } />
+                  <MdOutlineRateReview size={25} />
                 </div>
                 <a href="restaurant/reviews">Reviews</a>
               </li>
               <li className="flex flex-row items-center justify-start px-5 py-5">
                 <div className="icons">
-                <MdOutlineRestaurantMenu size={ 25 } />
+                  <MdOutlineRestaurantMenu size={25} />
                 </div>
                 <a href="#">Menu</a>
               </li>
               <li className="flex flex-row items-center justify-start px-5 py-5">
                 <div className="icons">
-                <GrContact size={ 25 } />
+                  <GrContact size={25} />
                 </div>
                 <a href="#">Contact</a>
               </li>
@@ -68,63 +72,18 @@ export default function RestaurantPage() {
 
           <div id="content">
             <h1 className="text-4xl p-5 activity">Activity</h1>
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <div className="line"></div>
-
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <div className="line"></div>
-
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <div className="line"></div>
-
-            <h3>Lorem Ipsum Dolor</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <RestaurantPost />
           </div>
 
           <div id="suggestion-content">
-            <h2 className="text-3xl suggestions">More Restaurants like Bob's Burgers</h2>
-             <RestaurantCards />
+            <h2 className="text-3xl suggestions">
+              More Restaurants like Bob's Burgers
+            </h2>
+            {/* <RestaurantCards /> */}
           </div>
         </div>
       </div>
     </>
   );
 }
+
