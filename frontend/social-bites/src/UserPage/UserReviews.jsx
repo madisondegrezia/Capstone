@@ -60,7 +60,7 @@ export default function UserReviews () {
             <div className="review-box">
                 <div className="review-header flex flex-row justify-between">
                     <div className="res-detail-box flex flex-row gap-4">
-                        <img className="user-image-small w-14 h-14" src="/src/assets/default-avatar.webp"></img>
+                        <img className="user-image-small w-14 h-14" src={restaurant.profileImage}></img>
                         <div className="res-details">
                             <p>{restaurant.restaurantName}</p>
                             <p>{restaurant.address}</p>
