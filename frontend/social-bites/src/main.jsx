@@ -48,15 +48,18 @@ import {
 import SearchPage from "./Search/SearchPage";
 import { searchRestaurantLoader } from "./Loader/loadRestaurants";
 
-import RestaurantSettings from "./RestaurantSettings/RestaurantSettings";
-import AddRestaurant from "./RestaurantSettings/AddRestaurant/AddRestaurant";
+import RestaurantSettings, {
+  restaurantSettingsLoader,
+} from "./RestaurantSettings/RestaurantSettings";
+import AllRestaurants, {
+  allRestaurantsLoader,
+} from "./RestaurantSettings/AllRestaurants/AllRestaurants";
 import EditRestaurant, {
   editRestaurantAction,
 } from "./RestaurantSettings/EditRestaurant/EditRestaurant";
-import addRestaurantAction from "./RestaurantSettings/AddRestaurant/AddRestaurant";
-import AddEvent from "./RestaurantSettings/AddEvent/AddEvent";
-import PastEvents from "./RestaurantSettings/PastEvents/PastEvents";
-import DeleteRestaurant from "./RestaurantSettings/DeleteRestaurant/DeleteRestaurant";
+import DeleteRestaurant, {
+  deleteAction,
+} from "./RestaurantSettings/DeleteRestaurant/DeleteRestaurant";
 import RestaurantPost, {
   postLoader,
 } from "./RestaurantPage/RestaurantPosts/RestaurantPost";
@@ -64,6 +67,9 @@ import AddPost, {
   action as addPostAction,
   loader as addPostLoader,
 } from "./RestaurantPage/RestaurantPosts/AddPost";
+import UserAddRestaurant, {
+  userAddRestaurantAction,
+} from "./UserPage/UserAddRestaurant/UserAddRestaurant";
 
 const router = createBrowserRouter([
   {
@@ -150,6 +156,11 @@ const router = createBrowserRouter([
         element: <UserPage />,
       },
       {
+        path: "/addrestaurant",
+        action: userAddRestaurantAction,
+        element: <UserAddRestaurant />,
+      },
+      {
         path: "/user/settings",
         element: <User />,
         children: [
@@ -176,33 +187,29 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/restaurant/settings",
+        path: "/restaurant/:id/settings",
         element: <RestaurantSettings />,
+        loader: restaurantSettingsLoader,
         children: [
           {
-            path: "/restaurant/settings/add",
-            element: <AddRestaurant />,
-            action: addRestaurantAction,
+            path: "/restaurant/:id/settings/all",
+            element: <AllRestaurants />,
+            loader: allRestaurantsLoader,
           },
           {
-            path: "/restaurant/settings/edit",
+            path: "/restaurant/:id/settings/edit",
             element: <EditRestaurant />,
             action: editRestaurantAction,
           },
+
           {
-            path: "/restaurant/settings/addevent",
-            element: <AddEvent />,
-          },
-          {
-            path: "/restaurant/settings/pastevents",
-            element: <PastEvents />,
-          },
-          {
-            path: "/restaurant/settings/delete",
+            path: "/restaurant/:id/settings/delete",
             element: <DeleteRestaurant />,
+            action: deleteAction,
           },
         ],
       },
+
       {
         path: "/restaurant/:restaurantId",
         loader: postLoader,

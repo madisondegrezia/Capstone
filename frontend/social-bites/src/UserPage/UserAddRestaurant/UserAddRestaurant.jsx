@@ -1,7 +1,7 @@
-import "./AddRestaurant.css";
+import "./UserAddRestaurant.css";
 import { Form, redirect } from "react-router-dom";
 
-export default function AddRestaurant() {
+export default function UserAddRestaurant() {
   return (
     <div className="add-restaurant">
       <Form className="profile" method="post">
@@ -30,19 +30,20 @@ export default function AddRestaurant() {
   );
 }
 
-export async function addRestaurantAction({ request, params }) {
+export async function userAddRestaurantAction({ request, params }) {
+  console.log("adfasd");
   let formData = await request.formData();
   let jobData = Object.fromEntries(formData);
   // jobData.restaurantName;
   // jobData.address;
-  const response = await fetch("http://localhost:4000/api/restaurant", {
+  const response = await fetch("/api/restaurant", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(jobData),
   });
-  return redirect("/restaurant/settings");
+  return redirect("/");
 }
 
 // export const addRestaurantAction = async ({ request }) => {
