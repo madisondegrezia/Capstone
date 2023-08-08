@@ -16,7 +16,7 @@ export default function RestaurantCards() {
 
   data.forEach((item, index) => {
     list.push(
-      <Link to={`/`} className="card" key={index}>
+      <Link to={`/restaurant/${item.restaurantId}`} className="card" key={index}>
         <img className="cardImage" src={item.image.src} alt={item.image.alt} />
         <div className="cardName">{item.restaurantName}</div>
         <div className="cardType">{item.foodType}</div>
