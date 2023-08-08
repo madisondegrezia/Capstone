@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom/dist/umd/react-router-dom.development";
+import { useLoaderData, useParams, Link } from "react-router-dom/dist/umd/react-router-dom.development";
 import "./RestaurantReviews.css";
 import { FaCameraRetro, FaStar } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
@@ -12,10 +12,10 @@ export default function RestaurantReviews() {
   const [listReview, setListReview] = useState([]);
 
   
-  let { id } = useParams();
+  let{ id } = useParams();
   async function getReviews(id) {
       
-      const response = await fetch(`/api/review/1`);
+      const response = await fetch(`/api/review/${id}`);
       const reviews = await response.json();
       return reviews; // Return the review data
   }
@@ -62,12 +62,13 @@ export default function RestaurantReviews() {
       const userInf = await getUser(item.UserId);  // Assuming each review has a restaurantId
       console.log(userInf);
       return (
+        <>
           <div className="review-box w-full mb-2">
               <div className="review-header flex flex-row justify-between">
                   <div className="res-detail-box flex flex-row gap-4">
                       <img className="user-image-small w-16 h-16" src={userInf.profileImage}></img>
                       <div className="res-details flex flex-col justify-center text-2xl">
-                          <p className="text-6xl">{userInf.username}</p>
+                          <Link to={`/user/${item.UserId}`} className="text-6xl">{userInf.username}</Link>
                       </div>
                   </div>
                   <div className="rate flex flex-row">
@@ -78,6 +79,7 @@ export default function RestaurantReviews() {
                   {item.review}
               </p>
           </div>
+          </>
       );
   }));
   setListReview(list);
