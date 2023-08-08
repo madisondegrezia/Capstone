@@ -214,7 +214,7 @@ const router = createBrowserRouter([
             element: <RestaurantPost />,
           },
           {
-            path: "/restaurant/:restaurantId/reviews",
+            path: "/restaurant/:restaurantId/review",
             loader: reviewsLoader,
             element: <RestaurantReviews />,
           },

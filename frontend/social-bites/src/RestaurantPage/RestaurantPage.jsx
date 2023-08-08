@@ -7,7 +7,7 @@ import {
 } from "react-icons/md";
 import RestaurantCards from "../RestaurantCards/RestaurantCards";
 import RestaurantPost from "./RestaurantPosts/RestaurantPost";
-import { Outlet, useLocation } from "react-router-dom/dist/umd/react-router-dom.development";
+import { Outlet, useLocation, Link } from "react-router-dom/dist/umd/react-router-dom.development";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -62,15 +62,9 @@ export default function RestaurantPage() {
                 <p className="res-name">{restaurant.restaurantName}</p>
                 <li className="flex flex-row items-center justify-start px-5 py-5">
                   <div className="icons">
-                    <MdStarRate size={25} />
-                  </div>
-                  <a href="#">Rating</a>
-                </li>
-                <li className="flex flex-row items-center justify-start px-5 py-5">
-                  <div className="icons">
                     <MdOutlineRateReview size={25} />
                   </div>
-                  <a href="restaurant/reviews">Reviews</a>
+                  <Link to="review" >Reviews</Link>
                 </li>
                 <li className="flex flex-row items-center justify-start px-5 py-5">
                   <div className="icons">
@@ -95,6 +89,12 @@ export default function RestaurantPage() {
               </ul>
             </nav>
             <div id="contentz">
+              { location.pathname === `/restaurant/${restaurantId}/review` ? <Link
+            to={`/restaurant/${restaurantId}/review/new`}
+            className="bg-red-500 rounded text-white px-4 py-2 hover:bg-red-600 hover:text-white transition mb-3"
+          >
+            + Add Review
+          </Link> : null}
               <Outlet />
             </div>
             {location.pathname === `/restaurant/${restaurantId}` ? (

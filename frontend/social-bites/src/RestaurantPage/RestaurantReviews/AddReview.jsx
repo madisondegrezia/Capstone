@@ -10,6 +10,7 @@ import {
     let formData = await request.formData();
     let postData = Object.fromEntries(formData);
     console.log(postData);
+    console.log(params.restaurantId)
     try {
       // /api/restaurants/1/posts
       const response = await fetch(
