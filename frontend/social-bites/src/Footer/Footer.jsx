@@ -12,7 +12,7 @@ export default function Footer() {
                 <Link to="contact">Contact Us</Link>
             </div>
             <div className="bottom-footer">
-                <img className="footer-icon" src="./src/assets/icon.png" />
+                <img className="footer-icon" src="/src/assets/icon.png" />
                 <p> @SocialBites, Inc</p>
             </div>
         </div>
