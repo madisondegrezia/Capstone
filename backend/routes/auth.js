@@ -45,7 +45,12 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     // find an account in the db table if there is one
-    const user = await User.findOne({ where: { email: req.body.email } });
+    const user = await User.findOne({ where: { email: req.body.email },
+      include: {
+        model: Restaurant,
+        attributes: ["id", "restaurantName"]
+      }
+    });
 
     if (user === null) {
       return res.status(401).json({
@@ -63,6 +68,8 @@ router.post("/login", async (req, res) => {
           user: {
             username: user.username,
             email: user.email,
+            hasRestaurant: user.hasRestaurant,
+            restaurants:user.Restaurants,
           },
         });
       } else {
