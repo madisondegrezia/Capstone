@@ -6,19 +6,23 @@ const { userAllowPostion } = require("../middleware/userAllowPostion");
 const { Op,QueryTypes } = require("sequelize");
 
 
-// get all post of a restaurant in the db based on their restaurantId
+// Get all posts of a restaurant in the db based on their restaurantId
 router.get("/:restaurantId", async (req, res)=>{
     const restaurantId = parseInt(req.params.restaurantId, 10);
     try{
-        const restaurants = await Post.findAll({
+        // Find all posts where Id is equal to our parsed parameter
+        const posts = await Post.findAll({
             where: {
                 RestaurantId: restaurantId
             }
         });
 
-        return res.status(200).json(restaurants);
+        // If all okay, return response of all posts
+        return res.status(200).json(posts);
 
-    }catch(error){
+    // Catch errors during runtime
+    } catch(error) {
+        // Log a message
         const errorMessage = error.message;
         return res.status(500).json({
             message: "An error occured when fetching for restaurants",

@@ -189,14 +189,17 @@ a.article:hover {
     CONTENT STYLE
 ----------------------------------------------------- */
 
-/* #content {
-    width: 100%;
-    padding: 10px;
+#contentz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    padding: 1em;
     min-height: 100vh;
     transition: all 0.3s;
     background-color: #f2f2f2;
 }
-
+/*
 #suggestion-content {
     width: 30%;
     min-height: 100vh;
@@ -214,7 +217,7 @@ a.article:hover {
     background-color: #fff;
     padding: 1.5em 1em 1.5em 1em;
     box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-} */
+}
 
 /* ---------------------------------------------------
     MEDIAQUERIES
