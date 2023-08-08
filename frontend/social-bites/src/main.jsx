@@ -64,6 +64,7 @@ import AddPost, {
 } from "./RestaurantPage/RestaurantPosts/AddPost";
 import DeletePost, {
   action as deletePostAction} from "./RestaurantPage/RestaurantPosts/DeletePost";
+  import AddReview, { action as addReviewAction} from "./RestaurantPage/RestaurantReviews/AddReview";
 
 const router = createBrowserRouter([
   {
@@ -216,7 +217,17 @@ const router = createBrowserRouter([
             path: "/restaurant/:restaurantId/reviews",
             loader: reviewsLoader,
             element: <RestaurantReviews />,
-          }
+          },
+          {
+            path: "/restaurant/:restaurantId/review/new",
+            element: (
+            <ProtectedRoute>
+              <AddReview />
+            </ProtectedRoute>
+          ),
+          action: addReviewAction,
+          // loader: addPostLoader,
+        }
         ]
       },
       {

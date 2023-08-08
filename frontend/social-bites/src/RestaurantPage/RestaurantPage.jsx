@@ -106,7 +106,7 @@ export default function RestaurantPage() {
               </div>
             ) : null}
           </div>
-        </>
+          </>
       ) : (
         <p>Loading...</p>
       )}
