@@ -21,6 +21,7 @@ import Search from "../Search/Search";
 
 export default function NavBar() {
   const { currentUser, logout } = useContext(AuthContext);
+  console.log(currentUser)
   const navigate = useNavigate();
 
   const handleLogout = (e) => {
