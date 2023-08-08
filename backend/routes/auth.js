@@ -33,7 +33,7 @@ router.post("/signup", async (req, res) => {
         .status(422)
         .json({ errors: "this username is being used by another user" });
     }
-    const errMessage = err.message
+    const errMessage = err.message;
     res.status(500).json({
       message: "Error occured while creating user",
       error: errMessage,
@@ -71,8 +71,8 @@ router.post("/login", async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ 
-        message: "An error occured during the login process" 
+    res.status(500).json({
+      message: "An error occured during the login process",
     });
   }
 });
@@ -93,10 +93,10 @@ router.delete("/logout", (req, res) => {
 router.get("/current_user", async (req, res) => {
   if (req.session.userId) {
     const user = await User.findOne({
-      where: {id: req.session.userId},
+      where: { id: req.session.userId },
       include: {
         model: Restaurant,
-        attributes: ["id", "restaurantName"]
+        attributes: ["id", "restaurantName"],
       },
     });
     return res.status(200).json({
@@ -108,7 +108,6 @@ router.get("/current_user", async (req, res) => {
         restaurants: user.Restaurants,
       },
     });
-    
   } else {
     return res.status(401).json({ user: null });
   }

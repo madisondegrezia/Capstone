@@ -60,8 +60,10 @@ import RestaurantPost, {
 } from "./RestaurantPage/RestaurantPosts/RestaurantPost";
 import AddPost, {
   action as addPostAction,
-  loader as addPostLoader,
+  // loader as addPostLoader,
 } from "./RestaurantPage/RestaurantPosts/AddPost";
+import DeletePost, {
+  action as deletePostAction} from "./RestaurantPage/RestaurantPosts/DeletePost";
 
 const router = createBrowserRouter([
   {
@@ -218,14 +220,23 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: "/post/new",
+        path: "/restaurant/:restaurantId/post/new",
         element: (
           <ProtectedRoute>
             <AddPost />
           </ProtectedRoute>
         ),
         action: addPostAction,
-        loader: addPostLoader,
+        // loader: addPostLoader,
+      },
+      {
+        path: "restaurant_post/delete/:postId",
+        element: (
+          <ProtectedRoute>
+            <DeletePost />
+          </ProtectedRoute>
+        ),
+        action: deletePostAction,
       },
       {
         path: "/restaurant/reviews",
