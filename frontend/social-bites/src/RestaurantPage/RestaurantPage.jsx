@@ -100,7 +100,7 @@ export default function RestaurantPage() {
             {location.pathname === `/restaurant/${restaurantId}` ? (
               <div id="suggestion-content">
                 <h2 className="text-3xl suggestions">
-                  More Restaurants like Bob's Burgers
+                  Similar Restaurants
                 </h2>
                 {/* <RestaurantCards /> */}
               </div>
