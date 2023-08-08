@@ -34,7 +34,6 @@ export default function RestaurantPage() {
 
   const location = useLocation();
 
-
   return (
     <>
       {restaurant ? (
@@ -95,18 +94,17 @@ export default function RestaurantPage() {
                 </li>
               </ul>
             </nav>
-
-          <div id="contentz">
-            
-            <Outlet />
-          </div>
-
-          {location.pathname == "/restaurant/:id" ? <div id="suggestion-content">
-            <h2 className="text-3xl suggestions">
-              More Restaurants like Bob's Burgers
-            </h2>
-            {/* <RestaurantCards /> */}
-          </div> : null}
+            <div id="contentz">
+              <Outlet />
+            </div>
+            {location.pathname === `/restaurant/${restaurantId}` ? (
+              <div id="suggestion-content">
+                <h2 className="text-3xl suggestions">
+                  More Restaurants like Bob's Burgers
+                </h2>
+                {/* <RestaurantCards /> */}
+              </div>
+            ) : null}
           </div>
         </>
       ) : (
