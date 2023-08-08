@@ -4,13 +4,22 @@ import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { useParams } from "react-router-dom";
-
+import { useFetcher } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
 
 export default function RestaurantPost() {
   const { restaurantId } = useParams();
   // take restaurantId as a param for loader
   const posts = useLoaderData(restaurantId);
 
+  //delete post
+  const [isEditing, setIsEditing] = useState(false);
+  const inputRef = useRef(null);
+  const fetcher = useFetcher();
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [isEditing]);
 
   return (
     <>
@@ -27,16 +36,29 @@ export default function RestaurantPost() {
       </div>
       <div>
         {posts.map((post) => (
-          <div key={`${post.id}`} className='flex flex-col items-center'>
-            <div className='post-card post-card-shadow'>
+          <div key={`${post.id}`} className="flex flex-col items-center">
+            <div className="post-card post-card-shadow">
               <div className="post-img">
                 <MdOutlineRestaurantMenu size={25} />
               </div>
               <h2 className="text-xl mb-2">{post.postTitle}</h2>
               <p>{post.postContent}</p>
-              <button className="flex-end">
-                <FaTrash style={{ color: "#ef0b0b" }} />
-              </button>
+              {/* delete */}
+              <fetcher.Form
+                method="post"
+                action={`/restaurant_post/delete/${post.id}`}
+                onSubmit={(event) => {
+                  if (
+                    !confirm("Please confirm you want to delete this record.")
+                  ) {
+                    event.preventDefault();
+                  }
+                }}
+              >
+                <button className="flex-end">
+                  <FaTrash style={{ color: "#ef0b0b" }} />
+                </button>
+              </fetcher.Form>
             </div>
 
             <div className="line"></div>
@@ -48,7 +70,9 @@ export default function RestaurantPost() {
 }
 
 export const postLoader = async (restaurantId) => {
-  console.log(restaurantId.params.restaurantId)
-  const res = await fetch(`/api/restaurant_post/${restaurantId.params.restaurantId}`);
+  console.log(restaurantId.params.restaurantId);
+  const res = await fetch(
+    `/api/restaurant_post/${restaurantId.params.restaurantId}`
+  );
   return res.json();
 };
