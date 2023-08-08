@@ -27,7 +27,7 @@ export default function RestaurantPost() {
       </div>
       <div>
         {posts.map((post) => (
-          <div key={`${post.id}`}>
+          <div key={`${post.id}`} className='flex flex-col items-center'>
             <div className='post-card post-card-shadow'>
               <div className="post-img">
                 <MdOutlineRestaurantMenu size={25} />

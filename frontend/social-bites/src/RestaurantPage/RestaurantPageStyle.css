@@ -1,55 +1,66 @@
 .res-hero {
-    height: 35vh;
-    object-fit: cover;
-    width: 100vw;
-  }
+  height: 35vh;
+  object-fit: cover;
+  width: 100vw;
+}
 
-  /*
+.profile-image {
+  border-radius: 50%;
+  border: 4px solid rgb(255, 255, 255);
+  width: 15em;
+  height: 15em;
+  object-fit: cover;
+  align-self: center;
+  margin-top: 0.6em;
+  margin-top: -100px;
+}
+
+/*
     DEMO STYLE
 */
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+  font-family: "Poppins", sans-serif;
+  background: #fafafa;
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
 }
 
 a,
 a:hover,
 a:focus {
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.3s;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
 }
 
 .navbar {
-    padding: 15px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 15px 10px;
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 40px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
+  box-shadow: none;
+  outline: none !important;
+  border: none;
 }
 
 .line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 30px 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 30px 0;
 }
 
 /* ---------------------------------------------------
@@ -57,132 +68,121 @@ a:focus {
 ----------------------------------------------------- */
 
 .wrapper {
-    display: flex;
-    width: 100%;
-    align-items: stretch;
+  display: flex;
+  width: 100%;
+  align-items: stretch;
 }
 
 #sidebar {
-    min-width: 300px;
-    max-width: 300px;
-    background: rgb(223, 74, 74);
-    background-color: #fff;
-    color: #fff;
-    color: #121212;
-    transition: all 0.3s;
-    display: flex;
-    flex-direction: column;
-    z-index: 3;
-    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  min-width: 300px;
+  max-width: 300px;
+  background: rgb(223, 74, 74);
+  background-color: #fff;
+  color: #fff;
+  color: #121212;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }
 
 #sidebar.active {
-    margin-left: -250px;
+  margin-left: -250px;
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
-    background: #ca2208;
-    background: #fff;
-    color: #121212;
-}
-
-.profile-image {
-    border-radius: 50%;
-    border: 4px solid rgb(255, 255, 255);
-    width: 15em;
-    object-fit: cover;
-    align-self: center;
-    margin-top: .6em;
-    margin-top: -100px;
+  padding: 20px;
+  background: #ca2208;
+  background: #fff;
+  color: #121212;
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+  padding: 20px 0;
+  border-bottom: 1px solid #47748b;
 }
 
-
 #sidebar ul p {
-    color: #fff;
-    color: #121212;
-    padding: 10px;
+  color: #fff;
+  color: #121212;
+  padding: 10px;
 }
 
 #sidebar ul li {
-    width: 100%;
+  width: 100%;
 }
 
 #sidebar ul li a {
-    padding: .3em;
-    font-size: 1.3em;
-    display: block;
+  padding: 0.3em;
+  font-size: 1.3em;
+  display: block;
 }
 
 #sidebar ul li:hover {
-    background: #f0f2f5;
+  background: #f0f2f5;
 }
 
-#sidebar ul li.active>a,
+#sidebar ul li.active > a,
 a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
+  color: #fff;
+  background: #6d7fcc;
 }
 
 .icons {
-    background-color: #e4e6eb;
-    border-radius: 50%;
-    padding: .7em;
-    margin-right: .4em;
+  background-color: #e4e6eb;
+  border-radius: 50%;
+  padding: 0.7em;
+  margin-right: 0.4em;
 }
 
 a[data-toggle="collapse"] {
-    position: relative;
+  position: relative;
 }
 
 .dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
 }
 
 ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #6d7fcc;
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: #6d7fcc;
 }
 
 ul.CTAs {
-    padding: 20px;
+  padding: 20px;
 }
 
 ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
+  text-align: center;
+  font-size: 0.9em !important;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 a.download {
-    background: #fff;
-    color: #7386D5;
+  background: #fff;
+  color: #7386d5;
 }
 
 a.article,
 a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
+  background: #6d7fcc !important;
+  color: #fff !important;
 }
 
 .res-name {
-    font-size: 2em;
-    background-color: rgb(197, 26, 26);
-    background-color: #fff;
-    color: black;
-    text-align: center;
+  font-size: 2em;
+  background-color: rgb(197, 26, 26);
+  background-color: #fff;
+  color: black;
+  text-align: center;
 }
 
 /* ---------------------------------------------------
@@ -221,27 +221,26 @@ a.article:hover {
 ----------------------------------------------------- */
 
 @media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
-    }
-    #sidebar.active {
-        margin-left: 0;
-    }
-    #sidebarCollapse span {
-        display: none;
-    }
+  #sidebar {
+    margin-left: -250px;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #sidebarCollapse span {
+    display: none;
+  }
 }
 
 .wrapper1 {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-
 .activity {
-    background-color: #fff;
-    width: 100%;
-    border-radius: .1em;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 0.1em;
 
-    margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }

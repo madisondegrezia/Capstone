@@ -62,6 +62,8 @@ import AddPost, {
   action as addPostAction,
   // loader as addPostLoader,
 } from "./RestaurantPage/RestaurantPosts/AddPost";
+import DeletePost, {
+  action as deletePostAction} from "./RestaurantPage/RestaurantPosts/DeletePost";
 
 const router = createBrowserRouter([
   {
@@ -214,6 +216,15 @@ const router = createBrowserRouter([
         ),
         action: addPostAction,
         // loader: addPostLoader,
+      },
+      {
+        path: "restaurant_post/delete/:postId",
+        element: (
+          <ProtectedRoute>
+            <DeletePost />
+          </ProtectedRoute>
+        ),
+        action: deletePostAction,
       },
       {
         path: "/restaurant/reviews",
