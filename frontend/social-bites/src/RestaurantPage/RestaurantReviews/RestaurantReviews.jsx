@@ -1,62 +1,92 @@
-import { useLoaderData } from "react-router-dom/dist/umd/react-router-dom.development";
+import { useLoaderData, useParams } from "react-router-dom/dist/umd/react-router-dom.development";
 import "./RestaurantReviews.css";
-import { Link } from "react-router-dom";
-import { FaQuoteLeft } from "react-icons/fa";
+import { FaCameraRetro, FaStar } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
 
 export default function RestaurantReviews() {
   const reviews = useLoaderData();
+  console.log(reviews);
+  
 
-  return (
-    <>
-      <div className="main-wrap">
-        <div className="wrapper1">
-          <div className="restaurant-page">
-            <img
-              className="res-hero"
-              src="https://www.deputy.com/uploads/2018/10/The-Most-Popular-Menu-Items-That-You-should-Consider-Adding-to-Your-Restaurant_Content-image3-min-1024x569.png"
-            ></img>
+  const [userInfo, setUserInfo] = useState(null);
+  const [listReview, setListReview] = useState([]);
 
-            <div className="res-content"></div>
+  
+  let { id } = useParams();
+  async function getReviews(id) {
+      
+      const response = await fetch(`/api/review/1`);
+      const reviews = await response.json();
+      return reviews; // Return the review data
+  }
+
+
+// -------------------------Section for setting rating stars ---------------
+
+  function getStars(numStars) {
+      const num = Math.round(numStars);
+      const stars = [];
+      for(let i = 1; i <= num; i++) {
+          stars.push(<FaStar size={30} style={{color: "orange"}}/>)
+      }
+      return stars;
+  }
+
+// -------------------------Section for getting associated restaurant ---------------
+
+  async function getUser(Id) {
+      try {
+          const response = await fetch(`/api/user/get_user/1`);
+          const restaurant = await response.json();
+          console.log(restaurant);
+          return restaurant;
+      } catch (error) {
+          console.error("Error fetching user:", error);
+          return null;
+      }
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+        await getReviews(id);  // Fetch the reviews but don't set the state here
+        await mapReviews();   // Map over the reviews and set the state with JSX elements
+    }
+    fetchData();
+}, []);
+  
+  async function mapReviews() {
+
+  const data = await getReviews(id);
+  
+  const list = await Promise.all(reviews.map(async (item, index) => {
+      const userInf = await getUser(item.UserId);  // Assuming each review has a restaurantId
+      console.log(userInf);
+      return (
+          <div className="review-box w-full">
+              <div className="review-header flex flex-row justify-between">
+                  <div className="res-detail-box flex flex-row gap-4">
+                      <img className="user-image-small w-16 h-16" src={userInf.profileImage}></img>
+                      <div className="res-details flex flex-col justify-center text-2xl">
+                          <p className="text-6xl">{userInf.username}</p>
+                      </div>
+                  </div>
+                  <div className="rate flex flex-row">
+                      {...getStars(item.rate)}
+                  </div>
+              </div>
+              <p className="review-body">
+                  {item.review}
+              </p>
           </div>
-        </div>
-        <div className="wrapper">
-          <nav id="sidebar">
-            <img
-              className="profile-image"
-              src="https://www.auntminnie.com/user/images/content_images/nws_rad/2015_01_28_12_24_19_220_hamburger_200.jpg"
-            ></img>
-            {/*<div class="sidebar-header">
-            <h3>Restaurant Name</h3>
-        </div>*/}
+      );
+  }));
+  setListReview(list);
+}
+  return <>{ 1 ? listReview : (<p>Loading...</p>)}</>;
 
-            <ul className="list-unstyled components">
-              <p className="res-name">Bob`s Burgers</p>
-              <li>
-                <Link href="#">Rating</Link>
-              </li>
-              <li>
-                <Link href="restaurant/reviews">Reviews</Link>
-              </li>
-              <li>
-                <Link href="#">Menu</Link>
-              </li>
-              <li>
-                <Link href="#">Contact</Link>
-              </li>
-            </ul>
 
-            <ul className="list-unstyled CTAs">
-              <li>
-                <Link href="/" className="article">
-                  Back to home
-                </Link>
-              </li>
-            </ul>
-          </nav>
-
-          <div>
+          {/* <div>
             <div className="ranking">
-              <div></div>
               <h1 className="review-ranking">
                 Bob`s Burgers{" "}
                 <span>
@@ -83,30 +113,12 @@ export default function RestaurantReviews() {
                 </div>
               </>
             ))}
-          </div>
-        </div>
-      </div>
-    </>
-  );
+          </div> */}
+    
 }
 
-export const reviewsLoader = async () => {
-  const res = await fetch("/api/review/1");
+export const reviewsLoader = async (restaurantId) => {
+  console.log(restaurantId.params.restaurantId);
+  const res = await fetch(`/api/review/${restaurantId.params.restaurantId}`);
   return res.json();
 };
-//   const res = await await fetch("/api/review/1"); // Assuming that something() returns Link promise
-//   const user = await fetch("/api/user/get_user/1"); // Assuming that somethingElse() returns a promise
-
-//   const resJson = await res.json();
-//   const userJson = await user.json();
-
-//   const result = resJson.allReviews.map((item, index) => {
-//     return {
-//       ...item,
-//       username: userJson[index].username,
-//     };
-//   });
-//   console.log(result);
-//   return result;
-// };
-//

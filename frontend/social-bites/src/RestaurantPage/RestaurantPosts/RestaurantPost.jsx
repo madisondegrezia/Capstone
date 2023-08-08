@@ -14,6 +14,7 @@ export default function RestaurantPost() {
 
   return (
     <>
+    <h1 className="text-4xl p-5 activity">Board</h1>
       <div className="flex justify-between">
         <div></div>
         <div className="mr-2 mb-4">

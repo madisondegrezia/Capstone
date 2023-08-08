@@ -7,8 +7,12 @@ import {
 } from "react-icons/md";
 import RestaurantCards from "../RestaurantCards/RestaurantCards";
 import RestaurantPost from "./RestaurantPosts/RestaurantPost";
+import { Outlet, useLocation } from "react-router-dom/dist/umd/react-router-dom.development";
 
 export default function RestaurantPage() {
+
+  const location = useLocation();
+
 
   return (
     <>
@@ -23,7 +27,7 @@ export default function RestaurantPage() {
             <div className="res-content"></div>
           </div>
         </div>
-        <div className="wrapper">
+        <div className="wrapper flex flex-row w-screen">
           <nav id="sidebar">
             <img
               className="profile-image"
@@ -70,17 +74,17 @@ export default function RestaurantPage() {
             </ul>
           </nav>
 
-          <div id="content">
-            <h1 className="text-4xl p-5 activity">Board</h1>
-            <RestaurantPost />
+          <div id="contentz">
+            
+            <Outlet />
           </div>
 
-          <div id="suggestion-content">
+          {location.pathname == "/restaurant/:id" ? <div id="suggestion-content">
             <h2 className="text-3xl suggestions">
               More Restaurants like Bob's Burgers
             </h2>
             {/* <RestaurantCards /> */}
-          </div>
+          </div> : null}
         </div>
       </div>
     </>
