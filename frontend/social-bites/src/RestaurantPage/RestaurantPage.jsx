@@ -38,7 +38,7 @@ export default function RestaurantPage() {
   return (
     <>
       {restaurant ? (
-        <div className="main-wrap">
+        <><div className="main-wrap">
           <div className="wrapper1">
             <div className="restaurant-page">
               <img
@@ -107,7 +107,7 @@ export default function RestaurantPage() {
             {/* <RestaurantCards /> */}
           </div> : null}
           </div>
-        </div>
+          </>
       ) : (
         <p>Loading...</p>
       )}

@@ -62,7 +62,7 @@ export default function RestaurantReviews() {
       const userInf = await getUser(item.UserId);  // Assuming each review has a restaurantId
       console.log(userInf);
       return (
-          <div className="review-box w-full">
+          <div className="review-box w-full mb-2">
               <div className="review-header flex flex-row justify-between">
                   <div className="res-detail-box flex flex-row gap-4">
                       <img className="user-image-small w-16 h-16" src={userInf.profileImage}></img>
