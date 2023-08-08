@@ -38,6 +38,7 @@ export default function RestaurantPage() {
   return (
     <>
       {restaurant ? (
+      <>
         <div className="main-wrap">
           <div className="wrapper1">
             <div className="restaurant-page">
@@ -55,7 +56,7 @@ export default function RestaurantPage() {
           <nav id="sidebar">
             <img
               className="profile-image"
-              src="https://www.auntminnie.com/user/images/content_images/nws_rad/2015_01_28_12_24_19_220_hamburger_200.jpg"
+              src={restaurant.profileImage}
             ></img>
 
               <ul className="list-unstyled components">
@@ -107,7 +108,7 @@ export default function RestaurantPage() {
             {/* <RestaurantCards /> */}
           </div> : null}
           </div>
-        </div>
+        </>
       ) : (
         <p>Loading...</p>
       )}
