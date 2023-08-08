@@ -70,6 +70,9 @@ import AddPost, {
 import DeletePost, {
   action as deletePostAction,
 } from "./RestaurantPage/RestaurantPosts/DeletePost";
+import UserAddRestaurant, {
+  userAddRestaurantAction,
+} from "./UserPage/UserAddRestaurant/UserAddRestaurant";
 
 const router = createBrowserRouter([
   {
