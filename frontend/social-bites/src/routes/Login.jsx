@@ -20,46 +20,60 @@ function Login() {
   };
 
   return (
-    <div className="img-login h-screen flex items-center justify-center">
+    <div className="img-signup h-screen flex flex-col items-center justify-center">
+
       <Form
         onSubmit={handleSubmit}
-        className="selection:bg-red-200 flex flex-col gap-2 flex items-center"
+        className="flex flex-col gap-2 flex items-center"
       >
-        <div className="border-solid rounded-xl p-10 mt-8 shadow-2xl background-color">
-          <h1 className="text-3xl mt-5 text-center flex flex-row items-center justify-center">
-            Login <FaUser />
-          </h1>
+          <Link to="/" className="flex h-full">
+            <img
+              className="logo h-16 border-black"
+              src="/src/assets/socialbites-logo.png"
+              alt="logo"
+              style={{filter: "grayscale(100%) brightness(1000%)"}}
+            />
+          </Link>
+            
+
+        <div className="border-solid rounded-lg p-10 mt-8 shadow-2xl background-color w-96">
+          <h2 className="text-2xl mt-5 w-32 font-medium ml-5" style={{fontFamily: "Dosis"}}>
+            Login 
+          </h2>
+          <hr className="ml-5 w-12 border-b-4 rounded mt-3" style={{borderColor: "#EA5455"}}></hr>
+          <hr className="mb-5" style={{borderColor: "rgba(100,100,100, 0.1)"}}></hr>
 
           {authError && <div className="text-red-500">{authError}</div>}
 
-          <fieldset className="flex flex-col">
-            <label htmlFor="title">Email</label>
+          <fieldset className="flex flex-col my-5">
             <input
               type="email"
               name="email"
               id="email"
-              className="border-2 rounded-md bg-red-100 focus:outline-none p-2"
+              placeholder="Email"
+              className="auth-input-field border-1 rounded-full focus:outline-none px-5 "
             />
           </fieldset>
-          <fieldset className="flex flex-col">
-            <label htmlFor="company">Password</label>
+          <fieldset className="flex flex-col my-5">
             <input
               type="password"
               name="password"
               id="password"
-              className="border-2 rounded-md bg-red-100 focus:outline-none p-2"
+              placeholder="Password"
+              className="auth-input-field border-1 rounded-full focus:outline-none px-5"
             />
           </fieldset>
           <div className="text-center">
             <input
-              className="bg-red-700 hover:bg-red-800 text-white rounded-md transition mt-4 py-2 cursor-pointer w-32"
+              className="bg-red-700 hover:bg-red-800 text-white rounded-full transition mb-4 py-2.5 cursor-pointer w-72"
               type="submit"
               value="Login"
+              style={{background: "#EA5455"}}
+              onMouseOver={(e) => (e.target.style.backgroundColor = "#f2a19b")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "#EA5455")}
             ></input>
           </div>
-          <Link to="/signup" className="flex mr-3 mt-3 underline text-white ">
-            Do not have an account?
-          </Link>
+          <p>Don&apos;t have an account? <Link to="/signup" style={{color: "#EA5455", textDecoration: "underline"}}>Sign here</Link></p>
         </div>
       </Form>
     </div>
