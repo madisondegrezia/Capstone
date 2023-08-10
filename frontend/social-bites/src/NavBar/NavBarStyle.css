@@ -78,3 +78,7 @@
 }
 
 /* Drop down menu code */
+.dropdown-list {
+  display: flex;
+  align-items: center;
+}

@@ -48,13 +48,15 @@ import {
 import SearchPage from "./Search/SearchPage";
 import { searchRestaurantLoader } from "./Loader/loadRestaurants";
 
-import RestaurantSettings from "./RestaurantSettings/RestaurantSettings";
-import AddRestaurant from "./RestaurantSettings/AddRestaurant/AddRestaurant";
-import EditRestaurant from "./RestaurantSettings/EditRestaurant/EditRestaurant";
-import addRestaurantAction from "./RestaurantSettings/AddRestaurant/AddRestaurant";
-import AddEvent from "./RestaurantSettings/AddEvent/AddEvent";
-import PastEvents from "./RestaurantSettings/PastEvents/PastEvents";
-import DeleteRestaurant from "./RestaurantSettings/DeleteRestaurant/DeleteRestaurant";
+import RestaurantSettings, {
+  restaurantSettingsLoader,
+} from "./RestaurantSettings/RestaurantSettings";
+
+import EditRestaurant, { editRestaurantAction } from "./RestaurantSettings/EditRestaurant/EditRestaurant";
+
+import DeleteRestaurant, {
+  deleteAction,
+} from "./RestaurantSettings/DeleteRestaurant/DeleteRestaurant";
 import RestaurantPost, {
   postLoader,
 } from "./RestaurantPage/RestaurantPosts/RestaurantPost";
@@ -63,8 +65,15 @@ import AddPost, {
   // loader as addPostLoader,
 } from "./RestaurantPage/RestaurantPosts/AddPost";
 import DeletePost, {
-  action as deletePostAction} from "./RestaurantPage/RestaurantPosts/DeletePost";
-  import AddReview, { action as addReviewAction} from "./RestaurantPage/RestaurantReviews/AddReview";
+  action as deletePostAction,
+} from "./RestaurantPage/RestaurantPosts/DeletePost";
+import AddReview, {
+  action as addReviewAction,
+} from "./RestaurantPage/RestaurantReviews/AddReview";
+import UserAddRestaurant, {
+  userAddRestaurantAction,
+} from "./UserPage/UserAddRestaurant/UserAddRestaurant";
+import AllRestaurants, { allRestaurantsLoader } from "./RestaurantSettings/AllRestaurants/AllRestaurants";
 
 const router = createBrowserRouter([
   {
@@ -151,6 +160,11 @@ const router = createBrowserRouter([
         element: <UserPage />,
       },
       {
+        path: "/addrestaurant",
+        action: userAddRestaurantAction,
+        element: <UserAddRestaurant />,
+      },
+      {
         path: "/user/settings",
         element: <User />,
         children: [
@@ -177,29 +191,25 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/restaurant/settings",
+        path: "/restaurant/:id/settings",
         element: <RestaurantSettings />,
+        loader: restaurantSettingsLoader,
         children: [
           {
-            path: "/restaurant/settings/add",
-            element: <AddRestaurant />,
-            action: <addRestaurantAction />,
+            path: "/restaurant/:id/settings/all",
+            element: <AllRestaurants />,
+            loader: allRestaurantsLoader,
           },
           {
-            path: "/restaurant/settings/edit",
+            path: "/restaurant/:id/settings/edit",
             element: <EditRestaurant />,
+            action: editRestaurantAction,
           },
+
           {
-            path: "/restaurant/settings/addevent",
-            element: <AddEvent />,
-          },
-          {
-            path: "/restaurant/settings/pastevents",
-            element: <PastEvents />,
-          },
-          {
-            path: "/restaurant/settings/delete",
+            path: "/restaurant/:id/settings/delete",
             element: <DeleteRestaurant />,
+            action: deleteAction,
           },
         ],
       },
@@ -221,14 +231,14 @@ const router = createBrowserRouter([
           {
             path: "/restaurant/:restaurantId/review/new",
             element: (
-            <ProtectedRoute>
-              <AddReview />
-            </ProtectedRoute>
-          ),
-          action: addReviewAction,
-          // loader: addPostLoader,
-        }
-        ]
+              <ProtectedRoute>
+                <AddReview />
+              </ProtectedRoute>
+            ),
+            action: addReviewAction,
+            // loader: addPostLoader,
+          },
+        ],
       },
       {
         path: "/restaurant/:restaurantId/post/new",
