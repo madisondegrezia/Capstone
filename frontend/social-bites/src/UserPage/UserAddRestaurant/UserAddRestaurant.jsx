@@ -1,21 +1,15 @@
-import { useActionData } from "react-router-dom/dist/umd/react-router-dom.development";
-import "./AddRestaurant.css";
+import "./UserAddRestaurant.css";
 import { Form, redirect } from "react-router-dom";
 
-export default function AddRestaurant() {
-  const data = useActionData();
-
+export default function UserAddRestaurant() {
   return (
     <div className="add-restaurant">
-      <Form
-        className="profile"
-        method="post"
-        action="/restaurant/settings/addrestaurant"
-      >
+      <Form className="profile" method="post">
+        {/* action="/restaurant/settings/add" */}
         <h1 className="title">Add Restaurant</h1>
         <h2 className="sub-title">Restaurant Name</h2>
         <input
-          name="name"
+          name="restaurantName"
           className="input"
           type="text"
           placeholder="Lord of the Fries"
@@ -27,7 +21,6 @@ export default function AddRestaurant() {
           type="text"
           placeholder="1234 Laughter Lane, Giggle City, SMILE 56789"
         />
-
         <button type="submit" className="btn">
           Add
         </button>
@@ -36,13 +29,16 @@ export default function AddRestaurant() {
   );
 }
 
-export const addRestaurantAction = async ({ request }) => {
-  const data = await request.formData();
-
-  const submission = {
-    name: data.get("name"),
-    address: data.get("address"),
-  };
-
-  return redirect("/restaurant/settings/");
-};
+export async function userAddRestaurantAction({ request, params }) {
+  console.log("adfasd");
+  let formData = await request.formData();
+  let jobData = Object.fromEntries(formData);
+  const response = await fetch("/api/restaurant", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(jobData),
+  });
+  return redirect("/");
+}
