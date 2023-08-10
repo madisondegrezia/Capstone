@@ -67,10 +67,13 @@ a:focus {
     SIDEBAR STYLE
 ----------------------------------------------------- */
 
-.wrapper {
+.wrapper2 {
   display: flex;
-  width: 100%;
-  align-items: stretch;
+  flex-direction: row;
+  width: auto;
+  margin: 0 8em;
+  background-color: #e4e6eb;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #sidebar {
