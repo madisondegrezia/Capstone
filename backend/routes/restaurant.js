@@ -117,8 +117,10 @@ router.patch(
     try {
       // fetch for restaurant in the db
       const restaurantExist = await Restaurant.findOne({
-        UserId: parseInt(req.session.userId, 10),
-        RestaurantId: restaurantId,
+        where: {
+          UserId: parseInt(req.session.userId, 10),
+          id: restaurantId,
+        }
       });
 
       if (!restaurantExist) {
@@ -143,7 +145,7 @@ router.patch(
         heroImage: req.body.heroImage ? req.body.heroImage : restaurantExist.heroImage,
       });
 
-      return res.status(201).json({ message: "It was updated successfully" });
+      return res.status(201).json({ message: "It was updated successfully", restaurant: restaurantExist});
     } catch (error) {
       // Handle Sequelize validation errors
       if (error.name === "SequelizeValidationError") {

@@ -85,7 +85,7 @@ useEffect(() => {
   return (
     <>
       {restaurant ? (
-      <div className="wrapping-entire-page">
+      <div className="">
         <div className="main-wrap">
           <div className="wrapper1">
             <div className="restaurant-page">
@@ -99,7 +99,7 @@ useEffect(() => {
             </div>
           </div>
         </div>
-        <div className="wrapper2 flex flex-row w-screen">
+        <div className="wrapper flex flex-row w-screen">
           <nav id="sidebar">
             <img
               className="profile-image"
