@@ -8,6 +8,7 @@ import {
   Form,
   useNavigate,
   useLoaderData,
+  useLocation
 } from "react-router-dom/dist/umd/react-router-dom.development";
 import classNames from "classnames";
 import "./NavBarStyle.css";
@@ -22,6 +23,10 @@ import Search from "../Search/Search";
 export default function NavBar() {
   const { currentUser, logout } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const urlLastItem = location.pathname.split("/").pop();
+
+
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -35,6 +40,14 @@ export default function NavBar() {
     console.log("logging out!!");
   };
 
+  // if the we are on login or signup, hide the navbar and footer
+  if (urlLastItem === "login" || urlLastItem === "signup"){
+    return(<>
+      <Outlet/>
+    </>);
+  }
+
+  // for other pages, return the navbar and the footer
   return (
     <>
       <div className="entire-page">
