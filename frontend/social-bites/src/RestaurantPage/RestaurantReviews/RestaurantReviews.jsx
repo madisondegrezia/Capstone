@@ -36,7 +36,7 @@ export default function RestaurantReviews() {
 
   async function getUser(Id) {
       try {
-          const response = await fetch(`/api/user/get_user/1`);
+          const response = await fetch(`/api/user/get_user/${Id}`);
           const restaurant = await response.json();
           console.log(restaurant);
           return restaurant;

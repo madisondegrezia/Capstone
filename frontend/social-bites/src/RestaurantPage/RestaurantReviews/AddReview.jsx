@@ -44,12 +44,21 @@ import {
     return (
       <Form method="post" className="selection:bg-red-200 flex flex-col gap-2 ">
         <h1 className="text-2xl pt-3 ml-2">Add Restaurant Review</h1>
+        
         <Link to={`/restaurant/${restaurantId}`} className="ml-2">
           {"<"} Back
         </Link>
         {errors && <div className="text-red-300">{errors}</div>}
         <div className="flex flex-col items-center justify-center">
           <fieldset className="flex flex-col">
+          <label htmlFor="review">Rating Out of 5</label>
+          <input
+              type="number"
+              name="rate"
+              id="rate"
+              min="1" max="5"
+              className="border-4 focus:outline-none p-2"
+            />
             <label htmlFor="review">Content</label>
             <input
               type="text"

@@ -10,8 +10,9 @@
     flex-direction: row;
     min-height: 100vh;
     height: auto;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin-left: 10em;
+    margin-right: 10em;
+    
 }
 
 .user-heading {
