@@ -127,14 +127,13 @@ router.post("/:restaurantId", autheticateUser, async(req, res)=>{
     }
 });
 
-//post a comment onto a restaurant post
-router.post("/:restaurantId/:postId/comment", autheticateUser, async(req, res)=>{
-    const restaurantId = parseInt(req.params.restaurantId,10);
+//post a comment onto a post
+router.post("/:postId/comment", autheticateUser, async(req, res)=>{
     const postId = parseInt(req.params.postId,10);
 
     try{
         // fetch for the postId and restaurantId to see if they exist
-        const post = await Post.findOne({where: {id: postId, RestaurantId: restaurantId}});
+        const post = await Post.findOne({where: {id: postId}});
 
         // if post exist, create a new comment
         if (post){
@@ -174,6 +173,7 @@ router.get("/:postId/comment", async(req, res)=>{
                 model: User,
                 attributes: ["username", "profileImage"]
             },
+            order: [["createdAt", "DESC"]],
         });
 
         // if post exist, create a new comment

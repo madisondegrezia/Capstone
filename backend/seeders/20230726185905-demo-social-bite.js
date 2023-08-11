@@ -13,14 +13,14 @@ module.exports = {
       email: "janeDoe@gmail.com",
       password: await bcrypt.hash("password",10),
       has_restaurant: true,
-      profile_image: "https://hips.hearstapps.com/hmg-prod/images/delish-210419-carne-asada-torta-01-portrait-jg-1620136948.jpg?crop=0.942xw:0.707xh;0.0369xw,0.212xh&resize=1200:*"
+      profile_image: "https://www.preventivevet.com/hubfs/german%20shepherd%20mix%20dog%20popping%20in%20his%20back%20yard-canva.jpg"
     },
   {
       username: "Jane Doe Third Account",
       email: "janeDoe3@gmail.com",
       password: await bcrypt.hash("password",10),
       has_restaurant: false,
-      profile_image: "https://hips.hearstapps.com/hmg-prod/images/delish-210419-carne-asada-torta-01-portrait-jg-1620136948.jpg?crop=0.942xw:0.707xh;0.0369xw,0.212xh&resize=1200:*"
+      profile_image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJpoz2Bn30kr3qmpfgA0UwJGmem5k51TDMpg&usqp=CAU"
 
   },
   {
