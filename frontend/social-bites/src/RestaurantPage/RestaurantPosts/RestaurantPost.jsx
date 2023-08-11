@@ -12,7 +12,6 @@ export default function RestaurantPost() {
   // take restaurantId as a param for loader
   const posts = useLoaderData(restaurantId);
   const [isCorrectUser, setIsCorrectUser] = useState(false);
-  const [currentUser, setCurrentUser] = useState([]);
   const [res, setCurrentRes] = useState([]);
 
   //delete post
@@ -93,9 +92,9 @@ export default function RestaurantPost() {
                   }
                 }}
               >
-                <button className="mr-2">
+                { isCorrectUser ? <button className="mr-2">
                   <FaTrash style={{ color: "#ef0b0b" }} />
-                </button>
+                </button> : null }
                 <Link
                 to={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
                   "http://localhost:5173/restaurant/1" || placeholderUrl
