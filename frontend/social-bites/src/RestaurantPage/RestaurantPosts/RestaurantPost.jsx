@@ -11,16 +11,48 @@ export default function RestaurantPost() {
   const { restaurantId } = useParams();
   // take restaurantId as a param for loader
   const posts = useLoaderData(restaurantId);
+  const [isCorrectUser, setIsCorrectUser] = useState(false);
+  const [res, setCurrentRes] = useState([]);
 
   //delete post
   const [isEditing, setIsEditing] = useState(false);
   const inputRef = useRef(null);
   const fetcher = useFetcher();
 
+  async function getRestaurant(id) {
+    
+    const response = await fetch(`/api/restaurant/${id}`);
+    const restaurant = await response.json();
+    console.log(restaurant);
+    setCurrentRes(restaurant);
+    return restaurant;
+  }
+
+  async function getLoggedUser() {
+    const response = await fetch(`/api/auth/current_user`);
+    const user = await response.json();
+    console.log(user);
+    setCurrentUser(user);
+    return user;
+  }
+
   useEffect(() => {
     inputRef.current?.focus();
   }, [isEditing]);
 
+  useEffect(() => {
+    console.log("testing be called");
+    async function fetchData() {
+      const loggedUser = await getLoggedUser();
+      const resId = await getRestaurant(restaurantId);
+      console.log("testing");
+      loggedUser.user.id === resId.UserId ? setIsCorrectUser(true) : setIsCorrectUser(false);
+      console.log(isCorrectUser);
+    }
+    
+    fetchData();
+    
+  }, [])
   const placeholderUrl = "YOUR_PLACEHOLDER_URL";
   const placeholderText = "YOUR_PLACEHOLDER_TEXT";
 
@@ -30,12 +62,12 @@ export default function RestaurantPost() {
       <div className="flex justify-between">
         <div></div>
         <div className="mr-2 mb-4">
-          <Link
+          { isCorrectUser ? <Link
             to={`/restaurant/${restaurantId}/post/new`}
             className="bg-red-500 rounded text-white px-4 py-2 hover:bg-red-600 hover:text-white transition "
           >
             + Add Post
-          </Link>
+          </Link> : null }
         </div>
       </div>
       <div>
@@ -60,9 +92,9 @@ export default function RestaurantPost() {
                   }
                 }}
               >
-                <button className="mr-2">
+                { isCorrectUser ? <button className="mr-2">
                   <FaTrash style={{ color: "#ef0b0b" }} />
-                </button>
+                </button> : null }
                 <Link
                 to={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
                   "http://localhost:5173/restaurant/1" || placeholderUrl
