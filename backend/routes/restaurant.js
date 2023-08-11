@@ -89,22 +89,26 @@ router.delete("/:restaurantId", async (req, res) => {
 async function fetchRestaurantLatLng(address) {
   try {
     const response = await axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${(
         address
       )}&key=${googleApiKey}`
     );
-    if (response) {
+
+    if (response && response.data.results.length > 0) {
       const result = response.data.results[0];
       const latitude = result.geometry.location.lat;
       const longitude = result.geometry.location.lng;
-      return { latitude: latitude, longitude: longitude };
+      return { latitude, longitude };
     } else {
-      return false;
+      console.log("No results found in API response.");
+      return null;
     }
   } catch (error) {
     console.error("Error:", error.message);
+    throw error; // Re-throw the error to propagate it
   }
 }
+
 
 // update the restaurant info, need log in
 router.patch(
@@ -113,6 +117,8 @@ router.patch(
   async (req, res) => {
     const restaurantId = parseInt(req.params.restaurantId, 10);
     let latLng = null;
+
+    console.log(restaurantId);
 
     try {
       // fetch for restaurant in the db
@@ -168,13 +174,11 @@ router.patch(
 
 // post a restauarant, require user login
 router.post("/", autheticateUser, async (req, res) => {
-  try {
-    // Find the latitude and longitude of the restaurant based on the address given
-    const latLng = await fetchRestaurantLatLng(req.body.address);
-
     try {
         // Find the latitude and longitude of the restaurant based on the address given
+        console.log("fetching.......")
         const latLng = await fetchRestaurantLatLng(req.body.address);
+        console.log("Finishing fetching")
     
         // Check if latLng is fetched successfully
         if (!latLng) {
@@ -197,6 +201,8 @@ router.post("/", autheticateUser, async (req, res) => {
           address: req.body.address,
           latitude: latLng.latitude,
           longitude: latLng.longitude,
+          profileImage: req.body.profileImage,
+          heroImage: req.body.heroImage,
         });
     
         return res.status(201).json({
@@ -205,14 +211,6 @@ router.post("/", autheticateUser, async (req, res) => {
             restaurant: restaurant.restaurantName,
           },
         });
-      } catch(error){
-        console.error(error);
-    return res.status(500).json({ 
-        message: "An error occured during creating restaurant", // the error include wrong address that can't be fetched by google map api
-        errorMessage: error.message,
-        errorStack: error.stack
-    });
-    }
   } catch (error) {
     console.error(error);
     return res.status(500).json({

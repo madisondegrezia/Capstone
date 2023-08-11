@@ -69,6 +69,7 @@ router.post("/login", async (req, res) => {
             username: user.username,
             email: user.email,
             hasRestaurant: user.hasRestaurant,
+            profileImage: user.profileImage,
             restaurants:user.Restaurants,
           },
         });
@@ -113,6 +114,7 @@ router.get("/current_user", async (req, res) => {
         email: user.email,
         hasRestaurant: user.hasRestaurant,
         restaurants: user.Restaurants,
+        profileImage: user.profileImage,
       },
     });
   } else {

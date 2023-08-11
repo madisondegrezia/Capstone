@@ -16,6 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Restaurant, {foreignKey: "RestaurantId"});
       // many to many relationship with tag, (Post to Tag)
       this.belongsToMany(models.Tag, { through: models.PostTag, foreignKey: 'TagId' });
+      // one to many relationship with comment
+      this.hasMany(models.Comment, {foreignKey: "PostId"});
 
     }
   }
@@ -48,6 +50,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull:false,
     },
+    postImg:{
+      type: DataTypes.STRING,
+      allowNull:true,
+    }
   }, {
     sequelize,
     modelName: 'Post',
