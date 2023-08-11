@@ -13,6 +13,7 @@ export default function RestaurantPost() {
   const posts = useLoaderData(restaurantId);
   const [isCorrectUser, setIsCorrectUser] = useState(false);
   const [res, setCurrentRes] = useState([]);
+  const [current, setCurrentUser] = useState([]);
 
   //delete post
   const [isEditing, setIsEditing] = useState(false);

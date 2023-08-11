@@ -73,7 +73,7 @@ function Login() {
               onMouseLeave={(e) => (e.target.style.backgroundColor = "#EA5455")}
             ></input>
           </div>
-          <p>Don&apos;t have an account? <Link to="/signup" style={{color: "#EA5455", textDecoration: "underline"}}>Sign here</Link></p>
+          <p>Don&apos;t have an account? <Link to="/signup" style={{color: "#EA5455", textDecoration: "underline"}}>Sign up here</Link></p>
         </div>
       </Form>
     </div>
