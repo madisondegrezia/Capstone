@@ -13,18 +13,15 @@ import AuthProvider from "./contexts/AuthContext";
 import Contact from "./Contact/Contact";
 import AboutApp from "./AboutApp/AboutApp";
 import RestaurantPage from "./RestaurantPage/RestaurantPage";
-import User from "./UserSettings/User";
-import Account from "./UserSettings/Account/Account";
-import Reviews from "./UserSettings/Reviews/Reviews";
-import Events from "./UserSettings/Events/Events";
-import Favorite from "./UserSettings/Favorite/Favorite";
-import Delete from "./UserSettings/Delete/delete";
+import User, { userSettingsLoader } from "./UserSettings/User";
+import Account, { editUserAction } from "./UserSettings/Account/Account";
+import Delete, { deleteUserAction } from "./UserSettings/Delete/delete";
 import UserPage from "./UserPage/UserPage";
 import RestaurantReviews, {
   reviewsLoader,
 } from "./RestaurantPage/RestaurantReviews/RestaurantReviews";
 // import UserReviews, { userReviewsLoader } from "./UserPage/UserReviews";
-import UserReviews from "./UserPage/UserReviews";
+
 import { load } from "./Loader/loadRestaurants";
 
 // ----- Middleware components ----- ///
@@ -52,7 +49,9 @@ import RestaurantSettings, {
   restaurantSettingsLoader,
 } from "./RestaurantSettings/RestaurantSettings";
 
-import EditRestaurant, { editRestaurantAction } from "./RestaurantSettings/EditRestaurant/EditRestaurant";
+import EditRestaurant, {
+  editRestaurantAction,
+} from "./RestaurantSettings/EditRestaurant/EditRestaurant";
 
 import DeleteRestaurant, {
   deleteAction,
@@ -73,7 +72,10 @@ import AddReview, {
 import UserAddRestaurant, {
   userAddRestaurantAction,
 } from "./UserPage/UserAddRestaurant/UserAddRestaurant";
-import AllRestaurants, { allRestaurantsLoader } from "./RestaurantSettings/AllRestaurants/AllRestaurants";
+import AllRestaurants, {
+  allRestaurantsLoader,
+} from "./RestaurantSettings/AllRestaurants/AllRestaurants";
+import Tags from "./UserSettings/Tags/Tags";
 
 const router = createBrowserRouter([
   {
@@ -165,30 +167,25 @@ const router = createBrowserRouter([
         element: <UserAddRestaurant />,
       },
       {
-        path: "/user/settings",
+        path: "/user/:id/settings",
         element: <User />,
+        loader: userSettingsLoader,
         children: [
           {
-            path: "/user/settings/account",
+            path: "/user/:id/settings/account",
             element: <Account />,
+            action: editUserAction,
           },
           {
-            path: "/user/settings/reviews",
-            element: <Reviews />,
-          },
-          {
-            path: "/user/settings/events",
-            element: <Events />,
-          },
-          {
-            path: "/user/settings/favorite",
-            element: <Favorite />,
-          },
-          {
-            path: "/user/settings/delete",
+            path: "/user/:id/settings/delete",
             element: <Delete />,
+            action: deleteUserAction,
           },
         ],
+      },
+      {
+        path: "/user/settings/tags",
+        element: <Tags />,
       },
       {
         path: "/restaurant/:id/settings",

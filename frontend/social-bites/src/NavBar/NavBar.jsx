@@ -101,8 +101,22 @@ export default function NavBar() {
               <Dropdown.Header>
                 {currentUser ? (
                   <div>
+                    <div>
+                      <Link
+                        to={`/user/${currentUser.id}/settings/account`}
+                        // to={`/user/${currentUser.id}/settings`}
+                        className="gap-1 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <Avatar
+                          alt="User settings"
+                          img="/src/assets/default-avatar.webp"
+                          rounded
+                        />
+                      </Link>
+                    </div>
                     <span className="block text-sm">
                       {currentUser.username}
+                      {/* {currentUser.id} */}
                     </span>
                     <span className="block truncate text-sm font-medium">
                       {currentUser.email}
