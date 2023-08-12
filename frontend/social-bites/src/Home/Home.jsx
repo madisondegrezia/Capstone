@@ -98,9 +98,9 @@ export default function Home() {
             </div>
 
             
-              <div id="restaurant_post_subNav" className="sub-nav hidden absolute top-full left-0 mt-1 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 w-60">
+              <div id="restaurant_post_subNav" className="sub-nav hidden absolute top-full left-0 mt-1 z-5 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 w-60">
                 <div className="flex flex-col px-4 py-3 text-sm text-gray-900 dark:text-white hover:bg-gray-100">
-                  <Link to="/all_events" onClick={() => { handleTabClick("post"); }} className="flex flex-row">
+                  <Link to="/explore" onClick={() => { handleTabClick("post"); }} className="flex flex-row">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="23px" className="pr-2" viewBox="0 0 24 24" fill="#000000"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M0 0h24v24H0z" fill="none"></path><path d="M17 10H7v2h10v-2zm2-7h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zm-5-5H7v2h7v-2z"></path></g></svg>
                     All Restaurant Events
                   </Link>

@@ -62,7 +62,7 @@ export default function NavBar() {
           <div className="right">
             <div className="nav-menu">
               <ul className="nav-menu-list">
-                <li className="nav-menu-item z-10">
+                <li className="nav-menu-item z-5">
                   <Search />
                 </li>
                 <li className="nav-menu-item pt-1">
