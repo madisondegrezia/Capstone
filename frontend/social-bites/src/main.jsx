@@ -77,6 +77,9 @@ import AllRestaurants, {
 } from "./RestaurantSettings/AllRestaurants/AllRestaurants";
 import Tags from "./UserSettings/Tags/Tags";
 
+// modal window for post
+import PostModal from "./Component/ModalWindow/ModalWindow";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -103,9 +106,16 @@ const router = createBrowserRouter([
             loader: nearbyRestaurantLoader,
           },
           {
-            path: "/all_events",
+            path: "/explore",
             element: <RestaurantEventDisplay />,
             loader: allEventsLoader,
+            children:
+            [
+              {
+                path: "/explore/:postId",
+                element: <PostModal/>
+              }
+            ]
           },
           {
             path: "/nearby_restaurant_post",

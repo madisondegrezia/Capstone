@@ -22,7 +22,7 @@ router.get("/:restaurantId", async (req, res)=>{
             },
             {
                 model: Restaurant,
-                attributes: ["restaurantName"]
+                attributes: ["restaurantName", "profileImage", "id"]
             }
         ],
         });
@@ -36,6 +36,41 @@ router.get("/:restaurantId", async (req, res)=>{
         const errorMessage = error.message;
         return res.status(500).json({
             message: "An error occured when fetching for restaurants",
+            error: errorMessage
+        })
+    }
+});
+
+// Get post by post id
+router.get("/post/:postId", async (req, res)=>{
+    const postId = parseInt(req.params.postId, 10);
+    try{
+        // Find all posts where Id is equal to our parsed parameter
+        const post = await Post.findOne({
+            where: {
+                id: postId
+            },
+            include: 
+            [{
+                model: User,
+                attributes: ["username"]
+            },
+            {
+                model: Restaurant,
+                attributes: ["restaurantName", "profileImage", "id"]
+            }
+        ],
+        });
+
+        // If all okay, return post
+        return res.status(200).json(post);
+
+    // Catch errors during runtime
+    } catch(error) {
+        // Log a message
+        const errorMessage = error.message;
+        return res.status(500).json({
+            message: "An error occured when fetching for post",
             error: errorMessage
         })
     }
@@ -104,7 +139,8 @@ router.post("/:restaurantId", autheticateUser, async(req, res)=>{
             UserId: parseInt(req.session.userId,10),
             RestaurantId: restauarantId,
             postTitle: req.body.postTitle,
-            postContent: req.body.postContent
+            postContent: req.body.postContent,
+            postImg: req.body.postImg
         });
 
         // add all post into the post_tag table
@@ -230,7 +266,7 @@ router.get("/user/nearby_post/:radiusKm", userAllowPostion, async(req,res)=>{
                 },
                 {
                   model: Restaurant,
-                  attributes: ["restaurantName"],
+                  attributes: ["restaurantName", "profileImage", "id"],
                 }],
               });
         
@@ -273,7 +309,7 @@ router.get("/user/interested_post", autheticateUser,async (req, res) => {
             },
             {
                 model: Restaurant,
-                attributes: ["restaurantName"]
+                attributes: ["restaurantName", "profileImage", "id"]
             }
         ],
         });
@@ -288,7 +324,7 @@ router.get("/user/interested_post", autheticateUser,async (req, res) => {
             },
             include: {
                 model: Restaurant,
-                attributes: ["restaurantName"],
+                attributes: ["restaurantName", "profileImage", "id"],
               }
         });
 
@@ -441,7 +477,7 @@ router.get("/", async (req, res)=>{
                 ,
                 {
                 model: Restaurant,
-                attributes: ["restaurantName"],
+                attributes: ["restaurantName", "profileImage", "id"],
                 }],
         });
         return res.status(200).json(posts);
