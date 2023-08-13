@@ -83,12 +83,10 @@ import PostModal from "./Component/ModalWindow/ModalWindow";
 const router = createBrowserRouter([
   {
     path: "/",
-    loader: load,
     element: <NavBar />,
     children: [
       {
         path: "/",
-        loader: load,
         element: <Home />,
         children: [
           {
