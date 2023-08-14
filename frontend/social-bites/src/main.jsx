@@ -79,6 +79,8 @@ import Tags from "./UserSettings/Tags/Tags";
 
 // modal window for post
 import PostModal from "./Component/ModalWindow/ModalWindow";
+import UserReviews from "./UserPage/UserReviews";
+import UserRestaurants from "./UserPage/UserRestaurants";
 
 const router = createBrowserRouter([
   {
@@ -168,6 +170,16 @@ const router = createBrowserRouter([
         path: "/user/:id",
         // loader: userReviewsLoader,
         element: <UserPage />,
+        children: [
+          {
+            path: "/user/:id",
+            element: <UserReviews />
+          },
+          {
+            path: "/user/:id/restaurants",
+            element: <UserRestaurants />
+          }
+        ]
       },
       {
         path: "/addrestaurant",

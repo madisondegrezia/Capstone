@@ -30,7 +30,9 @@
     align-items: center;
     min-height: 100%;
     border-radius: 1em 0 0 0;
+    position: relative;
 }
+
 
 .user-image {
     background-color: gray;
@@ -44,7 +46,6 @@
 
 .user-image, .user-image-small {
     border-radius: 50%;
-    
 }
 
 
@@ -158,4 +159,43 @@
 
 ul li h2 {
     font-size: 1.3em;
+}
+
+.change-image-button {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+    position: absolute;
+    z-index: 10;  
+    bottom: 100%;  
+    left: 50%;
+    transform: translate(-50%, 50%);  
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+    padding: 1em;
+    
+    /* ... other existing styles ... */
+
+
+   
+}
+
+.change-image-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    
+}
+
+.trash:hover {
+    cursor: pointer;
+}
+
+.user-image-small-r {
+    border-radius: .3em;
 }
