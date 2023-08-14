@@ -32,7 +32,7 @@ export default function UserSettings() {
             <Link to={`/user/${user.UserId}/settings/account`} className="tab">
               <FaUserAlt className="fa-user" />
             </Link>
-            <Link to={`/user/settings/tags`} className="tab">
+            <Link to={`/user/${user.UserId}/settings/tags`} className="tab">
               <FaTag className="fa-user" />
             </Link>
 
