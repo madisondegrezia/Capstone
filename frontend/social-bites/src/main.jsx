@@ -22,7 +22,6 @@ import RestaurantReviews, {
 } from "./RestaurantPage/RestaurantReviews/RestaurantReviews";
 // import UserReviews, { userReviewsLoader } from "./UserPage/UserReviews";
 
-import { load } from "./Loader/loadRestaurants";
 
 // ----- Middleware components ----- ///
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -82,9 +81,11 @@ import PostModal from "./Component/ModalWindow/ModalWindow";
 import UserReviews from "./UserPage/UserReviews";
 import UserRestaurants from "./UserPage/UserRestaurants";
 
-// map page
-import MapContainer from "./Component/Map/Map";
-import MapLoader from "./Component/Map/MapLoader";
+// map container
+import MapContainer from "./RestaurantPage/RestaurantMap/RestaurantMap";
+
+import { restaurantByIdLoader } from "./Loader/loadRestaurants";
+
 
 const router = createBrowserRouter([
   {
@@ -138,13 +139,13 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path:"/map/restaurant/:restaurantId",
+        path:"/restaurant/:restaurantId/map",
         element: (
           <ShareLocationRequired>
             <MapContainer/>
           </ShareLocationRequired>
         ),
-        loader: MapLoader
+        loader: restaurantByIdLoader,
       },
       {
         path: "/search/:keywordTerm",
