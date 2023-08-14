@@ -75,7 +75,7 @@ import UserAddRestaurant, {
 import AllRestaurants, {
   allRestaurantsLoader,
 } from "./RestaurantSettings/AllRestaurants/AllRestaurants";
-import Tags from "./UserSettings/Tags/Tags";
+import Tags, { loadTag } from "./UserSettings/Tags/Tags";
 
 // modal window for post
 import PostModal from "./Component/ModalWindow/ModalWindow";
@@ -200,6 +200,11 @@ const router = createBrowserRouter([
             path: "/user/:id/settings/delete",
             element: <Delete />,
             action: deleteUserAction,
+          },
+          {
+            path: "/user/:id/settings/tags",
+            element: <Tags />,
+            loader: loadTag,
           },
         ],
       },
