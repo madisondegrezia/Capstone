@@ -80,6 +80,10 @@ import Tags from "./UserSettings/Tags/Tags";
 // modal window for post
 import PostModal from "./Component/ModalWindow/ModalWindow";
 
+// map page
+import MapContainer from "./Component/Map/Map";
+import MapLoader from "./Component/Map/MapLoader";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -132,6 +136,15 @@ const router = createBrowserRouter([
             loader: interestedEventLoader,
           },
         ],
+      },
+      {
+        path:"/map/restaurant/:restaurantId",
+        element: (
+          <ShareLocationRequired>
+            <MapContainer/>
+          </ShareLocationRequired>
+        ),
+        loader: MapLoader
       },
       {
         path: "/search/:keywordTerm",
