@@ -128,6 +128,9 @@ export default function NavBar() {
                     <span className="block truncate text-sm font-medium">
                       User@user.com
                     </span>
+                    <div className="dropdown-list">
+                      Profile
+                    </div>
                   </div>
                 )}
               </Dropdown.Header>
