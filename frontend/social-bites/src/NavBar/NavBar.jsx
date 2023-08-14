@@ -62,7 +62,7 @@ export default function NavBar() {
           <div className="right">
             <div className="nav-menu">
               <ul className="nav-menu-list">
-                <li className="nav-menu-item z-10">
+                <li className="nav-menu-item z-5">
                   <Search />
                 </li>
                 <li className="nav-menu-item pt-1">
@@ -128,6 +128,9 @@ export default function NavBar() {
                     <span className="block truncate text-sm font-medium">
                       User@user.com
                     </span>
+                    <div className="dropdown-list">
+                      Profile
+                    </div>
                   </div>
                 )}
               </Dropdown.Header>

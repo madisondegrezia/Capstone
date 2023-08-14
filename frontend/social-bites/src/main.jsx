@@ -77,15 +77,18 @@ import AllRestaurants, {
 } from "./RestaurantSettings/AllRestaurants/AllRestaurants";
 import Tags, { loadTag } from "./UserSettings/Tags/Tags";
 
+// modal window for post
+import PostModal from "./Component/ModalWindow/ModalWindow";
+import UserReviews from "./UserPage/UserReviews";
+import UserRestaurants from "./UserPage/UserRestaurants";
+
 const router = createBrowserRouter([
   {
     path: "/",
-    loader: load,
     element: <NavBar />,
     children: [
       {
         path: "/",
-        loader: load,
         element: <Home />,
         children: [
           {
@@ -103,9 +106,16 @@ const router = createBrowserRouter([
             loader: nearbyRestaurantLoader,
           },
           {
-            path: "/all_events",
+            path: "/explore",
             element: <RestaurantEventDisplay />,
             loader: allEventsLoader,
+            children:
+            [
+              {
+                path: "/explore/:postId",
+                element: <PostModal/>
+              }
+            ]
           },
           {
             path: "/nearby_restaurant_post",
@@ -160,6 +170,16 @@ const router = createBrowserRouter([
         path: "/user/:id",
         // loader: userReviewsLoader,
         element: <UserPage />,
+        children: [
+          {
+            path: "/user/:id",
+            element: <UserReviews />
+          },
+          {
+            path: "/user/:id/restaurants",
+            element: <UserRestaurants />
+          }
+        ]
       },
       {
         path: "/addrestaurant",

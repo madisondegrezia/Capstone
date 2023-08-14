@@ -66,6 +66,16 @@ function AddPost() {
             className="border-4 focus:outline-none p-2"
           />
         </fieldset>
+        {/* optional to upload an image */}
+        <fieldset className="flex flex-col">
+          <label htmlFor="postImg">Image</label>
+          <input
+            type="text"
+            name="postImg"
+            id="postImg"
+            className="border-4 focus:outline-none p-2"
+          />
+        </fieldset>
         <input
           className="bg-red-500 hover:bg-red-600 text-white transition mt-4 p-3 rounded cursor-pointer "
           type="submit"
