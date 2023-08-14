@@ -75,7 +75,7 @@ import UserAddRestaurant, {
 import AllRestaurants, {
   allRestaurantsLoader,
 } from "./RestaurantSettings/AllRestaurants/AllRestaurants";
-import Tags from "./UserSettings/Tags/Tags";
+import Tags, { loadTag } from "./UserSettings/Tags/Tags";
 
 const router = createBrowserRouter([
   {
@@ -180,6 +180,11 @@ const router = createBrowserRouter([
             path: "/user/:id/settings/delete",
             element: <Delete />,
             action: deleteUserAction,
+          },
+          {
+            path: "/user/:id/settings/tags",
+            element: <Tags />,
+            loader: loadTag,
           },
         ],
       },
