@@ -1,6 +1,8 @@
 .body {
   /* background-image: linear-gradient(79deg, #a71109, #eb694e 48%, #f3bfbb); */
   background-color: rgb(252, 231, 231);
+  min-width: 100vw;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
