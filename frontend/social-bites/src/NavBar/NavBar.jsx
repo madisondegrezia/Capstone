@@ -121,6 +121,9 @@ export default function NavBar() {
                     <span className="block truncate text-sm font-medium">
                       {currentUser.email}
                     </span>
+                    <Link to={`/user/${currentUser.id}`} className="block flex flex-row gap-1 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                      My Profile
+                    </Link>
                   </div>
                 ) : (
                   <div>
@@ -128,9 +131,9 @@ export default function NavBar() {
                     <span className="block truncate text-sm font-medium">
                       User@user.com
                     </span>
-                    <div className="dropdown-list">
+                    <span className="block text-sm">
                       Profile
-                    </div>
+                    </span>
                   </div>
                 )}
               </Dropdown.Header>
