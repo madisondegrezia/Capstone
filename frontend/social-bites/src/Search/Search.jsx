@@ -31,7 +31,7 @@ export default function Search() {
           <input
             type="text"
             name="search"
-            placeholder="Search For Restaurants..."
+            placeholder="Search For Restaurant"
             className="search-input"
             onChange={handleOnChange}
           />

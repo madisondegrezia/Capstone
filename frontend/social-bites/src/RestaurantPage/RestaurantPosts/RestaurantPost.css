@@ -9,7 +9,7 @@
   width: 100%;
   height: 1px;
   border-bottom: 1px dashed #ddd;
-  margin: 0
+  margin: 0;
 }
 
 /* card styling */
@@ -25,10 +25,12 @@
   transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.heart-button:hover{
-  
+.heart-button:hover {
 }
 
-.heart-button:click{
+.heart-button:click {
+}
 
+.trashIcon:hover {
+  color:#64748b;
 }
