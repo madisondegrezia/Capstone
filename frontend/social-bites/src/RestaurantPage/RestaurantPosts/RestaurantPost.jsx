@@ -93,7 +93,7 @@ export default function RestaurantPost() {
 
                   <div className="line" style={{marginTop: "2rem"}}></div>
 
-                  <div className="flex flex-row mt-14">
+                  <div className="flex flex-row mt-6 items-center justify-between">
 
                     <PostComment postId={parseInt(post.id,10)} navigate={navigate}/>
 
@@ -110,7 +110,7 @@ export default function RestaurantPost() {
                     }}
                   >
                       { isCorrectUser ? <button className="mr-2">
-                  <FaTrash style={{ color: "#ef0b0b" }} />
+                  <FaTrash className='trashIcon' style={{ fontSize: "1.3em" }} />
                 </button> : null }
 
                     </fetcher.Form>

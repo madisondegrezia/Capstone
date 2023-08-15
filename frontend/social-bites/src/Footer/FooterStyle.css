@@ -24,14 +24,14 @@
     align-content: center;
     width: 35%;
     gap: 2em;
-    padding: 2.5em;
+    padding: 1.5em;
     border-bottom: 1px solid #a0a5a8;
 }
 .bottom-footer {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 1.5em;
+    padding: 1em;
     gap: 1em;
 }
 
