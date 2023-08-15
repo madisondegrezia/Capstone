@@ -118,9 +118,9 @@ router.get("/current_user", async (req, res) => {
       },
     });
   } else {
-    return res.status(401).json({ user: {
-      id: -1
-    }});
+    return res.status(401).json({ user: 
+      null
+    });
   }
 });
 

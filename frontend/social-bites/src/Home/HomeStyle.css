@@ -124,3 +124,13 @@
   display: block;
   /* border: 10px black solid; */
 }
+
+.flex-row:hover::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 10px;  /* This is the height of the invisible bridge */
+  bottom: 0;
+  left: 0;
+}

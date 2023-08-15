@@ -36,7 +36,7 @@ export default function SearchPage(){
                 <Link to={`/`} className="card" key={index}>
                     <img
                     className="cardImage"
-                    src={"https://livingstonbagel.com/wp-content/uploads/2016/11/food-placeholder.jpg"}
+                    src={restaurant.profileImage}
                     alt={"Img"}
                     />
                     <div className="cardName flex justify-center m-3">

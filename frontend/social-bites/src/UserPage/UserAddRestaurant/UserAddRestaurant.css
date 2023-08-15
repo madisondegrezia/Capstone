@@ -4,6 +4,10 @@
   padding-top: 15%;
 }
 
+.profile {
+  margin-top: 20%;
+}
+
 .title {
   font-family: "Dosis", sans-serif;
   font-size: 34px;
@@ -27,16 +31,17 @@
   border-bottom: 1px solid rgb(231, 95, 95);
   border-radius: 0;
   padding: 7px 0;
-  width: 90%;
+  max-width: 85%;
   font-family: "Dosis", sans-serif;
   outline: none;
+  background: #fff;
 }
 
 .input::placeholder {
   color: #ccc;
 }
 
-.btn {
+.btnAdd {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   color: #fff;
@@ -44,5 +49,5 @@
   padding: 7px 15px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   margin-top: 20px;
-  margin-left: 71%;
+  margin-left: 75%;
 }

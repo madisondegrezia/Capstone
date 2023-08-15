@@ -36,7 +36,7 @@
   color: #ccc;
 }
 
-.btn {
+.btnEdit {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   color: #fff;
@@ -44,5 +44,5 @@
   padding: 7px 15px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   margin-top: 20px;
-  margin-left: 71%;
+  margin-left: 59%;
 }
