@@ -11,7 +11,7 @@ export default function Search() {
   // to get the input from the user
   const handleOnChange = (event) => {
     setSearchTerm(event.target.value);
-  }
+  };
 
   // handle when user submit the search form
   const handleFormSubmit = (event) => {
@@ -22,7 +22,6 @@ export default function Search() {
       navigate("/"); // If the search term is empty, navigate to the home page
     }
   };
-
 
   return (
     <div className="outer">

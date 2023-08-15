@@ -30,7 +30,23 @@
   background: transparent;
 }
 
+/* input:focus {
+  outline: none !important;
+}
+
+.search-input:focus {
+  outline: none;
+} */
+
+/* .box input:focus {
+  outline: none;
+  border: none;
+} */
 .box .link .icon {
   color: lightcoral;
   font-size: 24px;
 }
+
+/* *:focus {
+  outline: none;
+} */
