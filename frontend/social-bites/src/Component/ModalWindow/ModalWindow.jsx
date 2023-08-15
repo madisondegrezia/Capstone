@@ -33,8 +33,6 @@ const PostModal = () => {
     return <p>Loading...</p>;
   }
 
-  console.log(post);
-
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-opacity-50 bg-gray-900 z-50 overflow-y-scroll">

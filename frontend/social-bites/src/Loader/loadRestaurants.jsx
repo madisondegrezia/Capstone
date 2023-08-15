@@ -18,7 +18,7 @@ export async function searchRestaurantLoader(keywordSearchTerm){
     return res.json();
 }
 
-export async function load() {
-    const res = await fetch("http://localhost:3000/restaurants");
+export async function restaurantByIdLoader(params){
+    const res = await fetch(`/api/restaurant/${params.params.restaurantId}`);
     return res.json();
 }

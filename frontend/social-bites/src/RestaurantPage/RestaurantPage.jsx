@@ -15,7 +15,6 @@ import { useEffect, useState } from "react";
 
 export default function RestaurantPage() {
   const { restaurantId } = useParams();
-  console.log(restaurantId);
   const [restaurant, setRestaurant] = useState(null);
   const [average, setAverage] = useState(null);
 
@@ -42,7 +41,6 @@ export default function RestaurantPage() {
     reviews.map(element => {
       counter++;
     });
-    console.log(counter);
     return counter; // Return the review data
   }
 
@@ -53,7 +51,6 @@ export default function RestaurantPage() {
     reviews.map(element => {
       total += element.rate;
     });
-    console.log(total);
     return total; // Return the review data
   }
 
@@ -132,7 +129,7 @@ useEffect(() => {
                   <div className="icons">
                     <GrContact size={25} />
                   </div>
-                  <a href="#">Contact</a>
+                  <Link to={`/restaurant/${restaurantId}/map`}>Direction</Link>
                 </li>
               </ul>
 

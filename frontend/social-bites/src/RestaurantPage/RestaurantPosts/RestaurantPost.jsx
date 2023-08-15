@@ -57,8 +57,7 @@ export default function RestaurantPost() {
     fetchData();
     
   }, [])
-  const placeholderUrl = "YOUR_PLACEHOLDER_URL";
-  const placeholderText = "YOUR_PLACEHOLDER_TEXT";
+
 
   return (
     <>
@@ -131,7 +130,6 @@ export default function RestaurantPost() {
 }
 
 export const postLoader = async (restaurantId) => {
-  console.log(restaurantId.params.restaurantId);
   const res = await fetch(
     `/api/restaurant_post/${restaurantId.params.restaurantId}`
   );
