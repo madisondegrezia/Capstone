@@ -94,7 +94,7 @@ export default function RestaurantPost() {
 
                   <div className="line" style={{marginTop: "2rem"}}></div>
 
-                  <div className="flex flex-row mt-6 mb-3">
+                  <div className="flex flex-row mt-14">
 
                     <PostComment postId={parseInt(post.id,10)} navigate={navigate}/>
 
