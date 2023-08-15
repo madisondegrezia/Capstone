@@ -6,6 +6,10 @@
   overflow: scroll;
 }
 
+.profileEdit {
+  max-width: 100%;
+}
+
 .title {
   font-family: "Dosis", sans-serif;
   font-size: 34px;
@@ -54,8 +58,9 @@
   padding: 10px 20px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2);
-  margin: 10px 10px;
+  box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.2);
+  margin: 20px 10px;
+  background-color: #fbdbd8;
 }
 
 .quote-text {
