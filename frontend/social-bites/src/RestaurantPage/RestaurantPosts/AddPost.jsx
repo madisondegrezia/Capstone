@@ -9,7 +9,9 @@ import {
 export async function action({ request, params }) {
   let formData = await request.formData();
   let postData = Object.fromEntries(formData);
-  console.log(postData);
+  postData.tags = postData.tags.split(", ");
+  console.log(postData.tags);
+  
   try {
     // /api/restaurants/1/posts
     const response = await fetch(
@@ -73,6 +75,15 @@ function AddPost() {
             type="text"
             name="postImg"
             id="postImg"
+            className="border-4 focus:outline-none p-2"
+          />
+        </fieldset>
+        <fieldset className="flex flex-col">
+          <label htmlFor="tags">Tags</label>
+          <input
+            type="text"
+            name="tags"
+            id="tags"
             className="border-4 focus:outline-none p-2"
           />
         </fieldset>
