@@ -121,7 +121,13 @@ async function hasRestaurantEdit(bool) {
       setUserInfo(user);
       setCurrentUser(currentuse);
   
-      const correctUser = user.UserId === currentuse.user.id;
+      let idHolder = 0;
+      if (currentuse.user === null) {
+        idHolder = null;
+      } else {
+        idHolder = currentuse.user.id;
+      }
+      const correctUser = user.UserId === idHolder;
       setIsCorrectUser(correctUser);
   
         const myRes = await getRestaurants(id);
@@ -213,41 +219,7 @@ async function hasRestaurantEdit(bool) {
               {location.pathname === `/user/${id}` ? <h1 className="review-title-name">Reviews</h1> : <h1 className="review-title-name">Restaurants</h1> }
               <p>Sort by: Options here</p>
               <div className="review-boxes gap-6">
-                <div className="review-box">
-                  <div className="review-header flex flex-row justify-between">
-                    <div className="res-detail-box flex flex-row gap-4">
-                      <img
-                        className="user-image-small w-14 h-14"
-                        src={"/src/assets/default-avatar.webp"}
-                      ></img>
-                      <div className="res-details">
-                        <p>Example</p>
-                        <p>1234 Street Street</p>
-                      </div>
-                    </div>
-                    <div className="rate flex flex-row">
-                      <FaStar size={30} style={{ color: "orange" }} />
-                      <FaStar size={30} style={{ color: "orange" }} />
-                      <FaStar size={30} style={{ color: "orange" }} />
-                    </div>
-                  </div>
-                  <p className="review-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat.Lorem ipsum dolor sit amet, consectetur
-                    adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat.
-                    <br />
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
-                </div>
+                
                 <Outlet context={[isCorrectUser, restaurants]}/>
               </div>
             </div>
