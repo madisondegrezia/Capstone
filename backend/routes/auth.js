@@ -45,11 +45,12 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     // find an account in the db table if there is one
-    const user = await User.findOne({ where: { email: req.body.email },
+    const user = await User.findOne({
+      where: { email: req.body.email },
       include: {
         model: Restaurant,
-        attributes: ["id", "restaurantName"]
-      }
+        attributes: ["id", "restaurantName"],
+      },
     });
 
     if (user === null) {
@@ -66,11 +67,12 @@ router.post("/login", async (req, res) => {
         return res.status(200).json({
           message: "Logged in successfully",
           user: {
+            id: user.id,
             username: user.username,
             email: user.email,
             hasRestaurant: user.hasRestaurant,
             profileImage: user.profileImage,
-            restaurants:user.Restaurants,
+            restaurants: user.Restaurants,
           },
         });
       } else {
@@ -118,9 +120,7 @@ router.get("/current_user", async (req, res) => {
       },
     });
   } else {
-    return res.status(401).json({ user: 
-      null
-    });
+    return res.status(401).json({ user: null });
   }
 });
 
