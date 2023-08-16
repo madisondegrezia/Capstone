@@ -33,6 +33,7 @@ export default function NavBar() {
       navigate("/login");
       console.log("triggering redirect");
     }, 0);
+    console.log(currentUser);
     console.log("logging out!!");
   };
 
@@ -44,7 +45,7 @@ export default function NavBar() {
       </>
     );
   }
-  console.log(currentUser);
+
   // for other pages, return the navbar and the footer
   return (
     <>
@@ -120,13 +121,9 @@ export default function NavBar() {
                     <span className="block truncate text-sm font-medium">
                       {currentUser.email}
                     </span>
-                    <Link
-                      to={`/user/${currentUser.id}`}
-                      className="block flex flex-row gap-1 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
+                    <Link to={`/user/${currentUser.id}`} className="block flex flex-row gap-1 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       My Profile
                     </Link>
-                    {console.log(currentUser)}
                   </div>
                 ) : (
                   <div>
@@ -134,7 +131,9 @@ export default function NavBar() {
                     <span className="block truncate text-sm font-medium">
                       User@user.com
                     </span>
-                    <span className="block text-sm">Profile</span>
+                    <span className="block text-sm">
+                      Profile
+                    </span>
                   </div>
                 )}
               </Dropdown.Header>
@@ -151,7 +150,7 @@ export default function NavBar() {
                         <img src={edit} className="w-5" />
                         {restaurant.restaurantName}
                       </Link>
-                      <Link to={`/restaurant/${restaurant.id}/settings/all`}>
+                      <Link to={`/restaurant/${restaurant.id}/settings`}>
                         <img src={settings} className="w-5" />
                       </Link>
                     </div>
