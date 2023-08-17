@@ -5,6 +5,7 @@ import throttle from 'lodash/throttle';
 const googleApiKey = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const MapComponent = ({ userLocation, destinationLocation }) => {
+  console.log("API Key:", googleApiKey);
 
   const containerStyle = {
     width: '100%',

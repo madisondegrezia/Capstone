@@ -87,6 +87,7 @@ router.delete("/:restaurantId", async (req, res) => {
 
 // fetch to google map api for the address's lat and lng by axios
 async function fetchRestaurantLatLng(address) {
+  
   try {
     const response = await axios.get(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${(
