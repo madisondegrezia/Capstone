@@ -6,7 +6,6 @@ import { useLoaderData, useLocation } from 'react-router-dom/dist/umd/react-rout
 const RestaurantDisplay = () => {
   const data = useLoaderData();
 
-  console.log(data);
   if(!Array.isArray(data)) {
     return <>No restaurants were found</>
   }
