@@ -6,6 +6,9 @@ import { useLoaderData, useLocation } from 'react-router-dom/dist/umd/react-rout
 const RestaurantDisplay = () => {
   const data = useLoaderData();
 
+  if(!Array.isArray(data)) {
+    return <>No restaurants were found</>
+  }
   const style = {
     // Define your styles here, for example:
     fontSize: '24px',
